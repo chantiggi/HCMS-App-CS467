@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Title should change for each page we make -->
+        <title>Horse Medications - Horse Care Management System</title>
+        
+        <!-- Bootstrap: http://getbootstrap.com -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        
+        <!-- Let's not put any styling specific to the given page in this stylesheet. Intended for styling elements shared between all pages -->
+        <link rel="stylesheet" type="text/css" href="./sharedStyles.css">
+        
+        <!-- And let's put a different stylesheet here for elements added and distincly belonging to the specific page -->
+        <link rel="stylesheet" type="text/css" href="./css/med_style.css">
+    </head>
+    <body>
+        <!-- Important: Wrapper for body to allow a sticky footer -->
+        <div id="bodyContent">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+                <a class="navbar-brand" href="#HOME HTML PAGE">Horse Camp Management System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" id="home" href="#INSERT HOME PAGE HTML FILE HERE">Home<span class="sr-only">(current)</span></a>
+ 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#INSERT ADMIN PAGE HTML FILE HERE" id="costs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage Preferences
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#MANGE USERS HTML PAGE">Manage Users</a>
+                                <a class="dropdown-item" href="#MANGE HORSES HTML PAGE">Manage Horses</a>
+                                <a class="dropdown-item" href="#MANGE ORGANIZATION HTML PAGE">Manage Organization</a>
+                            </div>
+                        </li>
+                        <!-- Feel free to change the order here -->
+                        <a class="nav-item nav-link" id="horses" href="#INSERT HORSES PAGE HTML FILE HERE">View Horses</a>
+                        <a class="nav-item nav-link" id="feed" href="#INSERT FEED PAGE HTML FILE HERE">Feed</a>
+                        <a class="nav-item nav-link" id="medications" href="#INSERT MEDICATIONS HTML FILE HERE">Medications</a>
+                        <a class="nav-item nav-link" id="logout" href="#INSERT LOG OUT HTML FILE HERE">Log Out</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page-specific content should go in this div -->
+            <div class="container">
+                <!-- START of Med View  -->
+                <h1>Horse Medications</h1>
+                <div class="toggle row">
+                    <div class="col">
+                        <h5>Time of Day:</h5>
+                    </div>
+                    <div class="col">
+                        <div class="custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="switch-time" style="display:inline;">
+                            <label class="custom-control-label" for="switch-time" id="label-time"></label>
+                        </div> 
+                    </div>
+                </div>
+                <div class="toggle row">
+                    <div class="col">
+                        <h5>View Horses:</h5>
+                    </div>
+                    <div class="col">
+                        <div class="custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="switch-horses" style="display:inline;">
+                            <label class="custom-control-label" for="switch-horses" id="label-horses"></label>
+                        </div> 
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead class="table-head">
+                        <tr>
+                            <th>Horse Name</th>
+                            <th>Location</th>
+                            <th>Medication</th>
+                            <th>Special Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Note: Each horse is a row -->
+                        <tr class="med-horse all-horses">
+                            <td>Abigail</td>
+                            <td>1</td>
+                            <td>1 scoop Strategy</td>
+                            <td>Mix together and soak with 1/2 c warm water</td>
+                        </tr>
+                        <tr class="all-horses">
+                            <td>Daisy</td>
+                            <td>2</td>
+                            <td>1 scoop mare magic</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- End of Med View  -->
+            </div>
+        </div>
+        <!-- Consistent footer content across all pages -->
+        <footer>
+            <!-- Site navigation links -->
+            <div class="container" id="footerCont">
+                <div id="navLinks">
+                    <label for="">Navigation</label>
+                    <ul>
+                        <li><a href="#HORSES">View Horses</a></li>
+                        <li><a href="#FEED">View Feed</a></li>
+                        <li><a href="#MEDICATIONS">View Medications</a></li>
+                        <li><a href="#LOGOUT">Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- Site development and technologies links -->
+                <div id="devLinks">
+                    <label for="">Development</label>
+                    <ul>
+                        <li><a href="https://github.com/chantiggi/HCMS-App-CS467">GitHub</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                    </ul>
+    
+                </div>
+                <!-- Us! Maybe we want this, maybe not. I don't know. But if this ever goes live, could be good. -->
+                <div id="contributors">
+                    <label for="">Contributors</label>
+                    <ul>
+                        <li><a href="#github/linkedin/email">Jennifer Aldover</a></li>
+                        <li><a href="#github/linkedin/email">Chantel Higginbotham</a></li>
+                        <li><a href="#github/linkedin/email">Ann Kostecki</a></li>
+                    </ul>
+                </div>
+                <!-- Again, if this ever goes live... feels like a footer might be a good spot for it. -->
+                <div id="sponsors">
+                    <label for="">Sponsors</label>
+                    <ul>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- Insert additional .js files here to make pages do useful things, like AJAX requests to db -->
+        
+        <!-- Let's leave these alone, if we want to use Bootstrap and want it to work as expected -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
