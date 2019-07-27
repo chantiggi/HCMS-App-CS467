@@ -61,39 +61,43 @@
                 </ul>
                 <!-- Insert tab content here -->
                 <div class="tab-content" id="manage-horses-tab">
-                    <h5>To view a horse's full profile, including history, feed, medications, click Edit/Delete for the appropriate horse.</h5>
-                    <table class="table table-striped table-bordered" id="manage-horses-table">
-                        <thead class="table-head">
-                            <tr>
-                                <th>Horse Name</th>
-                                <th>Handler Level</th>
-                                <th>Description</th>
-                                <th>Photo</th>
-                                <th>Daytime Location</th>
-                                <th>Nighttime Location</th>
-                                <th>Estimated Birth Year</th>
-                                <th>&nbsp;</th>
-                            </tr> 
-                        </thead>
-                        <tbody>
-                            <!-- Each Horse -->
-                            <tr>
-                                <td>{{horseName}}</td>
-                                <td>{{handlerLevel}}</td>
-                                <td>{{description}}</td>
-                                <td>{{photo}}</td>
-                                <td>{{dayLocationID}}</td>
-                                <td>{{nightLocationID}}</td>
-                                <td>{{birthYear}}</td>
-                                <td>
-                                    <button type="button" class="btn" id="edit-del-btn">Edit/Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>                       
-                    </table>
-
-                    <button type="button" class="btn" id="add-btn">Add New Horse</button>
-
+                    <!-- Start Manage Horses Content -->
+                    <div id="manage-horses-main">
+                        <h5>To view a horse's full profile, including history, feed, medications, click Edit/Delete for the appropriate horse.</h5>
+                        <table class="table table-striped table-bordered" id="manage-horses-table">
+                            <thead class="table-head">
+                                <tr>
+                                    <th>Horse Name</th>
+                                    <th>Handler Level</th>
+                                    <th>Description</th>
+                                    <th>Photo</th>
+                                    <th>Daytime Location</th>
+                                    <th>Nighttime Location</th>
+                                    <th>Estimated Birth Year</th>
+                                    <th>&nbsp;</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <!-- Each Horse per row-->
+                                <tr>
+                                    <td>{{horseName}}</td>
+                                    <td>{{handlerLevel}}</td>
+                                    <td>{{description}}</td>
+                                    <td>{{photo}}</td>
+                                    <td>{{dayLocationID}}</td>
+                                    <td>{{nightLocationID}}</td>
+                                    <td>{{birthYear}}</td>
+                                    <td>
+                                        <!-- Edit-Del Button: Displays Add/Edit Menu for Specific Horse -->
+                                        <button type="button" class="btn" id="edit-del-btn">Edit/Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>                       
+                        </table>
+                        <!-- Add Button: Displays Add/Edit Menu -->
+                        <button type="button" class="btn" id="add-btn">Add New Horse</button>
+                    </div>
+                    <!-- End Manage Horses Content -->
                 </div>
             </div>
         </div>
