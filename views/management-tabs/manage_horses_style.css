@@ -1,0 +1,28 @@
+/* Manage Horses */
+
+/* Main View */
+#manage-horses-main h5 {
+	margin: 2rem 0rem 2rem 0rem;
+}
+
+
+/* Add and Edit/Delete View*/
+
+.form-heading {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	text-decoration: underline;
+}
+
+.required-input {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+#submit-horse{
+	display:block;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+	margin-left: auto;
+	margin-right: auto;
+}
