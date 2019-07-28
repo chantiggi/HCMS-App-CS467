@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ViewIndivHorsePage } from './viewIndivHorse';
 import './view_horses_style.css';
 
 export class ViewHorsesPage extends React.Component {
@@ -16,7 +15,7 @@ export class ViewHorsesPage extends React.Component {
                 <div className="all-horses">
                     <div className="row">
                         <div className="col">
-                            <Link to={'/viewhorses/:horseid'} className="horse-link">
+                            <Link to={'/viewindivhorse'} className="horse-link">
                                 <div className="horse-image">
                                     <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
                                 </div>

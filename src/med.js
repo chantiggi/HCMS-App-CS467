@@ -6,28 +6,29 @@ export class MedPage extends React.Component {
         return (
             <div className="container">
                 <h1>Horse Medications</h1>
-                <div className="toggle row">
-                    <div className="col">
-                        <h5>Time of Day:</h5>
-                    </div>
-                    <div className="col">
-                        <div className="custom-switch">
-                            <input type="checkbox" className="custom-control-input" id="switch-time"/>
-                            <label className="custom-control-label" for="switch-time" id="label-time"></label>
-                        </div> 
-                    </div>
-                </div>
-                <div className="toggle row">
-                    <div className="col">
-                        <h5>View Horses:</h5>
-                    </div>
-                    <div className="col">
-                        <div className="custom-switch">
-                            <input type="checkbox" className="custom-control-input" id="switch-horses"/>
-                            <label className="custom-control-label" for="switch-horses" id="label-horses"></label>
+                    <div className="toggle row">
+                        <div className="col">
+                            <h5>Time of Day:</h5>
+                        </div>
+                        <div className="col">
+                            <div className="custom-switch">
+                                <input type="checkbox" className="custom-control-input" id="switch-time"/>
+                                <label className="custom-control-label" for="switch-time" id="label-time"></label>
+                            </div> 
                         </div>
                     </div>
-                </div>
+                    <div className="toggle row">
+                        <div className="col">
+                            <h5>View Horses:</h5>
+                        </div>
+                        <div className="col">
+                            <div className="custom-switch">
+                                <input type="checkbox" className="custom-control-input" id="switch-horses"/>
+                                <label className="custom-control-label" for="switch-horses" id="label-horses"></label>
+                            </div>
+                        </div>
+                    </div>
+
                 <table className="table table-striped">
                     <thead className="table-head">
                         <tr>
@@ -38,7 +39,6 @@ export class MedPage extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-
                         <tr className="med-horse all-horses">
                             <td>Abigail</td>
                             <td>1</td>

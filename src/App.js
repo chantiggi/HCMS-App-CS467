@@ -1,52 +1,51 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { NavBar } from './navbar';
 import { Home } from './home';
+import { OrgReg } from './org_reg';
+import { UserReg } from './user_reg';
+import { AdminHomePage } from './admin_home';
+import { UserHomePage } from './user_home';
+import { AddUserPage } from './add_user';
+import { ManageOrg } from './manage_org';
+import { ManageUsers } from './manage_users';
+import { ManageHorses } from './manage_horses';
+import { EditHorse } from './manage_horses-edit';
+import { EditDeleteUser } from './editdelete_user';
 import { MedPage } from './med';
 import { FeedPage } from './feed';
 import { ViewHorsesPage } from './viewHorses';
 import { ViewIndivHorsePage } from './viewIndivHorse';
+import { Footer } from './footer';
+import { LogoutPage } from './logout';
 
 export class App extends React.Component {
     render() {
         return (
         <Router>
-            <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
-                    <a className="navbar-brand" href="/">Horse Care Management System</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <Link to={'/'} className="nav-item nav-link active" id="home">Home<span className="sr-only">(current)</span></Link>
+            <div id="bodyContent">
+            <NavBar />
 
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="/admin" id="costs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Manage Preferences
-                                </a>
-                                <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a className="dropdown-item" href="/manageusers">Manage Users</a>
-                                    <a className="dropdown-item" href="/managehorses">Manage Horses</a>
-                                    <a className="dropdown-item" href="/manageorg">Manage Organization</a>
-                                </div>
-                            </li>
-
-                            <Link to={'/viewhorses'} className="nav-item nav-link" id="horses">View Horses</Link>
-                            <Link to={'/feed'} className="nav-item nav-link" id="feed">Feed</Link>
-                            <Link to={'/meds'} className="nav-item nav-link" id="medications">Medications</Link>
-                            <a className="nav-item nav-link" id="logout" href="/logout">Log Out</a>
-                        </div>
-                    </div>
-                </nav>
-                <hr />
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route path='/orgregistration' component={OrgReg} />
+                    <Route path='/userregistration' component={UserReg} />
+                    <Route path='/adminhome' component={AdminHomePage} />
+                    <Route path='/userhome' component={UserHomePage} />
+                    <Route path='/adduser' component={AddUserPage} />
+                    <Route path='/manageorg' component={ManageOrg} />
+                    <Route path='/manageusers' component={ManageUsers} />
+                    <Route path='/managehorses' component={ManageHorses} />
+                    <Route path='/edithorse' component={EditHorse} /> 
+                    <Route path='/editdeleteuser' component={EditDeleteUser} />
                     <Route path='/viewhorses' component={ViewHorsesPage} />
                     <Route path='/feed' component={FeedPage} />
                     <Route path='/meds' component={MedPage} />
-                    <Route path='/viewhorses/:horseid' component={ViewIndivHorsePage} />
+                    <Route path='/viewindivhorse' component={ViewIndivHorsePage} />
+                    <Route path='/logout' component={LogoutPage} />
                 </Switch>
             </div>
+            <Footer />
         </Router>
         )
     }
