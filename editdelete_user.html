@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Title should change for each page we make -->
+        <title>Manage Users</title>
+        
+        <!-- Bootstrap: http://getbootstrap.com -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- Let's not put any styling specific to the given page in this stylesheet. Intended for styling elements shared between all pages -->
+        <link rel="stylesheet" type="text/css" href="./sharedStyles.css">
+        
+        <!-- And let's put a different stylesheet here for elements added and distincly belonging to the specific page -->
+        <link rel="stylesheet" type="text/css" href="./org_reg.css">
+        <link rel="stylesheet" type="text/css" href="./editdelete_user.css">
+        
+    </head>
+    <body>
+        <!-- Important: Wrapper for body to allow a sticky footer -->
+        <div id="bodyContent">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+                <a class="navbar-brand" href="./landing_page.html">Horse Camp Management System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" id="home" href="./admin_home.html">Home</a>
+ 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#INSERT ADMIN PAGE HTML FILE HERE" id="costs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage Preferences <span class="sr-only">(current)</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./manage_users.html">Manage Users</a>
+                                <a class="dropdown-item" href="#MANGE HORSES HTML PAGE">Manage Horses</a>
+                                <a class="dropdown-item" href="./manage_org.html">Manage Organization</a>
+                            </div>
+                        </li>
+                        <!-- Feel free to change the order here -->
+                        <a class="nav-item nav-link" id="horses" href="#INSERT HORSES PAGE HTML FILE HERE">View Horses</a>
+                        <a class="nav-item nav-link" id="feed" href="#INSERT FEED PAGE HTML FILE HERE">Feed</a>
+                        <a class="nav-item nav-link" id="medications" href="#INSERT MEDICATIONS HTML FILE HERE">Medications</a>
+                        <a class="nav-item nav-link" id="logout" href="#INSERT LOG OUT HTML FILE HERE">Log Out</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page-specific content should go in this div -->
+            <div class="container">
+                <!-- Start Management Tabs  -->
+                <ul class="nav nav-tabs" id="management-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="manage-users" href="./manage_users.html">Manage Users</a>
+                    </li>
+                    <li class="nav-item" id="manage-horses" href="#">
+                        <a class="nav-link" id="manage-horses" href="#">Manage Horses</a>
+                    </li>
+                    <li class="nav-item" id="manage-organization" href="#">
+                        <a class="nav-link" id="manage-organization" href="./manage_org.html">Manage Organization</a>
+                    </li>
+                </ul>
+                <!-- Insert tab content here -->
+                <div class="tab-content" id="">
+                <div class="container">
+                    <p>
+                        <form>
+                            <div class="row">
+                              <div class="col-50">
+                                <h3>Edit User</h3><br>
+
+                                <div class="row">
+                                  <div class="col-50">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" id="fname" name="fname" placeholder="{{fname}}">
+                                  </div>
+                                  <div class="col-50">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" id="lname" name="lname" placeholder="{{lname}}">
+                                  </div>
+                                </div>
+
+                                <label for="email"><i class="fa fa-envelope"></i> Email Address</label>
+                                <input type="text" id="email" name="email" placeholder="{{email}}">
+
+                                
+
+                                <select class="handlerdropdown">
+                                    <option value= "level">Select Handler Level</option>
+                                    <option value= ""></option>
+                                    <option value= ""></option>
+                                    <option value= ""></option>
+                                    <option value= ""></option>
+                                </select>
+
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Is the user an <a href="#" title="User is given access to Manage Preferences" data-toggle="popover" data-trigger="hover" data-content="Some content">Admnistrator</a>?</label>
+
+                                </div>
+
+                                <p></p>
+                                <!--auto-fill based on login -->
+                                <label for="org"><i class="fa fa-envelope"></i> Organization Name</label>
+                                <input type="text" id="org" name="org" placeholder="{{Organization Name}}">
+
+                                <div class="row">
+                                  <div class="col-25">
+                                    <input type="submit" value="Delete User" class="btns delete">
+                                  </div>
+                                  <div class="col-25">
+
+                                  </div>                                  
+                                  <div class="col-50">
+                                    <input type="submit" value="Submit Changes" class="btns">
+                                  </div>
+                                </div>
+
+                            </div>
+                            
+                        </form>
+                    </p> 
+                    <p></p>
+            </div>
+                </div>
+            </div>
+        </div>
+        <!-- Consistent footer content across all pages -->
+        <footer>
+            <!-- Site navigation links -->
+            <div class="container" id="footerCont">
+                <div id="navLinks">
+                    <label for="">Navigation</label>
+                    <ul>
+                        <li><a href="#HORSES">View Horses</a></li>
+                        <li><a href="#FEED">View Feed</a></li>
+                        <li><a href="#MEDICATIONS">View Medications</a></li>
+                        <li><a href="#LOGOUT">Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- Site development and technologies links -->
+                <div id="devLinks">
+                    <label for="">Development</label>
+                    <ul>
+                        <li><a href="https://github.com/chantiggi/HCMS-App-CS467">GitHub</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                    </ul>
+    
+                </div>
+                <!-- Us! Maybe we want this, maybe not. I don't know. But if this ever goes live, could be good. -->
+                <div id="contributors">
+                    <label for="">Contributors</label>
+                    <ul>
+                        <li><a href="#github/linkedin/email">Jennifer Aldover</a></li>
+                        <li><a href="#github/linkedin/email">Chantel Higginbotham</a></li>
+                        <li><a href="#github/linkedin/email">Ann Kostecki</a></li>
+                    </ul>
+                </div>
+                <!-- Again, if this ever goes live... feels like a footer might be a good spot for it. -->
+                <div id="sponsors">
+                    <label for="">Sponsors</label>
+                    <ul>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- Insert additional .js files here to make pages do useful things, like AJAX requests to db -->
+        
+        <!-- Let's leave these alone, if we want to use Bootstrap and want it to work as expected -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

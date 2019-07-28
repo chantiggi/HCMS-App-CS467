@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Title should change for each page we make -->
+        <title>Organization Registration</title>
+        
+        <!-- Bootstrap: http://getbootstrap.com -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- Let's not put any styling specific to the given page in this stylesheet. Intended for styling elements shared between all pages -->
+        <link rel="stylesheet" type="text/css" href="./sharedStyles.css">
+        
+        <!-- And let's put a different stylesheet here for elements added and distincly belonging to the specific page -->
+        <link rel="stylesheet" type="text/css" href="./org_reg.css">
+        
+    </head>
+    <body>
+        <!-- Important: Wrapper for body to allow a sticky footer -->
+        <div id="bodyContent">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+                <a class="navbar-brand" href="./landing_page.html">Horse Camp Management System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    
+                    <button type="button" class="btn" data-toggle="modal" data-target=".dialog-box">Log In</button>
+                    <div class="modal fade dialog-box">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class = "modal-header">
+                                    <h6>Log In </h6>
+                                    <button type="button" class="close" aria-label="Close" data-dismiss="modal">X</button>
+                                </div>
+
+                                <div class="modal-body modal-sm">
+                                    <div class="row login">
+                                      <div class="col-md-4">Username:</div>
+                                      <div class="col-md-4 ml-auto"><input type="text" name="username"> </div>
+                                    </div>      
+                                    <div class="row login">
+                                      <div class="col-md-4">Password:</div>
+                                      <div class="col-md-4 ml-auto"><input type="text" name="password"> </div>
+                                    </div>                                                                     
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Forgot Password?</button>
+                                    <a href="./admin_home.html" class="btn btn-secondary" role="button">Log In</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+            <!-- Page-specific content should go in this div -->
+            <br>
+            <div class="container">
+                <p>
+                    <form>
+                        <div class="row">
+                          <div class="col-50">
+                            <h3>Organization Registration</h3>
+                            <h4>Organization Information</h4>
+                            <label for="oname"><i class="fa fa-user"></i>Name</label>
+                            <input type="text" id="oname" name="oname" placeholder="Mountain Valley Horse Resue">
+
+                            <label for="adr"><i class="fa fa-address-card-o"></i>Address</label>
+                            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                            <label for="city"><i class="fa fa-institution"></i> City</label>
+                            <input type="text" id="city" name="city" placeholder="New York">
+
+                            <div class="row">
+                              <div class="col-50">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" placeholder="NY">
+                              </div>
+                              <div class="col-50">
+                                <label for="zip">Zip</label>
+                                <input type="text" id="zip" name="zip" placeholder="10001">
+                              </div>
+                            </div>
+                          
+
+
+                            <h4>Administrator Information</h4>
+                            <div class="row">
+                              <div class="col-50">
+                                <label for="fname">First Name</label>
+                                <input type="text" id="fname" name="fname" placeholder="John">
+                              </div>
+                              <div class="col-50">
+                                <label for="lname">Last Name</label>
+                                <input type="text" id="lname" name="lname" placeholder="Smith">
+                              </div>
+                            </div>
+
+                            <label for="email"><i class="fa fa-envelope"></i>Email Address</label>
+                            <input type="text" id="email" name="email" placeholder="john@example.com">
+
+
+                            <div class="row">
+                              <div class="col-50">
+                                <label for="pass">Password</label>
+                                <input type="text" id="pass" name="pass">
+                              </div>
+                              <div class="col-50">
+                                <label for="repass">Re-enter Password</label>
+                                <input type="text" id="repass" name="repass">
+                              </div>
+                              <div class="col-25">
+                                  <input type="submit" value="Submit" class="btns submitbtn">
+                              </div>
+                            
+                            </div>
+
+                        </div>
+                        
+                    </form>
+                </p> 
+                <p></p>
+            </div>
+        </div>
+
+        <!-- Consistent footer content across all pages -->
+        <footer>
+            <!-- Site navigation links -->
+            <div class="container" id="footerCont" style="background-color:#ffffff">
+                <div id="navLinks">
+                    <label for=""></label>
+                    <ul>
+
+                    </ul>
+                </div>
+                <!-- Site development and technologies links -->
+                <div id="devLinks">
+                    <label for=""></label>
+                    <ul>
+
+                    </ul>
+    
+                </div>
+                <!-- Us! Maybe we want this, maybe not. I don't know. But if this ever goes live, could be good. -->
+                <div id="contributors">
+                    <label for=""></label>
+                    <ul>
+
+                    </ul>
+                </div>
+                <!-- Again, if this ever goes live... feels like a footer might be a good spot for it. -->
+                <div id="sponsors">
+                    <label for=""></label>
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Insert additional .js files here to make pages do useful things, like AJAX requests to db -->
+        
+        <!-- Let's leave these alone, if we want to use Bootstrap and want it to work as expected -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
