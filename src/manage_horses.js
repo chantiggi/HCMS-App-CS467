@@ -1,6 +1,7 @@
 import React from 'react';
 import './manage_horses_style.css';
 import { ManagementTabs } from './managementtabs';
+import { Link } from 'react-router-dom';
 
 export class ManageHorses extends React.Component {
     render() {
@@ -22,7 +23,7 @@ export class ManageHorses extends React.Component {
                                     <th>Photo</th>
                                     <th>Daytime Location</th>
                                     <th>Nighttime Location</th>
-                                    <th>Estimated Birth Year</th>
+                                    <th>Estimated Age</th>
                                     <th>&nbsp;</th>
                                 </tr> 
                             </thead>
@@ -38,7 +39,7 @@ export class ManageHorses extends React.Component {
                                     <td>age</td>
                                     <td>
                                         
-                                        <button type="button" className="btn" id="edit-del-btn">Edit/Delete</button>
+                                        <Link to={'/edithorse'} type="button" className="btn" id="edit-del-btn">Edit/Delete</Link>
                                     </td>
                                 </tr>
                             </tbody>                       

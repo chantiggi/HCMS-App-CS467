@@ -1,6 +1,7 @@
 import React from 'react';
 import './manage_users.css';
 import { ManagementTabs } from './managementtabs';
+import { Link } from 'react-router-dom';
 
 export class ManageUsers extends React.Component {
     render() {
@@ -35,13 +36,13 @@ export class ManageUsers extends React.Component {
                                 <td>User Email</td>
                                 <td>Admin Y/N</td>
                                 <td>
-                                    <button type="button" className="btn" id="edit-del-btn">Edit/Delete</button>
+                                    <Link to={'/editdeleteuser'} type="button" className="btn" id="edit-del-btn">Edit/Delete</Link>
                                 </td>
                             </tr>
                         </tbody>                       
                     </table>
 
-                    <button type="button" className="btn" id="add-btn">Add New User</button>
+                    <Link to={'/adduser'} type="button" className="btn" id="add-btn">Add New User</Link>
 
                 </div>
             </div>

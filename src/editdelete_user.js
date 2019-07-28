@@ -1,22 +1,13 @@
 import React from 'react';
 import './editdelete_user.css';
+import { ManagementTabs } from './managementtabs';
 
 export class EditDeleteUser extends React.Component {
     render() {
         return (
             <div className="container">
 
-                <ul className="nav nav-tabs" id="management-tabs">
-                    <li className="nav-item">
-                        <a className="nav-link active" id="manage-users" href="./manage_users.html">Manage Users</a>
-                    </li>
-                    <li className="nav-item" id="manage-horses" href="#">
-                        <a className="nav-link" id="manage-horses" href="#">Manage Horses</a>
-                    </li>
-                    <li className="nav-item" id="manage-organization" href="#">
-                        <a className="nav-link" id="manage-organization" href="./manage_org.html">Manage Organization</a>
-                    </li>
-                </ul>
+            <ManagementTabs />
 
                 <div className="tab-content" id="">
                 <div className="container">

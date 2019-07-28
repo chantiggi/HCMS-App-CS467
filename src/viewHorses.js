@@ -25,24 +25,24 @@ export class ViewHorsesPage extends React.Component {
                             </Link>
                         </div>
                         <div className="col">
-                            <a href="/#HORSE" className="horse-link">
+                            <Link to={'/viewindivhorse'} className="horse-link">
                                 <div className="horse-image">
                                     <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
                                 </div>
                                 <p>Name: HorseName</p>
                                 <p>Age: HorseAge </p>
                                 <p>Handler Level: HorseHandlerLevel </p>
-                            </a>
+                            </Link>
                         </div>
                         <div className="col">
-                            <a href="#HORSE" className="horse-link">
+                            <Link to={'/viewindivhorse'} className="horse-link">
                                 <div className="horse-image">
                                     <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
                                 </div>
                                 <p>Name: HorseName</p>
                                 <p>Age: HorseAge </p>
                                 <p>Handler Level: HorseHandlerLevel </p>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
