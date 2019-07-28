@@ -1,0 +1,79 @@
+/* Horse Medications Stylesheet */
+
+.toggle {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.custom-control .custom-switch {
+	display:inline;
+}
+
+.custom-control-label::before {
+    left: -2.25rem;
+    width: 4rem;
+    height: 2rem;
+    pointer-events: all;
+    border-radius: .5rem;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::after {
+    background-color: #fff;
+    -webkit-transform: translateX(.75rem);
+    transform: translateX(2.5rem);
+}
+
+input:checked + .custom-control-label:after {
+    content: "";
+}
+
+.custom-switch .custom-control-label::before {
+    left: -2.25rem;
+    width: 4rem;
+    pointer-events: all;
+    border-radius: .5rem;
+}
+
+.custom-control-label:after {
+    padding-left: 1rem;
+    width: 4rem;
+}
+
+input:checked + .custom-control-label:before {
+    color: white;
+    width: 4rem;
+}
+
+/**** Time of the Day Switch ****/
+input:checked + .#label-time:after {
+    content: "";
+}
+
+input:checked + #label-time:before {
+    content: "PM";
+}
+
+input:not(:checked) + #label-time:after {
+    content: "AM";
+    padding-left: 1rem;
+}
+
+/**** View Horses Switch ****/
+
+input:checked + .#label-horses:after {
+    content: "";
+}
+
+input:checked + #label-horses:before {
+    content: "ALL";
+}
+
+input:not(:checked) + #label-horses:after {
+    content: "MEDS";
+    padding-left: 1rem;
+}
+
+.table {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}

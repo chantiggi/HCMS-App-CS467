@@ -1,0 +1,19 @@
+/* Horse Feed Stylesheet */
+
+table {
+	border-collapse: collapse;
+
+}
+
+/*th, td {
+	word-wrap: break-word;
+}*/
+
+#med-btn {
+	background-color: #ff0000;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+/* Mobile Style */
+

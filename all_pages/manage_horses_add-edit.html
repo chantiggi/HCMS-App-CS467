@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Title should change for each page we make -->
+        <title>Manage Horses - </title>
+        
+        <!-- Bootstrap: http://getbootstrap.com -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- Let's not put any styling specific to the given page in this stylesheet. Intended for styling elements shared between all pages -->
+        <link rel="stylesheet" type="text/css" href="./sharedStyles.css">
+        
+        <!-- And let's put a different stylesheet here for elements added and distincly belonging to the specific page -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./manage_horses_style.css">
+
+    </head>
+    <body>
+        <!-- Important: Wrapper for body to allow a sticky footer -->
+        <div id="bodyContent">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+                <a class="navbar-brand" href="admin_home.html">Horse Camp Management System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" id="home" href="admin_home.html">Home<span class="sr-only">(current)</span></a>
+ 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#INSERT ADMIN PAGE HTML FILE HERE" id="costs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage Preferences
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./manage_users.html">Manage Users</a>
+                                <a class="dropdown-item" href="./manage_horses.html">Manage Horses</a>
+                                <a class="dropdown-item" href="./manage_org.html">Manage Organization</a>
+                            </div>
+                        </li>
+                        <!-- Feel free to change the order here -->
+                        <a class="nav-item nav-link" id="horses" href="./view_horses.html">View Horses</a>
+                        <a class="nav-item nav-link" id="feed" href="./feed.html">Feed</a>
+                        <a class="nav-item nav-link" id="medications" href="./med.html">Medications</a>
+                        <a class="nav-item nav-link" id="logout" href="#INSERT LOG OUT HTML FILE HERE">Log Out</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page-specific content should go in this div -->
+            <div class="container">
+                <!-- Start Management Tabs  -->
+                <ul class="nav nav-tabs" id="management-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" id="manage-users" href="./manage_users.html">Manage Users</a>
+                    </li>
+                    <li class="nav-item" id="manage-horses">
+                        <a class="nav-link active" id="manage-horses" href="./manage_horses.html">Manage Horses</a>
+                    </li>
+                    <li class="nav-item" id="manage-organization">
+                        <a class="nav-link" id="manage-organization" href="./manage_org.html">Manage Organization</a>
+                    </li>
+                </ul>
+
+                <!-- Insert tab content here -->
+                <div class="tab-content" id="manage-horses-tab">
+
+                    <!-- Start Add Edit-Delete Content -->
+                    <!-- If user clicks Add New Horses, the menu should display no data -->
+                    <!-- If user clicks Edit/Delete, the menu should display data -->
+                    <div id="manage-horses-add-edit">
+                        <form>
+                            <!-- Horse Information -->
+                            <div class="section-wrapper">
+                                <h5 class="form-heading" id="horse-info-header">Horse Information</h5> 
+                                <div class="horse-info form-row">
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="horse-name">Horse Name<span class="required-input">*</span></label>
+                                            <input type="text" class="form-control" id="horse-name" placeholder="Enter name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="handler-level">Handler Level<span class="required-input">*</span></label>
+                                            <select class="form-control" id="handler-level" required>
+                                                <option value="" disabled selected>Select level</option>
+                                                <!-- Handler Levels -->
+                                                <option value="">Yellow</option>
+                                                <option value="">Red</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="daytime-location">Daytime Location<span class="required-input">*</span></label>
+                                            <select class="form-control" id="daytime-location" required>
+                                                <option value="" disabled selected>Select location</option>
+                                                <!-- Daytime Locations -->
+                                                <option>1</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nighttime-location">Nighttime Location<span class="required-input">*</span></label>
+                                            <select class="form-control" id="handler-level" required>
+                                                <option value="" disabled selected>Select location</option>
+                                                <!-- Nighttime Locations -->
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="birth-year">Estimated Birth Year</label>
+                                            <select class="form-control" id="birth-year">
+                                                <option value="">Select year</option>
+                                                <!-- Years -->
+                                                <option value="1993">1993</option>
+                                                <option value="1994">1994</option>
+                                            </select>
+                                        </div>                                                                           
+                                    </div>
+                                    <div class="col-sm">
+                                        <!-- Modify src for current photo -->
+                                        <img id="photo" src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" style="width:200px; height:auto; display: block; margin-left: auto; margin-right: auto;">
+                                        <div class="custom-file">
+                                            <label class="custom-file-label" for="upload-photo">Upload New Photo</label>
+                                            <input class="custom-file-input" id="upload-photo" type="file" name="photo" accept="image/png, image/jpeg">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="horse-name">Description</label>
+                                            <textarea class="form-control" id="description"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="special-notes">Special Notes or Requirements</label>
+                                            <textarea type="text" class="form-control" id="special-notes"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="history">History</label>
+                                            <textarea type="text" class="form-control" id="history"></textarea>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Horse Information -->
+                            
+                            <!-- Feed Information -->
+                            <div class="section-wrapper">
+                                <h5 class="form-heading" id="feed-info-header">Feed Information</h5> 
+                                <div class="feed-info form-row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="feed-amount">Amount<span class="required-input">*</span></label>
+                                            <select class="form-control" id="feed-amount" required>
+                                                <option value="" disabled selected>Select amount</option>
+                                                <!-- Feed Amounts -->
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="feed-unit">Unit<span class="required-input">*</span></label>
+                                            <select class="form-control" id="feed-unit" required>
+                                                <option value="" disabled selected>Select unit</option>
+                                                <!-- Feed Units -->
+                                                <option value="Scoop">Scoop</option>
+                                                <option value="Cup">Cup</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="feed-type">Type<span class="required-input">*</span></label>
+                                            <select class="form-control" id="feed-type" required>
+                                                <option value="" disabled selected>Select type</option>
+                                                <!-- Feed Types -->
+                                                <option value="Strategy">Strategy</option>
+                                            </select>
+                                        </div>                                                                       
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="feed-notes">Special Notes</label>
+                                            <textarea class="form-control" id="feed-notes"></textarea>
+                                        </div>
+                                    </div>                       
+                                </div>
+                                <!-- Add Feed Button: Adds another feed by injecting a new feed-info row into form -->
+                                <button type="button" class="btn" id="add-feed-btn">+ New Feed</button>
+                            </div>
+                            <!-- End Feed Information -->
+
+                            <!-- Medicine Information -->
+                            <div class="section-wrapper">
+                                <h5 class="form-heading" id="med-info-header">Medicine Information</h5> 
+                                <div class="med-info form-row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="med-timing">Timing</label>
+                                            <select class="form-control" id="med-amount">
+                                                <option value="" selected>Select Timing</option>
+                                                <!-- Timing -->
+                                                <option value="1">AM</option>
+                                                <option value="2">PM</option>
+                                            </select>
+                                        </div>                                        
+                                        <div class="form-group">
+                                            <label for="med-amount">Amount</label>
+                                            <select class="form-control" id="med-amount">
+                                                <option value="" selected>Select amount</option>
+                                                <!-- Medicine Amounts -->
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="med-unit">Unit</label>
+                                            <select class="form-control" id="med-unit">
+                                                <option value="" selected>Select unit</option>
+                                                <!-- Medicine Units -->
+                                                <option value="tablet">tablet</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="med-type">Type</label>
+                                            <select class="form-control" id="med-type">
+                                                <option value="" selected>Select type</option>
+                                                <!-- Medicine Types -->
+                                                <option value="Strategy">antibiotic</option>
+                                            </select>
+                                        </div>                                                                       
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="med-notes">Special Notes</label>
+                                            <textarea class="form-control" id="med-notes"></textarea>
+                                        </div>
+                                    </div>                       
+                                </div> 
+                                <!-- Add Medicine Button: Adds another med by injecting a new med-info row into form -->
+                                <button type="button" class="btn" id="add-med-btn">+ New Medicine</button>
+                            </div> <!-- End Medicine Information -->
+
+                            <!-- Submit Horse Button: Updates horse data to the database -->
+                            <button type="submit" class="btn" id="submit-horse">Submit Horse</button> 
+                        </form>
+                    </div> <!-- End Add Edit-Delete Content -->
+                </div> <!-- End Tab Content -->
+            </div>
+        </div>
+        <!-- Consistent footer content across all pages -->
+        <footer>
+            <!-- Site navigation links -->
+            <div class="container" id="footerCont">
+                <div id="navLinks">
+                    <label for="">Navigation</label>
+                    <ul>
+                        <li><a href="./view_horses.html">View Horses</a></li>
+                        <li><a href="./feed.html">View Feed</a></li>
+                        <li><a href="./med.html">View Medications</a></li>
+                        <li><a href="#LOGOUT">Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- Site development and technologies links -->
+                <div id="devLinks">
+                    <label for="">Development</label>
+                    <ul>
+                        <li><a href="https://github.com/chantiggi/HCMS-App-CS467">GitHub</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                    </ul>
+    
+                </div>
+                <!-- Us! Maybe we want this, maybe not. I don't know. But if this ever goes live, could be good. -->
+                <div id="contributors">
+                    <label for="">Contributors</label>
+                    <ul>
+                        <li><a href="#github/linkedin/email">Jennifer Aldover</a></li>
+                        <li><a href="#github/linkedin/email">Chantel Higginbotham</a></li>
+                        <li><a href="#github/linkedin/email">Ann Kostecki</a></li>
+                    </ul>
+                </div>
+                <!-- Again, if this ever goes live... feels like a footer might be a good spot for it. -->
+                <div id="sponsors">
+                    <label for="">Sponsors</label>
+                    <ul>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- Insert additional .js files here to make pages do useful things, like AJAX requests to db -->
+        
+        <!-- Let's leave these alone, if we want to use Bootstrap and want it to work as expected -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

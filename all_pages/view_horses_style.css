@@ -1,0 +1,16 @@
+/* View All Horses Stylesheet */
+
+.col {
+	background-color: #F4F4F4;
+	margin:1em;
+}
+
+.horse-image {
+	margin:1em;
+	text-align: center;
+}
+
+.horse-image img {
+	width:200px;
+	height:auto;
+}

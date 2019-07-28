@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Title should change for each page we make -->
+        <title>Manage Organization</title>
+        
+        <!-- Bootstrap: http://getbootstrap.com -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <!-- Let's not put any styling specific to the given page in this stylesheet. Intended for styling elements shared between all pages -->
+        <link rel="stylesheet" type="text/css" href="./sharedStyles.css">
+        
+        <!-- And let's put a different stylesheet here for elements added and distincly belonging to the specific page -->
+        <link rel="stylesheet" type="text/css" href="./manage_org.css">
+        
+    </head>
+    <body>
+        <!-- Important: Wrapper for body to allow a sticky footer -->
+        <div id="bodyContent">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+                <a class="navbar-brand" href="#HOME HTML PAGE">Horse Camp Management System</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" id="home" href="./admin_home.html">Home</a>
+ 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#INSERT ADMIN PAGE HTML FILE HERE" id="costs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage Preferences <span class="sr-only">(current)</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="./manage_users.html">Manage Users</a>
+                                <a class="dropdown-item" href="./manage_horses.html">Manage Horses</a>
+                                <a class="dropdown-item" href="./manage_org.html">Manage Organization</a>
+                            </div>
+                        </li>
+                        <!-- Feel free to change the order here -->
+                        <a class="nav-item nav-link" id="horses" href="./view_horses.html">View Horses</a>
+                        <a class="nav-item nav-link" id="feed" href="./feed.html">Feed</a>
+                        <a class="nav-item nav-link" id="medications" href="./med.html">Medications</a>
+                        <a class="nav-item nav-link" id="logout" href="#INSERT LOG OUT HTML FILE HERE">Log Out</a>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page-specific content should go in this div -->
+            <div class="container">
+                <!-- Start Management Tabs  -->
+                <ul class="nav nav-tabs" id="management-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" id="manage-users" href="./manage_users.html">Manage Users</a>
+                    </li>
+                    <li class="nav-item" id="manage-horses">
+                        <a class="nav-link" id="manage-horses" href="./manage_horses.html">Manage Horses</a>
+                    </li>
+                    <li class="nav-item" id="manage-organization">
+                        <a class="nav-link active" id="manage-organization" href="./manage_org.html">Manage Organization</a>
+                    </li>
+                </ul>
+                <!-- Insert tab content here -->
+                <div class="tab-content org" id="">
+                    <form>
+                        <h5>Organization Information</h5>
+                        <label for="onanme"><i class="fa fa-envelope"></i>Name</label>
+                        <input type="text" id="oname" name="oname">
+
+                        <label for="oaddress"><i class="fa fa-envelope"></i>Address</label>
+                        <input type="text" id="oaddress" name="oaddress">
+                        
+                        <div class="row">
+                          <div class="col-25">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city">
+                          </div>
+                          <div class="col-25">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state">
+                          </div>
+                          <div class="col-25">
+                            <label for="zip">Zip Code</label>
+                            <input type="text" id="zip" name="zip">
+                          </div>
+                        </div>
+
+                        <input type="submit" value="Submit Changes" class="btns addbtn">
+                    </form>
+
+                     <form>
+                        <h5>Feed Information</h5>
+                        
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle div-inline" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Amount
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>Type 1</li>
+                            <li>Type 2</li>
+                            <li>Type 3</li>
+                          </div>
+                          <button type="submit" class="btn btn-xs btn-default add">Add New Amount</button>
+                        </div>
+
+
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle div-inline" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Unit
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>Type 1</li>
+                            <li>Type 2</li>
+                            <li>Type 3</li>
+                          </div>
+                          <button type="submit" class="btn btn-xs btn-default add">Add New Unit</button>
+                        </div>
+
+                        <div class="dropdown last">
+                          <button class="btn btn-secondary dropdown-toggle div-inline" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Type
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>Type 1</li>
+                            <li>Type 2</li>
+                            <li>Type 3</li>
+                          </div>
+                          <button type="submit" class="btn btn-xs btn-default add">Add New Type</button>
+                        </div>
+
+                    </form>
+
+                     <form>
+                        <h5>Medicine Information</h5>
+
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle div-inline" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Timing
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>AM</li>
+                            <li>PM</li>
+                          </div>
+                          <button type="submit" class="btn btn-xs btn-default add">Add New Amount</button>
+                        </div>
+                        
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle div-inline" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Amount
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>Type 1</li>
+                            <li>Type 2</li>
+                            <li>Type 3</li>
+                          </div>
+                          <button type="submit" class="btn btn-xs btn-default add">Add New Amount</button>
+                        </div>
+
+
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle div-inline" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Unit
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>Type 1</li>
+                            <li>Type 2</li>
+                            <li>Type 3</li>
+                          </div>
+                          <button type="submit" class="btn btn-xs btn-default add">Add New Unit</button>
+                        </div>
+
+                        <div class="dropdown last">
+                          <button class="btn btn-secondary dropdown-toggle div-inline" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Type
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>Type 1</li>
+                            <li>Type 2</li>
+                            <li>Type 3</li>
+                          </div>
+                          <button type="submit" class="btn btn-xs btn-default add">Add New Type</button>
+                        </div>
+
+                    </form>                                    
+
+
+                </div>
+            </div>
+        </div>
+        <!-- Consistent footer content across all pages -->
+        <footer>
+            <!-- Site navigation links -->
+            <div class="container" id="footerCont">
+                <div id="navLinks">
+                    <label for="">Navigation</label>
+                    <ul>
+                        <li><a href="./view_horses.html">View Horses</a></li>
+                        <li><a href="./feed.html">View Feed</a></li>
+                        <li><a href="./med.html">View Medications</a></li>
+                        <li><a href="#LOGOUT">Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- Site development and technologies links -->
+                <div id="devLinks">
+                    <label for="">Development</label>
+                    <ul>
+                        <li><a href="https://github.com/chantiggi/HCMS-App-CS467">GitHub</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                        <li><a href="#">Link to some framework</a></li>
+                    </ul>
+    
+                </div>
+                <!-- Us! Maybe we want this, maybe not. I don't know. But if this ever goes live, could be good. -->
+                <div id="contributors">
+                    <label for="">Contributors</label>
+                    <ul>
+                        <li><a href="#github/linkedin/email">Jennifer Aldover</a></li>
+                        <li><a href="#github/linkedin/email">Chantel Higginbotham</a></li>
+                        <li><a href="#github/linkedin/email">Ann Kostecki</a></li>
+                    </ul>
+                </div>
+                <!-- Again, if this ever goes live... feels like a footer might be a good spot for it. -->
+                <div id="sponsors">
+                    <label for="">Sponsors</label>
+                    <ul>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                        <li><a href="">Link to some sponsor</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- Insert additional .js files here to make pages do useful things, like AJAX requests to db -->
+        
+        <!-- Let's leave these alone, if we want to use Bootstrap and want it to work as expected -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
