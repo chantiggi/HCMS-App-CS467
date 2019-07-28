@@ -7,11 +7,11 @@ export class ManageHorses extends React.Component {
     render() {
         return (
             <div className="container">
-                
+
                 <ManagementTabs />
-                
+
                 <div className="tab-content" id="manage-horses-tab">
-                    
+
                     <div id="manage-horses-main">
                         <h5>To view a horse's full profile, including history, feed, medications, click Edit/Delete for the appropriate horse.</h5>
                         <table className="table table-striped table-bordered" id="manage-horses-table">
@@ -25,10 +25,10 @@ export class ManageHorses extends React.Component {
                                     <th>Nighttime Location</th>
                                     <th>Estimated Age</th>
                                     <th>&nbsp;</th>
-                                </tr> 
+                                </tr>
                             </thead>
                             <tbody>
-                                
+
                                 <tr>
                                     <td>horseName</td>
                                     <td>handlerLevel</td>
@@ -38,16 +38,16 @@ export class ManageHorses extends React.Component {
                                     <td>nightLocation</td>
                                     <td>age</td>
                                     <td>
-                                        
-                                        <Link to={'/edithorse'} type="button" className="btn" id="edit-del-btn">Edit/Delete</Link>
+
+                                        <Link to={'/addedithorse'} type="button" className="btn" id="edit-del-btn">Edit/Delete</Link>
                                     </td>
                                 </tr>
-                            </tbody>                       
+                            </tbody>
                         </table>
-                        
+
                         <button type="button" className="btn" id="add-btn">Add New Horse</button>
                     </div>
-                    
+
                 </div>
             </div>
         )

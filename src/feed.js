@@ -29,11 +29,11 @@ export class FeedPage extends React.Component {
                                 <div class="modal fade dialog-box">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class = "modal-header">
+                                            <div class="modal-header">
                                                 <h3>Horse Medications - Abigail</h3>
                                                 <button type="button" class="close" aria-label="Close" data-dismiss="modal">X</button>
                                             </div>
-                            
+
                                             <div class="modal-body modal-sm">
                                                 <h4>AM</h4>
                                                 <ul class="am-meds">

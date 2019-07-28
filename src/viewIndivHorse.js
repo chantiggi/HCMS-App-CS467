@@ -1,12 +1,13 @@
 import React from 'react';
 import './horse_individual_style.css';
+import { Link } from 'react-router-dom';
 
 export class ViewIndivHorsePage extends React.Component {
     render() {
         return (
             <div class="container">
                 <div id="back-to-horses">
-                    <a href="file:///E:/467/HCMS-App-CS467/views/view_horses.html">Back to Horses</a>
+                    <Link to={'/viewhorses'}>Back to Horses</Link>
                 </div>
                 <div id="horse-image">
                     <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />

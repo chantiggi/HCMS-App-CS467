@@ -12,11 +12,11 @@ export class UserHomePage extends React.Component {
                 <div className="blogpost">
                     <div className="blogdate">
                         blogdate here
-                    </div>   
+                    </div>
                     <div className="blogauthor">
                         Posted by: AdminName
-                    </div>   
-                    
+                    </div>
+
                     <div className="post">
                         Most recent post #1
                     </div>
@@ -25,11 +25,11 @@ export class UserHomePage extends React.Component {
                 <div className="blogpost">
                     <div className="blogdate">
                         blogdate here
-                    </div>   
+                    </div>
                     <div className="blogauthor">
                         Posted by: AdminName
-                    </div>   
-                    
+                    </div>
+
                     <div className="post">
                         Most recent post #2
                     </div>
@@ -38,11 +38,11 @@ export class UserHomePage extends React.Component {
                 <div className="blogpost">
                     <div className="blogdate">
                         blogdate here
-                    </div>   
+                    </div>
                     <div className="blogauthor">
                         Posted by: AdminName
-                    </div>   
-                    
+                    </div>
+
                     <div className="post">
                         Most recent post #3
                     </div>

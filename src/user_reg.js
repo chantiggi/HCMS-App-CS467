@@ -8,7 +8,7 @@ export class UserReg extends React.Component {
                     <form>
                         <div className="row">
                             <div className="col-50">
-                                <h3>User Registration</h3><br/>
+                                <h3>User Registration</h3><br />
 
                                 <div className="row">
                                     <div className="col-50">
@@ -32,7 +32,7 @@ export class UserReg extends React.Component {
                                         <input type="text" id="repass" name="repass" />
                                     </div>
                                 </div>
-                                <br/>
+                                <br />
 
                                 <label for="email"><i className="fa fa-envelope"></i> Email Address</label>
                                 <input type="text" id="email" name="email" placeholder="{{email}}" />
@@ -42,7 +42,7 @@ export class UserReg extends React.Component {
                                 <input type="text" id="org" name="org" placeholder="{{orgname}}" />
                                 <input type="submit" value="Submit" className="btns submitbtn" />
                             </div>
-                        </div>               
+                        </div>
                     </form>
                 </p>
                 <p></p>

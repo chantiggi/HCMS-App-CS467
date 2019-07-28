@@ -16,7 +16,7 @@ export class Home extends React.Component {
                     <li> Managing Handlers </li>
                 </ul>
                 <div className="moreinfo">
-                    For more information or a trial account, contact our HCMS representatives at (800) 555-5555 
+                    For more information or a trial account, contact our HCMS representatives at (800) 555-5555
                 </div>
             </div>
         )

@@ -14,10 +14,10 @@ export class AdminHomePage extends React.Component {
                 <div className="blogpost">
                     <div className="blogdate">
                         blogdate here
-                    </div>   
+                    </div>
                     <div className="blogauthor">
                         Posted by: AdminName
-                    </div>           
+                    </div>
                     <div className="post">
                         Most recent post #1
                     </div>
@@ -27,10 +27,10 @@ export class AdminHomePage extends React.Component {
                 <div className="blogpost">
                     <div className="blogdate">
                         blogdate here
-                    </div>   
+                    </div>
                     <div className="blogauthor">
                         Posted by: AdminName
-                    </div>   
+                    </div>
                     <div className="post">
                         Most recent post #2
                     </div>
@@ -40,10 +40,10 @@ export class AdminHomePage extends React.Component {
                 <div className="blogpost">
                     <div className="blogdate">
                         blogdate here
-                    </div>   
+                    </div>
                     <div className="blogauthor">
                         Posted by: AdminName
-                    </div>   
+                    </div>
                     <div className="post">
                         Most recent post #3
                     </div>
@@ -55,7 +55,7 @@ export class AdminHomePage extends React.Component {
                     <div className="modal fade dialog-box">
                         <div className="modal-dialog modal-lg">
                             <div className="modal-content">
-                                <div className = "modal-header">
+                                <div className="modal-header">
                                     <h6>New Blog Post</h6>
                                     <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
                                 </div>
@@ -65,11 +65,11 @@ export class AdminHomePage extends React.Component {
                                     <div className="row login">
                                         <div className="col-8 col-sm-6">Date:</div>
                                         <div className="col-8 col-sm-9"><input type="date" name="date" /> </div>
-                                    </div>      
+                                    </div>
                                     <div className="row login">
                                         <div className="col-8 col-sm-6">Post:</div>
                                         <div className="col-8 col-sm-9"><textarea cols="100" rows="10" ></textarea> </div>
-                                    </div>                                                                     
+                                    </div>
                                 </div>
 
                                 <div className="modal-footer">
@@ -77,7 +77,7 @@ export class AdminHomePage extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         )

@@ -25,10 +25,10 @@ export class ManageUsers extends React.Component {
                                 <th>Email Address</th>
                                 <th>Administrator?</th>
                                 <th>&nbsp;</th>
-                            </tr> 
+                            </tr>
                         </thead>
                         <tbody>
-                            
+
                             <tr>
                                 <td>User First Name</td>
                                 <td>User Last Name</td>
@@ -39,7 +39,7 @@ export class ManageUsers extends React.Component {
                                     <Link to={'/editdeleteuser'} type="button" className="btn" id="edit-del-btn">Edit/Delete</Link>
                                 </td>
                             </tr>
-                        </tbody>                       
+                        </tbody>
                     </table>
 
                     <Link to={'/adduser'} type="button" className="btn" id="add-btn">Add New User</Link>
