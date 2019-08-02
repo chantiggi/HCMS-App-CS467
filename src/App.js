@@ -23,7 +23,7 @@ export class App extends React.Component {
     render() {
         return (
             <Router>
-                <div className="container" id="bodyContent">
+                <div id="bodyContent">
                     <NavBar />
 
                     <Switch>
