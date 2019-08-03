@@ -6,7 +6,6 @@ export class Home extends React.Component {
     render() {
         return (
             <div className="container">
-                <img src={image} />
                 <h3><span> Welcome to the Horse Care Management System.</span></h3>
                 <h5> HCMS is an information keeping system that provides support for the following:  </h5>
                 <ul className="list">
