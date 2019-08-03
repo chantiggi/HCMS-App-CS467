@@ -4,26 +4,12 @@ import dotenv from 'dotenv';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-
-//import mysql from 'mysql';
 import webpackDevServer from './webpack/dev-server';
-import routes from './routes';
 
 // Use dotenv to load environment variables from a.env into process.env
 dotenv.config({
     silent: true,
 });
-
-/*****Added this myself, might need tweaks! *******/
-/*
-const db = require('mysql')
-mysql.connect({
-  host: process.env.DB_HOST,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  name: process.env.DB_NAME
-});
-*/
 
 // Express app setup
 const app = express();
@@ -41,8 +27,8 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(logger('combined'));
 
 // Body parser
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // Cookie parser
 app.use(cookieParser());
@@ -51,8 +37,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
 
 // Use routes
+import routes from './server/routes/index.js';
 app.use('/', routes);
-
+import horseRoutes from './server/routes/approutes.js'; //import the route
+horseRoutes(app); //register the route
+app.use('/viewhorses', horseRoutes);
 /* ALL other route handlers will go here
 Note that these are currently being handled using REACT routing...
 ....

@@ -41,7 +41,7 @@ export class App extends React.Component {
                         <Route path='/viewhorses' component={ViewHorsesPage} />
                         <Route path='/feed' component={FeedPage} />
                         <Route path='/meds' component={MedPage} />
-                        <Route path='/viewindivhorse' component={ViewIndivHorsePage} />
+                        <Route path='/viewindivhorse/:horseID' component={ViewIndivHorsePage} />
                         <Route path='/logout' component={LogoutPage} />
                     </Switch>
                 </div>
