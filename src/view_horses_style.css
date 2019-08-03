@@ -1,16 +1,21 @@
 /* View All Horses Stylesheet */
 
-.col {
+
+
+.card.horseCard {
 	background-color: #F4F4F4;
-	margin:1em;
+	margin: 1em;
+	text-align: center;
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .horse-image {
-	margin:1em;
-	text-align: center;
+	width: 100%;
+	height: auto;
 }
 
-.horse-image img {
-	width:200px;
-	height:auto;
+.card-body.profile-preview {
+	text-align: left;
 }

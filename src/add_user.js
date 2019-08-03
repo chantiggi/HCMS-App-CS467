@@ -8,13 +8,13 @@ export class AddUserPage extends React.Component {
 
                 <ul className="nav nav-tabs" id="management-tabs">
                     <li className="nav-item">
-                        <a className="nav-link active" id="manage-users" href="./manage_users.html">Manage Users</a>
+                        <a className="nav-link active" id="manage-users" href="./manage_users">Manage Users</a>
                     </li>
-                    <li className="nav-item" id="manage-horses" href="#">
-                        <a className="nav-link" id="manage-horses" href="#">Manage Horses</a>
+                    <li className="nav-item" id="manage-horses">
+                        <a className="nav-link" id="manage-horses" href="./manage_horses">Manage Horses</a>
                     </li>
-                    <li className="nav-item" id="manage-organization" href="#">
-                        <a className="nav-link" id="manage-organization" href="./manage_org.html">Manage Organization</a>
+                    <li className="nav-item" id="manage-organization">
+                        <a className="nav-link" id="manage-organization" href="./manage_org">Manage Organization</a>
                     </li>
                 </ul>
 
