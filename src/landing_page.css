@@ -1,0 +1,64 @@
+body>.container {
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+h3.subheading {
+   font-size: 2.5vh 2.5vw;
+
+}
+
+h5.subheading {
+    font-size: 2.0vh;
+    text-align: left;
+    margin: 1em;
+}
+
+.list {
+    font-size: 1.5vh;
+}
+
+.moreinfo {
+    font-size: 1.5vh 1.5vw;
+}
+
+span {
+   color: white;
+   font: bold 24px/45px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+}
+
+img:hover {
+	opacity: 0.4;
+}
+
+.btn {
+	background-color: #F8F8F8;
+	color: rgba(0,0,0,.5);
+}
+
+.btn:hover {
+	color: lightseagreen;
+  background-color: white;
+}
+
+.register {
+	color: rgba(0,0,0,.5);
+}
+
+.register:hover {
+	color: lightseagreen;
+}
+
+.modal-header {
+  background-color: #F8F8F8;
+  border-bottom: lightseagreen 2px solid;
+  height: 50px;
+}
+
+.login {
+  padding: 10px;
+}
