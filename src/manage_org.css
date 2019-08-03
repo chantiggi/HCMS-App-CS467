@@ -56,13 +56,13 @@ form {
   padding: 0 16px;
 }
 
-form>div>div>input[type=text], form>div>div>div>div>input[type=text] {
+/* form>div>div>input[type=text], form>div>div>div>div>input[type=text] {
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 3px;
-}
+} */
 
 label {
   margin-bottom: 10px;
@@ -135,7 +135,6 @@ label {
 
 .modal-header {
   background-color: #F8F8F8;
-  border-bottom: lightseagreen 2px solid;
   height: 50px;
 }
 
@@ -149,8 +148,6 @@ label {
 
 .submitbtn {
   width: 50%;
-  float: right;
-  margin-right: 25%;
 }
 
 footer {
@@ -159,9 +156,9 @@ footer {
 
 .org {
 	background-color: #f8f9fa!important;
-    padding: 5px 20px 15px 20px;
-    border: 1px solid lightgrey;
-    border-radius: 3px;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
 }
 
 h3 {
@@ -173,7 +170,8 @@ h3 {
   padding-bottom: 20px;
 }
 
-.addbtn {
+.btns.add-org {
 	width: 50%;
-	margin-left: 25%;
+	margin: 0;
+	vertical-align: bottom;
 }
