@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export class ManageUsers extends React.Component {
     render() {
         return (
-            <div className="container">
+            <div className="container manage-users-container">
 
                 <ManagementTabs />
 
@@ -36,13 +36,13 @@ export class ManageUsers extends React.Component {
                                 <td>User Email</td>
                                 <td>Admin Y/N</td>
                                 <td>
-                                    <Link to={'/editdeleteuser'} type="button" className="btn" id="edit-del-btn">Edit/Delete</Link>
+                                    <Link to={'/editdeleteuser'} type="button" className="btn edit-del-user" id="edit-del-btn">Edit/Delete</Link>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <Link to={'/adduser'} type="button" className="btn" id="add-btn">Add New User</Link>
+                    <Link to={'/adduser'} type="button" className="btn add-user" id="add-btn">Add New User</Link>
 
                 </div>
             </div>
