@@ -14,34 +14,34 @@ export class ViewHorsesPage extends React.Component {
                 </div>
                 <div className="all-horses">
                     <div className="row">
-                        <div className="col">
+                        <div className="card horseCard">
                             <Link to={'/viewindivhorse'} className="horse-link">
-                                <div className="horse-image">
-                                    <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+                                <img className="card-img-top horse-image" src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+                                <div className="card-body profile-preview">
+                                  <p className="card-text">Name: HorseName</p>
+                                  <p className="card-text">Age: HorseAge </p>
+                                  <p className="card-text">Handler Level: HorseHandlerLevel </p>
                                 </div>
-                                <p>Name: HorseName</p>
-                                <p>Age: HorseAge </p>
-                                <p>Handler Level: HorseHandlerLevel </p>
                             </Link>
                         </div>
-                        <div className="col">
+                        <div className="card horseCard">
                             <Link to={'/viewindivhorse'} className="horse-link">
-                                <div className="horse-image">
-                                    <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+                                <img className="card-img-top horse-image" src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+                                <div className="card-body profile-preview">
+                                  <p className="card-text">Name: HorseName</p>
+                                  <p className="card-text">Age: HorseAge </p>
+                                  <p className="card-text">Handler Level: HorseHandlerLevel </p>
                                 </div>
-                                <p>Name: HorseName</p>
-                                <p>Age: HorseAge </p>
-                                <p>Handler Level: HorseHandlerLevel </p>
                             </Link>
                         </div>
-                        <div className="col">
+                        <div className="card horseCard">
                             <Link to={'/viewindivhorse'} className="horse-link">
-                                <div className="horse-image">
-                                    <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+                                <img className="card-img-top horse-image" src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
+                                <div className="card-body profile-preview">
+                                  <p className="card-text">Name: HorseName</p>
+                                  <p className="card-text">Age: HorseAge </p>
+                                  <p className="card-text">Handler Level: HorseHandlerLevel </p>
                                 </div>
-                                <p>Name: HorseName</p>
-                                <p>Age: HorseAge </p>
-                                <p>Handler Level: HorseHandlerLevel </p>
                             </Link>
                         </div>
                     </div>
