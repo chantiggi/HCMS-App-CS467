@@ -35,14 +35,14 @@ export class ManageUsers extends React.Component {
                                 <td>User Handler Level</td>
                                 <td>User Email</td>
                                 <td>Admin Y/N</td>
-                                <td>
-                                    <Link to={'/editdeleteuser'} type="button" className="btn edit-del-user" id="edit-del-btn">Edit/Delete</Link>
+                                <td className="edit-del-user">
+                                    <Link to={'/editdeleteuser'} className="btn btn-solid edit-del-user" id="edit-del-btn">Edit/Delete</Link>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <Link to={'/adduser'} type="button" className="btn add-user" id="add-btn">Add New User</Link>
+                    <Link to={'/adduser'} className="btn add-user btn-solid" id="add-btn">Add New User</Link>
 
                 </div>
             </div>

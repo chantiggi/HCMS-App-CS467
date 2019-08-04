@@ -27,24 +27,24 @@ export class AddUserPage extends React.Component {
                                         <h3>Add New User</h3>
 
                                         <div className="row">
-                                            <div className="col-50">
+                                            <div className="col">
                                                 <label for="fname">First Name</label>
                                                 <input type="text" id="fname" name="fname" placeholder="John" />
                                             </div>
-                                            <div className="col-50">
+                                            <div className="col">
                                                 <label for="lname">Last Name</label>
                                                 <input type="text" id="lname" name="lname" placeholder="Smith" />
                                             </div>
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-50">
+                                            <div class="col">
                                                 <label for="email"><i className="fa fa-envelope"></i> Email Address</label>
                                                 <input type="text" id="email" name="email" placeholder="john@example.com" />
                                             </div>
                                         </div>
 
-                                        <select className="handlerdropdown">
+                                        <select className="form-control handlerdropdown">
                                             <option value="level">Select Handler Level</option>
                                             <option value=""></option>
                                             <option value=""></option>

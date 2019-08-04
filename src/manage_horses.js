@@ -39,13 +39,13 @@ export class ManageHorses extends React.Component {
                                     <td>age</td>
                                     <td>
 
-                                        <Link to={'/addedithorse'} type="button" className="btn" id="edit-del-btn">Edit/Delete</Link>
+                                        <Link to={'/addedithorse'} className="btn btn-solid" id="edit-del-btn">Edit/Delete</Link>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
 
-                        <button type="button" className="btn" id="add-btn">Add New Horse</button>
+                        <button type="button" className="btn btn-solid" id="add-btn">Add New Horse</button>
                     </div>
 
                 </div>
