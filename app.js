@@ -5,6 +5,7 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import webpackDevServer from './webpack/dev-server';
+import session from 'express-session';
 
 // Use dotenv to load environment variables from a.env into process.env
 dotenv.config({
@@ -13,6 +14,11 @@ dotenv.config({
 
 // Express app setup
 const app = express();
+
+// Sessions
+app.use(session(
+    { 'secret': 'fkdk84jf4io384jfkejf' }
+))
 
 // View engine
 app.set('views', path.join(__dirname, './views'));
@@ -36,19 +42,9 @@ app.use(cookieParser());
 // Serve static files from 'public'
 app.use(express.static(path.join(__dirname, './public')));
 
-// Use routes
-import routes from './server/routes/index.js';
-app.use('/', routes);
-import horseRoutes from './server/routes/approutes.js'; //import the route
-horseRoutes(app); //register the route
-app.use('/viewhorses', horseRoutes);
-/* ALL other route handlers will go here
-Note that these are currently being handled using REACT routing...
-....
-....
-....
-*/
-
+// Routing
+import appRoutes from './server/routes/approutes.js'; //import the route
+appRoutes(app); //register the route
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
