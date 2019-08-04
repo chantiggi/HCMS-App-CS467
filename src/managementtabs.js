@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export class ManagementTabs extends React.Component {
     render() {
@@ -7,13 +7,13 @@ export class ManagementTabs extends React.Component {
 
             <ul className="nav nav-tabs" id="management-tabs">
                 <li className="nav-item" id="manage-horses">
-                    <Link to={'/managehorses'} className="nav-link active" id="manage-horses">Manage Horses</Link>
+                    <NavLink to={'/managehorses'} className="nav-link" id="manage-horses">Manage Horses</NavLink>
                 </li>
                 <li className="nav-item" id="manage-users">
-                    <Link to={'/manageusers'} className="nav-link" id="manage-users">Manage Users</Link>
+                    <NavLink to={'/manageusers'} className="nav-link" id="manage-users">Manage Users</NavLink>
                 </li>
                 <li className="nav-item" id="manage-organization">
-                    <Link to={'/manageorg'} className="nav-link" id="manage-organization" >Manage Organization</Link>
+                    <NavLink to={'/manageorg'} className="nav-link" id="manage-organization" >Manage Organization</NavLink>
                 </li>
             </ul>
 
