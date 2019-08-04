@@ -79,3 +79,22 @@ footer>#footerCont>div>ul{
 footer>div>div>ul>li, footer>div>div>a{
     font-size: 12px;
 }
+
+/************************************************************************************************************
+*   Solid Light Sea Green Buttons
+*************************************************************************************************************/
+.btn-solid {
+  background: lightseagreen;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-solid:hover {
+  background: lightseagreen;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+}

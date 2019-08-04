@@ -44,17 +44,16 @@ export class FeedPage extends React.Component {
                                     <div className="modal-dialog">
                                         <div className="modal-content">
                                             <div className="modal-header">
-                                                <h3>Horse Medications - Abigail</h3>
+                                                <h6>Horse Medications - Abigail</h6>
                                                 <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
                                             </div>
-
                                             <div className="modal-body modal-sm">
-                                                <h4>AM</h4>
+                                                <h6>AM</h6>
                                                 <ul className="am-meds">
                                                     <li>1 scoop probiotic</li>
                                                 </ul>
 
-                                                <h4>PM</h4>
+                                                <h6>PM</h6>
                                                 <ul className="pm-meds">
                                                     <li>1/2 scoop glucosamine</li>
                                                 </ul>

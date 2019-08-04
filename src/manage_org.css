@@ -1,11 +1,10 @@
-h5 {
+.otitle {
 	padding-top: 20px;
 	padding-bottom: 5px;
 }
 
-form {
+form.form-org, form.form-feed {
 	border-bottom: 2px solid lightseagreen;
-
 }
 
 .div-inline{
@@ -63,17 +62,20 @@ form {
   border: 1px solid #ccc;
   border-radius: 3px;
 } */
-
-label {
-  margin-bottom: 10px;
-  display: block;
+.org-name, .org-address {
+	width: 50%;
 }
 
-.icon-container {
+/* label {
+  margin-bottom: 10px;
+  display: block;
+} */
+
+/* .icon-container {
   margin-bottom: 20px;
   padding: 7px 0;
   font-size: 24px;
-}
+} */
 
 .btns {
   background-color: lightseagreen;
@@ -92,7 +94,7 @@ label {
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .row {
     flex-direction: column-reverse;
   }
@@ -103,7 +105,7 @@ label {
 
 .form-check {
 	padding-top: 20px;
-}
+} */
 
 
 .btn {
@@ -133,10 +135,11 @@ label {
   background-color: white;
 }
 
-.modal-header {
+/* Note: Not sure what this modal header is for*/
+/* .modal-header {
   background-color: #F8F8F8;
   height: 50px;
-}
+} */
 
 .login {
   padding: 10px;
@@ -170,8 +173,11 @@ h3 {
   padding-bottom: 20px;
 }
 
-.btns.add-org {
-	width: 50%;
+.btns.add-new-btn {
+	width: 40%;
 	margin: 0;
-	vertical-align: bottom;
+}
+
+.btns.submit-org {
+	width: 10em;
 }

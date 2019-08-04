@@ -3,15 +3,13 @@ body>.container {
    width: 100%; /* for IE 6 */
 }
 
-h3.subheading {
+h3.lp-heading {
    font-size: 2.5vh 2.5vw;
-
 }
 
-h5.subheading {
+h5.lp-subheading {
     font-size: 2.0vh;
     text-align: left;
-    margin: 1em;
 }
 
 .list {
@@ -22,7 +20,7 @@ h5.subheading {
     font-size: 1.5vh 1.5vw;
 }
 
-span {
+.lp-heading span {
    color: white;
    font: bold 24px/45px Helvetica, Sans-Serif;
    letter-spacing: -1px;
@@ -31,20 +29,23 @@ span {
    padding: 10px;
 }
 
-img:hover {
+/* img:hover {
 	opacity: 0.4;
-}
+} */
 
-.btn {
+/* Note: This selector selects buttons inside Log In modal */
+.modal-footer .btn {
 	background-color: #F8F8F8;
 	color: rgba(0,0,0,.5);
 }
 
+/* Note: This hover is for the mod */
 .btn:hover {
 	color: lightseagreen;
   background-color: white;
 }
 
+/* Note: This register class is for the Register button in the navbar when a user isn't logged in */
 .register {
 	color: rgba(0,0,0,.5);
 }
@@ -53,12 +54,15 @@ img:hover {
 	color: lightseagreen;
 }
 
-.modal-header {
+/* Note: This modal header is for the modal that pops up when the Log In button is clicked */
+/* Add the the modal-login class when login modal is ready */
+/* .modal-login .modal-header {
   background-color: #F8F8F8;
   border-bottom: lightseagreen 2px solid;
   height: 50px;
-}
+} */
 
+/* Note: The login class is for the username and password input fields in the Log In modal*/
 .login {
   padding: 10px;
 }

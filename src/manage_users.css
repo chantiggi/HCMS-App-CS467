@@ -1,3 +1,4 @@
+/* Note: Add this to Shared Styles*/
 .container {
 	padding-top: 20px;
 }
@@ -6,4 +7,8 @@
 	padding-top: 20px;
 	padding-bottom: 20px;
 	text-align: right;
+}
+
+.edit-del-user {
+	text-align: center;
 }
