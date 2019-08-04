@@ -5,9 +5,9 @@ export class Footer extends React.Component {
     render() {
         return (
             <footer>
-                <div class="container" id="footerCont">
+                <div className="container" id="footerCont">
                     <div id="navLinks">
-                        <label for="">Navigation</label>
+                        <label>Navigation</label>
                         <ul>
                             <li><Link to={'/viewhorses'}>View Horses</Link></li>
                             <li><Link to={'/feed'}>View Feed</Link></li>
@@ -17,7 +17,7 @@ export class Footer extends React.Component {
                     </div>
 
                     <div id="devLinks">
-                        <label for="">Development</label>
+                        <label>Development</label>
                         <ul>
                             <li><a href="https://github.com/chantiggi/HCMS-App-CS467">GitHub</a></li>
                             <li><a href="#">Link to some framework</a></li>
@@ -29,7 +29,7 @@ export class Footer extends React.Component {
                     </div>
 
                     <div id="contributors">
-                        <label for="">Contributors</label>
+                        <label>Contributors</label>
                         <ul>
                             <li><a href="https://www.linkedin.com/in/jennifer-aldover-6b0943101/">Jennifer Aldover</a></li>
                             <li><a href="https://www.linkedin.com/in/chantelhigginbotham/">Chantel Higginbotham</a></li>
@@ -38,7 +38,7 @@ export class Footer extends React.Component {
                     </div>
 
                     <div id="sponsors">
-                        <label for="">Sponsors</label>
+                        <label>Sponsors</label>
                         <ul>
                             <li><a href="">Link to some sponsor</a></li>
                             <li><a href="">Link to some sponsor</a></li>

@@ -2,12 +2,26 @@ import React from 'react';
 import './feed_style.css';
 
 export class FeedPage extends React.Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            horse: [],
+        };
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:9000/api/feed')
+            .then(response => response.json())
+            .then(data => this.setState({horse: data.horse}));
+    }
+    
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 <h1>Horse Feed</h1>
-                <table class="table table-striped">
-                    <thead class="table-head">
+                <table className="table table-striped">
+                    <thead className="table-head">
                         <tr>
                             <th>Horse Name</th>
                             <th>AM Location</th>
@@ -18,29 +32,29 @@ export class FeedPage extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="meds">
+                        <tr className="meds">
                             <td>Abigail</td>
                             <td>1</td>
                             <td>1</td>
                             <td>1 scoop Strategy</td>
                             <td>Mix together and soak with 1/2 c warm water</td>
                             <td>
-                                <button type="button" class="btn" id="med-btn" data-toggle="modal" data-target=".dialog-box">MEDS</button>
-                                <div class="modal fade dialog-box">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
+                                <button type="button" className="btn" id="med-btn" data-toggle="modal" data-target=".dialog-box">MEDS</button>
+                                <div className="modal fade dialog-box">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
                                                 <h6>Horse Medications - Abigail</h6>
-                                                <button type="button" class="close" aria-label="Close" data-dismiss="modal">X</button>
+                                                <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
                                             </div>
-                                            <div class="modal-body modal-sm">
+                                            <div className="modal-body modal-sm">
                                                 <h6>AM</h6>
-                                                <ul class="am-meds">
+                                                <ul className="am-meds">
                                                     <li>1 scoop probiotic</li>
                                                 </ul>
 
                                                 <h6>PM</h6>
-                                                <ul class="pm-meds">
+                                                <ul className="pm-meds">
                                                     <li>1/2 scoop glucosamine</li>
                                                 </ul>
                                             </div>
@@ -49,7 +63,7 @@ export class FeedPage extends React.Component {
                                 </div>
                             </td>
                         </tr>
-                        <tr class="no-meds">
+                        <tr className="no-meds">
                             <td>Buttercup</td>
                             <td>2</td>
                             <td>2</td>
