@@ -13,7 +13,7 @@ export class ViewHorsesPage extends React.Component {
 
     componentDidMount() {
         const { match: {params} } = this.props;
-        fetch('/restapi/allhorses', {
+        fetch('/restapi/horses', {
             method: "GET"
         })
             .then(response => response.json())
@@ -40,7 +40,7 @@ export class ViewHorsesPage extends React.Component {
                                     <div className="card-body profile-preview">
                                     <p className="card-text">Name: {horse.horseName}</p>
                                     <p className="card-text">Age: {(new Date()).getFullYear() - horse.birthYear} years</p>
-                                    <p className="card-text">Handler Level: {horse.handlerLevelID} </p>
+                                    <p className="card-text">Handler Level: {horse.handlerLevelName} </p>
                                     </div>
                                 </Link>
                             </div>
