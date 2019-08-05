@@ -12,16 +12,17 @@ export class ViewIndivHorsePage extends React.Component {
     }
 
     componentDidMount() {
-        const {match: {params} } = this.props;
+        const { match: { params } } = this.props;
         fetch(`/restapi/horses/${params.horseID}`, {
             method: "GET",
         })
             .then(response => response.json())
-            .then(data => this.setState({horse: data}))
+            .then(data => this.setState({ horse: data }))
             .catch(err => console.log("Error reading data: ", err))
     }
     render() {
         const {horse} = this.state;
+        console.log("horseFeedArray = ", horse.horseFeedArray);
 
         return (
             <div className="container">
@@ -31,7 +32,7 @@ export class ViewIndivHorsePage extends React.Component {
                 <div id="horse-image">
                     <img src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
                 </div>
-                    {horse.map(currentHorse =>
+                {horse.map(currentHorse =>
                     <div className="horse-profile" key={currentHorse.horseID}>
                         <h5>Name: {currentHorse.horseName} </h5>
                         <h5>Handler Level: {currentHorse.handlerLevelName} </h5>
@@ -44,7 +45,7 @@ export class ViewIndivHorsePage extends React.Component {
                         <h5>Feed: {currentHorse.horseFeedArray} </h5>
                         <h5>Meds: {currentHorse.horseMedArray || "None"} </h5>
                     </div>
-                    )}
+                )}
                 <div className="horse-nav">
                     <nav aria-label="Individual Horse Navigation">
                         <ul className="pagination">
