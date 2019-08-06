@@ -98,3 +98,14 @@ footer>div>div>ul>li, footer>div>div>a{
   cursor: pointer;
   text-decoration: none;
 }
+
+/************************************************************************************************************
+*   Styling for photo in edit/delete horses
+*************************************************************************************************************/
+#photo {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

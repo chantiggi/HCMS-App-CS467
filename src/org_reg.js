@@ -1,5 +1,5 @@
 import React from 'react';
-import './org_reg.css';
+import './stylesheets/org_reg.css';
 
 export class OrgReg extends React.Component {
 	render() {

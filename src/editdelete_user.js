@@ -1,5 +1,5 @@
 import React from 'react';
-import './editdelete_user.css';
+import './stylesheets/editdelete_user.css';
 import { ManagementTabs } from './managementtabs';
 
 export class EditDeleteUser extends React.Component {

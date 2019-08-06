@@ -1,5 +1,5 @@
 import React from 'react';
-import './horse_individual_style.css';
+import './stylesheets/horse_individual_style.css';
 import { Link } from 'react-router-dom';
 import { FeedList } from './feedList.js';
 import { MedList } from './medList.js';
