@@ -1,6 +1,8 @@
 import React from 'react';
 import './horse_individual_style.css';
 import { Link } from 'react-router-dom';
+import { FeedList } from './feedList.js';
+import { MedList } from './medList.js';
 
 export class ViewIndivHorsePage extends React.Component {
     constructor(props) {
@@ -22,7 +24,6 @@ export class ViewIndivHorsePage extends React.Component {
     }
     render() {
         const {horse} = this.state;
-        console.log("horseFeedArray = ", horse.horseFeedArray);
 
         return (
             <div className="container">
@@ -42,20 +43,10 @@ export class ViewIndivHorsePage extends React.Component {
                         <h5>History: {currentHorse.history || "N/A"} </h5>
                         <h5>Daytime Location: {currentHorse.dayLocationName} </h5>
                         <h5>Nighttime Location: {currentHorse.nightLocationName} </h5>
-                        <h5>Feed: {currentHorse.horseFeedArray} </h5>
-                        <h5>Meds: {currentHorse.horseMedArray || "None"} </h5>
+                        <h5>Feed: <FeedList horseID={currentHorse.horseID}></FeedList> </h5>
+                        <h5>Meds: {currentHorse.horseMedArray ? (<MedList horseID={currentHorse.horseID}></MedList>) : ("None")} </h5>
                     </div>
                 )}
-                <div className="horse-nav">
-                    <nav aria-label="Individual Horse Navigation">
-                        <ul className="pagination">
-                            <li className="page-item"><a className="page-link" href="#">Prev</a></li>
-                            <li className="page-item"><a className="page-link" href="#">1</a></li>
-                            <li className="page-item"><a className="page-link" href="#">2</a></li>
-                            <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         )
     }

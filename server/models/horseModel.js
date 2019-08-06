@@ -64,26 +64,6 @@ Horse.getAllHorses = function (result) {
         });
 };
 
-// Not currently being used - maybe try to use this in place of the long sub-query below?
-// would need to add the results from this to the result from below somehow which is what
-// I wasn't sure how to do
-Horse.getHorseFeed = function (horseID, result) {
-    sql.query("SELECT * FROM HorseFeed " +
-        "LEFT JOIN Amount on Amount.amountID = HorseFeed.amountID " +
-        "LEFT JOIN Unit on Unit.unitID = HorseFeed.unitID " +
-        "LEFT JOIN Feed on Feed.feedID = HorseFeed.feedID" +
-        "WHERE HorseFeed.horseID = ?", horseID, function (err, res) {
-            if (err) {
-                console.log("Error with SQL query: ", err);
-                result(null, err);
-            }
-            else {
-                console.log("The horse's feed is: ", res);
-                result(null, res);
-            }
-        })
-}
-
 // Still needs to be updated with a real query
 Horse.createHorse = function (newHorse, result) {
     sql.query('...', newHorse, function (err, res) {

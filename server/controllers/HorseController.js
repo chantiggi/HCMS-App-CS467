@@ -6,7 +6,6 @@ var Horse = require('../models/horseModel.js');
 exports.list_all_horses = function(req, res) {
     Horse.getAllHorses(function(err, horses) {
         if (err) { res.send(err); }
-        console.log('Successfully retrieved horses: ', horses);
         res.send(horses);
     });
 };

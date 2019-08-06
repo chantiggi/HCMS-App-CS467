@@ -1,5 +1,7 @@
 import React from 'react';
 import './feed_style.css';
+import { FeedList } from './feedList.js';
+import { MedList } from './medList.js';
 
 export class FeedPage extends React.Component {
     constructor(props) {
@@ -40,20 +42,22 @@ export class FeedPage extends React.Component {
                                 <td>{horse.horseName}</td>
                                 <td>{horse.dayLocationName}</td>
                                 <td>{horse.nightLocationName}</td>
-                                <td>{horse.horseFeedArray}</td>
+                                <td><FeedList horseID={horse.horseID}></FeedList></td>
                                 <td>
                                     {horse.horseMedArray ? (
                                         <button type="button" className="btn" id="med-btn" data-toggle="modal" data-target=".dialog-box">MEDS</button>
                                     ) : ( '-' )}
+
                                     <div className="modal fade dialog-box">
                                         <div className="modal-dialog">
                                             <div className="modal-content">
                                                 <div className="modal-header">
-                                                    <h6>Horse Medications - *Need to pull name from DB*</h6>
+                                                    <h6>Horse Medications - {horse.horseName}</h6>
                                                     <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
                                                 </div>
                                                 <div className="modal-body modal-sm">
-                                                    <p>*Still need to display meds dynamically from database*</p>
+                                                    *Need to pull this out into separate component so that it loads for the correct horse*
+                                                    <MedList horseID={horse.horseID}></MedList>
                                                     <h6>AM</h6>
                                                     <ul className="am-meds">
                                                         <li>1 scoop probiotic</li>
@@ -67,6 +71,7 @@ export class FeedPage extends React.Component {
                                             </div>
                                         </div>
                                     </div>
+
                                 </td>
                             </tr>
                         )}
