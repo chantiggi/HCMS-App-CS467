@@ -1,5 +1,5 @@
 import React from 'react';
-import './med_style.css';
+import './stylesheets/med_style.css';
 
 export class MedPage extends React.Component {
     render() {

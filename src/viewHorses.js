@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './view_horses_style.css';
+import './stylesheets/view_horses_style.css';
 
 export class ViewHorsesPage extends React.Component {
     constructor(props) {
@@ -16,9 +16,9 @@ export class ViewHorsesPage extends React.Component {
         fetch('/restapi/horses', {
             method: "GET"
         })
-            .then(response => response.json())
-            .then(data => this.setState({horses: data}))
-            .catch(err => console.log("Error reading data: ", err))
+        .then(response => response.json())
+        .then(data => this.setState({horses: data}))
+        .catch(err => console.log("Error reading data: ", err))
     }
     render() {
         const {horses} = this.state;

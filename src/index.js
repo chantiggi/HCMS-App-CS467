@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './App';
 
-import './sharedStyles.css';
+import './stylesheets/sharedStyles.css';
 
 if (module.hot) {
     module.hot.accept();

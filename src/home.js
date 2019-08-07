@@ -1,5 +1,5 @@
 import React from 'react';
-import './landing_page.css';
+import './stylesheets/landing_page.css';
 import image from './horse.jpg';
 
 export class Home extends React.Component {

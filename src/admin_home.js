@@ -1,5 +1,5 @@
 import React from 'react';
-import './admin_home.css';
+import './stylesheets/admin_home.css';
 
 export class AdminHomePage extends React.Component {
     render() {

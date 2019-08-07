@@ -1,5 +1,5 @@
 import React from 'react';
-import './feed_style.css';
+import './stylesheets/feed_style.css';
 import { FeedList } from './feedList.js';
 import { MedList } from './medList.js';
 
