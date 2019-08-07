@@ -18,6 +18,9 @@
   "author": "Chantel Higginbotham",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "acorn": "^6.2.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -49,6 +52,7 @@
     "svg-inline-loader": "^0.8.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.2",
