@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope} from '@fortawesome/free-solid-svg-icons';
+
+
 import './view_horses_style.css';
 
 export class ViewHorsesPage extends React.Component {
     constructor(props) {
         super(props);
-    
+
         this.state = {
             horses: [],
         };
@@ -28,7 +33,7 @@ export class ViewHorsesPage extends React.Component {
                 <div className="input-group">
                     <input type="text" placeholder="Search horses..." />
                     <div className="input-group-append">
-                        <button type="submit"><i className="fas fa-search"></i></button>
+                        <button type="submit"><FontAwesomeIcon icon={faSearch} /><FontAwesomeIcon icon={faEnvelope} /></button>
                     </div>
                 </div>
                 <div className="all-horses">
