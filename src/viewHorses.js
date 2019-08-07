@@ -33,7 +33,7 @@ export class ViewHorsesPage extends React.Component {
                 <div className="input-group">
                     <input type="text" placeholder="Search horses..." />
                     <div className="input-group-append">
-                        <button type="submit"><FontAwesomeIcon icon={faSearch} /><FontAwesomeIcon icon={faEnvelope} /></button>
+                        <button type="submit"><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                 </div>
                 <div className="all-horses">
