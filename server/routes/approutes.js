@@ -3,6 +3,8 @@
 module.exports = function(app) {
     // Controllers
     var HorseCtrl = require('../controllers/HorseController');
+    var MedsCtrl = require('../controllers/MedsController');
+    var FeedCtrl = require('../controllers/FeedController');
 
     // Horse Routes
     app.route('/restapi/horses')
@@ -13,6 +15,24 @@ module.exports = function(app) {
         .get(HorseCtrl.get_a_horse)
         .put(HorseCtrl.update_a_horse)
         .delete(HorseCtrl.delete_a_horse);
+
+    app.route('/restapi/feed/:horseID')
+        .get(FeedCtrl.get_horse_feed);
+    
+    app.route('/restapi/meds/:horseID')
+        .get(MedsCtrl.get_horse_meds);
+
+    app.route('/restapi/am-meds')
+        .get(MedsCtrl.list_all_horses_am_meds);
+    
+    app.route('/restapi/pm-meds')
+        .get(MedsCtrl.list_all_horses_pm_meds);
+    
+    app.route('/restapi/am-meds/:horseID')
+        .get(MedsCtrl.get_horse_am_meds);
+    
+    app.route('/restapi/pm-meds/:horseID')
+        .get(MedsCtrl.get_horse_pm_meds);
 
     /* Render the page using index.pug file*/
     app.get('*', (req, res) => {
