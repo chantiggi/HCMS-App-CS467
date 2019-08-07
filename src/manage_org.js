@@ -1,5 +1,5 @@
 import React from 'react';
-import './manage_org.css';
+import './stylesheets/manage_org.css';
 import { ManagementTabs } from './managementtabs';
 
 export class ManageOrg extends React.Component {

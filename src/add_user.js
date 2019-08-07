@@ -1,5 +1,5 @@
 import React from 'react';
-import './add_user.css';
+import './stylesheets/add_user.css';
 
 export class AddUserPage extends React.Component {
     render() {

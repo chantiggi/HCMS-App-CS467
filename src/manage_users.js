@@ -1,5 +1,5 @@
 import React from 'react';
-import './manage_users.css';
+import './stylesheets/manage_users.css';
 import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
 

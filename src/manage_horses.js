@@ -1,10 +1,30 @@
 import React from 'react';
-import './manage_horses_style.css';
+import './stylesheets/manage_horses_style.css';
 import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
 
 export class ManageHorses extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            horses: [],
+        };
+    }
+
+    componentDidMount() {
+        const {match: {params}} = this.props;
+        fetch('/restapi/horses', {
+            method: "GET"
+        })
+        .then(response => response.json())
+        .then(data => this.setState({horses: data}))
+        .catch(err => console.log("Error reading data: ", err))
+    }
+
     render() {
+        const {horses} = this.state;
+
         return (
             <div className="container">
 
@@ -28,20 +48,20 @@ export class ManageHorses extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <tr>
-                                    <td>horseName</td>
-                                    <td>handlerLevel</td>
-                                    <td>description</td>
+                                {horses.map(horse =>
+                                <tr key={horse.horseID}>
+                                    <td>{horse.horseName}</td>
+                                    <td>{horse.handlerLevelName}</td>
+                                    <td>{horse.description || "N/A"}</td>
                                     <td>photo</td>
-                                    <td>dayLocation</td>
-                                    <td>nightLocation</td>
-                                    <td>age</td>
+                                    <td>{horse.dayLocationName}</td>
+                                    <td>{horse.nightLocationName}</td>
+                                    <td>{(new Date()).getFullYear() - horse.birthYear + " years" || "Unknown"}</td>
                                     <td>
-
                                         <Link to={'/addedithorse'} className="btn btn-solid" id="edit-del-btn">Edit/Delete</Link>
                                     </td>
                                 </tr>
+                                )}
                             </tbody>
                         </table>
 

@@ -13,6 +13,20 @@ var Feed = function(feed) {
     this.feedNotes = feed.feedNotes;
 }
 
+Feed.getAllPossibleFeed =  function(result) {
+    sql.query("SELECT Feed.feedID, Feed.feedName FROM Feed WHERE Feed.orgID = 1",
+    function(err, res) {
+        if(err) {
+            console.log("Error with SQL query: ", err);
+            result(null, err);
+        }
+        else {
+            console.log("All available feed types for this org are: ", res);
+            result(null, res);
+        }
+    })
+}
+
 Feed.getHorseFeed = function(horseID, result) {
     sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Feed.feedID, Feed.feedName, HorseFeed.feedNotes " +
     "FROM HorseFeed " +
