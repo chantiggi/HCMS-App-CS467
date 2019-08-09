@@ -9,7 +9,7 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 export default {
   mode: 'production',
   devtool: 'source-map',
-  entry: '../src/index',
+  entry: path.join(process.cwd(), './src/index'),
   output: {
     filename: 'bundle.js',
     path: path.join(process.cwd(), 'public', 'js'),
