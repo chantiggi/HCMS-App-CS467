@@ -75,7 +75,7 @@ export class ManageHorses extends React.Component {
                                                         <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
                                                     </div>
                                                     <div className="modal-body">
-                                                      <form>
+                                                      <form class="no-border">
 
                                                       {/****General Horse Information****/}
                                                         <div className="section-wrapper">
@@ -194,7 +194,7 @@ export class ManageHorses extends React.Component {
                                         <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
                                     </div>
                                     <div className="modal-body">
-                                      <form>
+                                      <form class="no-border">
 
                                       {/****General Horse Information****/}
                                         <div className="section-wrapper">

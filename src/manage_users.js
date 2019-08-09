@@ -49,7 +49,7 @@ export class ManageUsers extends React.Component {
                                                 </div>
                                                 <div className="modal-body">
 
-                                                  <form>
+                                                  <form class="no-border">
                                                       <div className="row">
                                                           <div className="col-50">
                                                               <h5>Add New User</h5>
@@ -141,7 +141,7 @@ export class ManageUsers extends React.Component {
                                 </div>
                                 <div className="modal-body">
 
-                                  <form>
+                                  <form class="no-border">
                                       <div className="row">
                                           <div className="col-50">
                                               <h5>Add New User</h5>
