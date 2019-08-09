@@ -1,4 +1,4 @@
-    
+
 /* Manage Horses */
 
 /* Main View */
@@ -10,8 +10,8 @@
 /* Add and Edit/Delete View*/
 
 .form-heading {
-	margin-top: 2rem;
-	margin-bottom: 1rem;
+	margin-top: 1em;
+	margin-bottom: 1em;
 	text-decoration: underline;
 }
 
@@ -20,10 +20,17 @@
 	font-weight: bold;
 }
 
-#submit-horse{
+.submit-horse-btn {
 	display:block;
-	margin-top: 1rem;
-	margin-bottom: 3rem;
+	margin-top: 2em;
+	margin-bottom: 3em;
 	margin-left: auto;
 	margin-right: auto;
+  padding: 0.5em 1.5em;
+}
+
+.modal-footer .inactivate-btn
+{
+  background-color: #ff0000;
+	color: #ffffff;
 }
