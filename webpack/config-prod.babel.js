@@ -4,6 +4,7 @@
 
 import path from 'path';
 import webpack from 'webpack';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 export default {
   mode: 'production',
@@ -16,8 +17,17 @@ export default {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(true),
-    new webpack.optimize.UglifyJsPlugin(),
   ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+          warnings: false,
+        },
+      }),
+    ],
+  },
   module: {
     rules: [
       {
