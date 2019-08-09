@@ -20,12 +20,7 @@ export default {
   ],
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        sourceMap: true,
-        compress: {
-          warnings: false,
-        },
-      }),
+      new UglifyJsPlugin()
     ],
   },
   module: {
