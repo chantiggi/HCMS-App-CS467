@@ -3,10 +3,10 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: 'horse-care-mgmt-db.cwljx58pk2d6.us-east-2.rds.amazonaws.com',
-    user: 'admin',
-    password: 'cs467-summer2019',
-    database: 'hcmsdb'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 connection.connect(function(err) {
