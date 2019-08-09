@@ -39,7 +39,7 @@ export class ManageHorses extends React.Component {
                 <div className="tab-content" id="manage-horses-tab">
 
                     <div id="manage-horses-main">
-                        <h5>To view a horse's full profile, including history, feed, medications, click Edit/Delete for the appropriate horse.</h5>
+                        <h5>To view a horse's full profile, including history, feed, medications, click the Edit button for the appropriate horse.</h5>
                         <table className="table table-striped table-bordered" id="manage-horses-table">
                             <thead className="table-head">
                                 <tr>
