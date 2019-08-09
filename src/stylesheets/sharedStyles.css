@@ -6,6 +6,10 @@ html,body{
     min-height: 100%;
 }
 
+.container {
+	padding-top: 20px;
+}
+
 /************************************************************************************************************
 *   Active navbar links, navbar links on hover, and dropdown items on hover should share a color
 *************************************************************************************************************/
