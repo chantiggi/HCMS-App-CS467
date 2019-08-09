@@ -13,7 +13,6 @@
     "start": "babel-node ./server/index.js",
     "build": "webpack --config ./webpack/config-prod.babel.js",
     "postinstall": "npm run build",
-    "heroku-postbuild": "webpack -p",
     "lint": "eslint . --ext .js,.jsx",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec babel-node ./server/index.js"
