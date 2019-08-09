@@ -20,7 +20,7 @@
     "dev": "nodemon --exec babel-node ./server/index.js"
   },
   "proxy": "http://localhost:9000",
-  "author": "Chantel Higginbotham",
+  "author": "Chantel Higginbotham, Jennifer Aldover, Ann Kostecki",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
