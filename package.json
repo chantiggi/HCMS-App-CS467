@@ -2,18 +2,17 @@
   "name": "hcms",
   "version": "1.0.0",
   "description": "Horse Care Management System",
+  "engines": {
+    "node": "8.12.0"
+  },
   "main": "index.js",
   "pre-commit": [
     "lint"
   ],
-  "engines": {
-    "node": "8.12.0",
-    "npm": "6.4.1"
-  },
   "scripts": {
     "start": "babel-node ./server/index.js",
     "heroku-postbuild": "webpack -p",
-    "build": "NODE_ENV=production npx env-cmd .env webpack --config ./webpack/config-prod.babel.js",
+    "build": "npx env-cmd .env webpack --config ./webpack/config-prod.babel.js",
     "postinstall": "npm run build",
     "lint": "eslint . --ext .js,.jsx",
     "test": "echo \"Error: no test specified\" && exit 1",
