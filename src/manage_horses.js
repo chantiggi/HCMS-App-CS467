@@ -119,7 +119,9 @@ export class ManageHorses extends React.Component {
                                                                     <textarea className="form-control" id="feed-notes"></textarea>
                                                                 </div>
                                                             </div>
+
                                                             <button type="button" className="btn btn-border" id="add-feed-btn">+ Additional Feed</button>
+
                                                         </div>
 
                                                         {/****Horse Med Information****/}
@@ -142,25 +144,21 @@ export class ManageHorses extends React.Component {
                                                                   <textarea className="form-control" id="med-notes"></textarea>
                                                               </div>
                                                             </div>
+
                                                             <button type="button" className="btn btn-border" id="add-med-btn">+ Additional Medicine</button>
+
                                                         </div>
+
                                                         <button type="submit" className="btn btn-solid submit-horse-btn" id="submit-horse">Submit Horse</button>
+
                                                       </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
-
-
-
-
                                     </td>
                                     <td>
-                                        <button type="button" className="btn" id="inactivate-horse-btn" data-toggle="modal" data-target=".inactivate-horse">Inactivate</button>
+                                        <button type="button" className="btn btn-border" id="inactivate-horse-btn" data-toggle="modal" data-target=".inactivate-horse">Inactivate</button>
 
                                         <div className="modal fade inactivate-horse">
                                             <div className="modal-dialog">
@@ -174,7 +172,7 @@ export class ManageHorses extends React.Component {
                                                     </div>
                                                     <div className="modal-footer">
                                                       <button type="button" class="btn inactivate-btn">Inactivate</button>
-                                                      <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                                                      <button type="button" class="btn btn-border" data-dismiss="modal">Cancel</button>
                                                     </div>
                                                 </div>
                                             </div>
