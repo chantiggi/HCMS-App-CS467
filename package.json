@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "babel-node ./server/index.js",
-    "build": "SET NODE_ENV=production; npx env-cmd .env webpack --config ./webpack/config-prod.babel.js",
+    "build": "NODE_ENV=production; npx env-cmd .env webpack --config ./webpack/config-prod.babel.js",
     "postinstall": "npm run build",
     "lint": "eslint . --ext .js,.jsx",
     "test": "echo \"Error: no test specified\" && exit 1",
