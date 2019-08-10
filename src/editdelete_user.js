@@ -4,7 +4,7 @@ import './stylesheets/editdelete_user.css';
 export class EditUserForm extends React.Component {
     render() {
         return (
-          <form class="no-border">
+          <form className="no-border">
               <div className="row">
                   <div className="col-50">
                       <h5>Edit User</h5>
@@ -19,8 +19,8 @@ export class EditUserForm extends React.Component {
                           </div>
                       </div>
 
-                      <div class="row">
-                          <div class="col">
+                      <div className="row">
+                          <div className="col">
                               <label for="email"><i className="fa fa-envelope"></i> Email Address</label>
                               <input type="text" id="email" name="email" placeholder="john@example.com" />
                           </div>

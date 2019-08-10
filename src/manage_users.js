@@ -74,8 +74,8 @@ export class ManageUsers extends React.Component {
                                                 <p>Are you sure you want to inactivate <b>[User]</b>?</p>
                                               </div>
                                               <div className="modal-footer">
-                                                <button type="button" class="btn inactivate-btn">Inactivate</button>
-                                                <button type="button" class="btn btn-border" data-dismiss="modal">Cancel</button>
+                                                <button type="button" className="btn inactivate-btn">Inactivate</button>
+                                                <button type="button" className="btn btn-border" data-dismiss="modal">Cancel</button>
                                               </div>
                                           </div>
                                       </div>
