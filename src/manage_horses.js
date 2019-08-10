@@ -64,17 +64,7 @@ export class ManageHorses extends React.Component {
                                         <button type="button" className="btn btn-solid" id="edit-horse-btn" data-toggle="modal" data-target=".edit-horse-modal">Edit</button>
 
                                         <div className="modal fade edit-horse-modal" data-backdrop="static">
-                                            <div className="modal-dialog modal-lg">
-                                                <div className="modal-content">
-                                                    <div className="modal-header">
-                                                        <h6>Edit Horse - {horse.horseName} </h6>
-                                                        <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
-                                                    </div>
-                                                    <div className="modal-body">
-                                                      <AddEditHorse />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                          <AddEditHorse />
                                         </div>
                                     </td>
                                     <td>
@@ -107,21 +97,10 @@ export class ManageHorses extends React.Component {
                         <button type="button" className="btn btn-solid" id="add-btn" data-toggle="modal" data-target=".add-horse-modal">Add New Horse</button>
 
                         <div className="modal fade add-horse-modal" data-backdrop="static">
-                            <div className="modal-dialog modal-lg">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h6>Add New Horse</h6>
-                                        <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
-                                    </div>
-                                    <div className="modal-body">
-                                      <AddEditHorse />
-                                    </div>
-                                </div>
-                            </div>
+                          <AddEditHorse />
                         </div>
 
                     </div>
-
                 </div>
             </div>
         )
