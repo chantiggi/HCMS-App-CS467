@@ -11,7 +11,7 @@ export class NavBar extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link to={'/'} className="nav-item nav-link active" id="home">Home<span className="sr-only">(current)</span></Link>
+                        <Link to={'/adminhome'} className="nav-item nav-link active" id="home">Home<span className="sr-only">(current)</span></Link>
 
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="/admin" id="costs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
