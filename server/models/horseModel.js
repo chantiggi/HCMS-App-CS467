@@ -182,4 +182,17 @@ Horse.deleteHorseById = function (horseID, result) {
     });
 };
 
+/*
+Horse.getAllHorsesWithMeds = function(result) {
+    sql.query("SELECT Horse.horseID, Horse.horseName, Horse.isActive " +
+    "Horse.dayLocationID AS dayLocationID, Horse.nightLocationID AS nightLocationID, Horse.orgID, " +
+    "dayLoc.locationName AS dayLocationName, nightLoc.locationName AS nightLocationName, " +
+    "horseFeedArray, horseMedArray " +
+    "FROM Horse " +
+    "LEFT JOIN HandlerLevel ON Horse.handlerLevelID = HandlerLevel.handlerLevelID " +
+    "LEFT JOIN Location AS dayLoc ON Horse.dayLocationID = dayLoc.locationID " +
+    "LEFT JOIN Location AS nightLoc ON Horse.nightLocationID = nightLoc.locationID " +
+    "LEFT JOIN (SELECT Horse.horseID as horseID, " +)
+}
+*/
 module.exports = Horse;

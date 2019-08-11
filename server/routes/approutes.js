@@ -22,7 +22,11 @@ module.exports = function(app) {
         .get(HorseCtrl.get_a_horse)
         .put(HorseCtrl.update_a_horse)
         .delete(HorseCtrl.delete_a_horse);
-
+    
+/*
+    app.route('/restapi/onlyhorseswithmeds')
+        .get(HorseCtrl.list_all_horses_with_meds)
+*/
     app.route('/restapi/allfeed')
         .get(FeedCtrl.get_all_feed);
 

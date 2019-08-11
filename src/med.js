@@ -2,59 +2,90 @@ import React from 'react';
 import './stylesheets/med_style.css';
 import { NavBar } from './navbar';
 import { Footer } from './footer';
+import { MedList } from './medList';
+import { AMMedList } from './AMMedList';
+import { PMMedList } from './PMMedList';
 
 export class MedPage extends React.Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            horses: [],
+            selectedOption: "AllMeds"
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            selectedOption: event.target.value
+        });
+    }
+
+    componentDidMount() {
+        fetch('/restapi/horses', {
+            method: "GET"
+        })
+            .then(response => response.json())
+            .then(data => this.setState({horses: data}))
+            .catch(err => console.log("Error reading data: ", err))
+    }
+
     render() {
+        const {horses} = this.state;
+
+
         return (
             <div>
             <NavBar />
             <div className="container">
                 <h1>Horse Medications</h1>
-                <div className="toggle row">
-                    <div className="col">
-                        <h5>Time of Day:</h5>
+
+                <form>
+                    <div className="switch-field">
+                        <input type="radio" 
+                            value="AllMeds" 
+                            id="AllMeds" 
+                            checked={this.state.selectedOption === "AllMeds"} 
+                            onChange={this.handleChange} />
+                            <label htmlFor="AllMeds">All Meds</label>
+                        <input type="radio" 
+                            value="AM" 
+                            id="AM" 
+                            checked={this.state.selectedOption === "AM"} 
+                            onChange={this.handleChange}/>
+                            <label htmlFor="AM">View AM Meds</label>
+                        <input type="radio" 
+                            value="PM" 
+                            id="PM" 
+                            checked={this.state.selectedOption === "PM"} 
+                            onChange={this.handleChange}/>
+                            <label htmlFor="PM">View PM Meds</label>
                     </div>
-                    <div className="col">
-                        <div className="custom-switch">
-                            <input type="checkbox" className="custom-control-input" id="switch-time" />
-                            <label className="custom-control-label" for="switch-time" id="label-time"></label>
-                        </div>
-                    </div>
-                </div>
-                <div className="toggle row">
-                    <div className="col">
-                        <h5>View Horses:</h5>
-                    </div>
-                    <div className="col">
-                        <div className="custom-switch">
-                            <input type="checkbox" className="custom-control-input" id="switch-horses" />
-                            <label className="custom-control-label" for="switch-horses" id="label-horses"></label>
-                        </div>
-                    </div>
-                </div>
+                </form>
 
                 <table className="table table-striped">
                     <thead className="table-head">
                         <tr>
                             <th>Horse Name</th>
-                            <th>Location</th>
+                            <th>Daytime Location</th>
+                            <th>Nighttime Location</th>
                             <th>Medication</th>
-                            <th>Special Notes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="med-horse all-horses">
-                            <td>Abigail</td>
-                            <td>1</td>
-                            <td>1 scoop Strategy</td>
-                            <td>Mix together and soak with 1/2 c warm water</td>
+                        {horses.map(horse =>
+                        <tr className="med-horse all-horses" key={horse.horseID}>
+                            <td>{horse.horseName}</td>
+                            <td>{horse.dayLocationName}</td>
+                            <td>{horse.nightLocationName}</td>
+                            <td>{((this.state.selectedOption === "AllMeds") ? (<MedList horseID={horse.horseID}></MedList>) 
+                            : ((this.state.selectedOption === "AM") ? (<AMMedList horseID={horse.horseID}></AMMedList>) : (<PMMedList horseID={horse.horseID}></PMMedList>)))}
+                            </td>
                         </tr>
-                        <tr className="all-horses">
-                            <td>Daisy</td>
-                            <td>2</td>
-                            <td>1 scoop mare magic</td>
-                            <td>-</td>
-                        </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
