@@ -9,6 +9,9 @@ module.exports = function(app) {
     var UnitsCtrl = require('../controllers/UnitsController');
     var FeedCtrl = require('../controllers/FeedController');
     var MedsCtrl = require('../controllers/MedsController');
+    var UserCtrl = require('../controllers/UserController');
+    var OrgCtrl = require('../controllers/OrgController');
+
 
     // Horse Routes
     app.route('/restapi/horses')
@@ -55,6 +58,18 @@ module.exports = function(app) {
     
     app.route('/restapi/pm-meds/:horseID')
         .get(MedsCtrl.get_horse_pm_meds);
+
+
+    //User Routes
+    app.route('/restapi/users')
+        .get(UserCtrl.list_all_users)
+        .post(UserCtrl.add_user);
+
+
+    //Org Routes
+    app.route('/restapi/org')
+        .get(OrgCtrl.list_org);
+
 
     /* Render the page using index.pug file*/
     app.get('*', (req, res) => {
