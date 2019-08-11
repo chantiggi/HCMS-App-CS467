@@ -3,6 +3,8 @@ import './stylesheets/horse_individual_style.css';
 import { Link } from 'react-router-dom';
 import { FeedList } from './feedList.js';
 import { MedList } from './medList.js';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class ViewIndivHorsePage extends React.Component {
     constructor(props) {
@@ -26,6 +28,9 @@ export class ViewIndivHorsePage extends React.Component {
         const {horse} = this.state;
 
         return (
+            <div>
+            <NavBar />
+
             <div className="container">
                 <div id="back-to-horses">
                     <Link to={'/viewhorses'}>Back to Horses</Link>
@@ -47,6 +52,8 @@ export class ViewIndivHorsePage extends React.Component {
                         <h5>Meds: {currentHorse.horseMedArray ? (<MedList horseID={currentHorse.horseID}></MedList>) : ("None")} </h5>
                     </div>
                 )}
+            </div>
+            <Footer />
             </div>
         )
     }

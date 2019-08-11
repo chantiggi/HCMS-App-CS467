@@ -1,21 +1,24 @@
 {
   "name": "hcms",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Horse Care Management System",
+  "engines": {
+    "node": "8.12.0"
+  },
   "main": "index.js",
   "pre-commit": [
     "lint"
   ],
   "scripts": {
     "start": "babel-node ./server/index.js",
-    "build": "NODE_ENV=production npx env-cmd .env webpack --config ./webpack/config-prod.babel.js",
+    "build": "webpack --config ./webpack/config-prod.babel.js",
     "postinstall": "npm run build",
     "lint": "eslint . --ext .js,.jsx",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec babel-node ./server/index.js"
   },
   "proxy": "http://localhost:9000",
-  "author": "Chantel Higginbotham",
+  "author": "Chantel Higginbotham, Jennifer Aldover, Ann Kostecki",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
@@ -64,6 +67,7 @@
     "eslint-plugin-react": "^7.14.3",
     "nodemon": "^1.19.1",
     "pre-commit": "^1.2.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.38.0",
     "webpack-cli": "^3.3.6",
     "webpack-dev-middleware": "^3.7.0",

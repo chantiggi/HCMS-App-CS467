@@ -1,10 +1,34 @@
 import React from 'react';
 import './stylesheets/manage_org.css';
 import { ManagementTabs } from './managementtabs';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class ManageOrg extends React.Component {
+	    constructor(props) {
+        super(props);
+
+        this.state = {
+            org: [],
+        };
+    }
+
+    componentDidMount() {
+        const {match: {params}} = this.props;
+        fetch('/restapi/org', {
+            method: "GET"
+        })
+        .then(response => response.json())
+        .then(data => this.setState({org: data}))
+        .catch(err => console.log("Error reading data: ", err))
+    }
+
 	render() {
+		const {users} = this.state;
 		return (
+			<div>
+			<div>
+			<NavBar />
 			<div className="container">
 
 				<ManagementTabs />
@@ -13,12 +37,17 @@ export class ManageOrg extends React.Component {
 					<form className="form-org">
 						<h5 className="otitle">Organization Information</h5>
 						<div className="row">
+							
 							<div className="col">
 								<div className="form-group">
+									
 									<label for="oname"><i className="fa fa-envelope"></i>Name</label>
-									<input type="text" className="form-control org-name" id="oname" name="oname" />
+
+									<input type="text" className="form-control org-name" id="oname" name="oname"/>
+
 								</div>
 							</div>
+							
 						</div>
 						<div className="row">
 							<div className="col">
@@ -162,6 +191,9 @@ export class ManageOrg extends React.Component {
 
 					</form>
 				</div>
+			</div>
+			</div>
+			<Footer />
 			</div>
 		)
 	}

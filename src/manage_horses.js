@@ -2,6 +2,8 @@ import React from 'react';
 import './stylesheets/manage_horses_style.css';
 import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 import { AddEditHorse } from './manage_horses_addedit'
 
@@ -28,6 +30,9 @@ export class ManageHorses extends React.Component {
         const {horses} = this.state;
 
         return (
+
+            <div>
+            <NavBar />
             <div className="container">
 
                 <ManagementTabs />
@@ -102,6 +107,8 @@ export class ManageHorses extends React.Component {
 
                     </div>
                 </div>
+            </div>
+            <Footer />
             </div>
         )
     }

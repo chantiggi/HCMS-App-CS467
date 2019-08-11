@@ -1,9 +1,15 @@
 import React from 'react';
 import './stylesheets/admin_home.css';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class AdminHomePage extends React.Component {
     render() {
         return (
+
+            <div>
+            <NavBar />
+
             <div className="container">
 
                 <h3>Organization Name</h3>
@@ -79,6 +85,8 @@ export class AdminHomePage extends React.Component {
                         </div>
                     </div>
                 </div>
+            </div>
+            <Footer />
             </div>
         )
     }

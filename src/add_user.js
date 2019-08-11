@@ -1,10 +1,48 @@
 import React from 'react';
 import './stylesheets/add_user.css';
+import { Link } from 'react-router-dom';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class AddUserForm extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = {
+            user: [],
+        };
+        this.onSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e) {
+        var self = this;
+        fetch('/restapi/user', {
+            method: "POST",
+            data: {
+                fname: self.refs.fname
+            }
+        })
+        .then(function(response) {
+            return response.json()
+        }).then(function(body) {
+            console.log(body);
+        
+        });
+    }
+
+   // componentDidMount() {
+   //     const {match: {params}} = this.props;
+   //     fetch('/restapi/user', {
+   //         method: "POST"
+   //     })
+   //     .then(response => response.json())
+   //     .then(data => this.setState({user: data}))
+   //     .catch(err => console.log("Error reading data: ", err))
+   // }
+  
     render() {
         return (
-          <form className="no-border">
+          <form className="no-border" onSubmit={this.onSubmit}>
               <div className="row">
                   <div className="col-50">
                       <h5>Add New User</h5>

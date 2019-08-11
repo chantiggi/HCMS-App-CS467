@@ -1,6 +1,9 @@
 import React from 'react';
 import './stylesheets/editdelete_user.css';
 
+import { ManagementTabs } from './managementtabs';
+
+
 export class EditUserForm extends React.Component {
     render() {
         return (

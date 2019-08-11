@@ -24,7 +24,7 @@ export class App extends React.Component {
         return (
             <Router>
                 <div id="bodyContent">
-                    <NavBar />
+                    
 
                     <Switch>
                         <Route exact path='/' component={Home} />
@@ -45,7 +45,7 @@ export class App extends React.Component {
                         <Route path='/logout' component={LogoutPage} />
                     </Switch>
                 </div>
-                <Footer />
+               
             </Router>
         )
     }

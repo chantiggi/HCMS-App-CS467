@@ -3,12 +3,40 @@ import './stylesheets/manage_users.css';
 import './stylesheets/add_user.css';
 import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
+
 import { AddUserForm } from './add_user';
 import { EditUserForm } from './editdelete_user';
 
+import { NavBar } from './navbar';
+import { Footer } from './footer';
+
+
 export class ManageUsers extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            users: [],
+        };
+    }
+
+    componentDidMount() {
+        const {match: {params}} = this.props;
+        fetch('/restapi/users', {
+            method: "GET"
+        })
+        .then(response => response.json())
+        .then(data => this.setState({users: data}))
+        .catch(err => console.log("Error reading data: ", err))
+    }
+
     render() {
+        const {users} = this.state;
+
         return (
+            <div>
+            <NavBar />
+
             <div className="container manage-users-container">
 
                 <ManagementTabs />
@@ -32,13 +60,13 @@ export class ManageUsers extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>User First Name</td>
-                                <td>User Last Name</td>
-                                <td>User Handler Level</td>
-                                <td>User Email</td>
-                                <td>Admin Y/N</td>
+                            {users.map(user =>
+                            <tr key={user.userID}>
+                                <td>{user.fname}</td>
+                                <td>{user.lname}</td>
+                                <td>{user.handlerLevelID}</td>
+                                <td>{user.email}</td>
+                                <td>{user.isAdmin}</td>
                                 <td className="edit-del-user">
                                     <button type="button" className="btn btn-solid" id="edit-user-btn" data-toggle="modal" data-target=".edit-user-modal">Edit</button>
 
@@ -83,6 +111,7 @@ export class ManageUsers extends React.Component {
 
                                 </td>
                             </tr>
+                            )}
                         </tbody>
                     </table>
 
@@ -106,6 +135,9 @@ export class ManageUsers extends React.Component {
 
                 </div>
             </div>
+            <Footer />
+            </div>
         )
     }
 }
+

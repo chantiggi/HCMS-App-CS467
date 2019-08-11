@@ -1,8 +1,11 @@
 import React from 'react';
+import { PublicMenu } from './publicMenu';
 
 export class UserReg extends React.Component {
     render() {
         return (
+            <div>
+            <PublicMenu />
             <div className="container">
                 <p>
                     <form>
@@ -46,6 +49,8 @@ export class UserReg extends React.Component {
                     </form>
                 </p>
                 <p></p>
+            </div>
+    
             </div>
         )
     }
