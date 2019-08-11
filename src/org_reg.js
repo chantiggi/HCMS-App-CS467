@@ -1,10 +1,16 @@
 import React from 'react';
 import './stylesheets/org_reg.css';
+import { PublicMenu } from './publicMenu';
 
 export class OrgReg extends React.Component {
 	render() {
 		return (
+
+			<div>
+			<PublicMenu />
+
 			<div className="container orgRegForm">
+
 				<p>
 					<form>
 						<div className="row">
@@ -64,6 +70,7 @@ export class OrgReg extends React.Component {
 					</form>
 				</p>
 				<p></p>
+			</div>
 			</div>
 		)
 	}

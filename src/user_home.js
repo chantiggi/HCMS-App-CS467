@@ -1,8 +1,13 @@
 import React from 'react';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class UserHomePage extends React.Component {
     render() {
         return (
+            <div>
+            <NavBar />
+
             <div className="container">
 
                 <h3>OrgName goes here</h3>
@@ -48,6 +53,8 @@ export class UserHomePage extends React.Component {
                     </div>
                 </div>
 
+            </div>
+            <Footer />
             </div>
         )
     }

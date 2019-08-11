@@ -1,10 +1,15 @@
 import React from 'react';
 import './stylesheets/editdelete_user.css';
 import { ManagementTabs } from './managementtabs';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class EditDeleteUser extends React.Component {
     render() {
         return (
+            <div>
+            <NavBar />
+
             <div className="container">
 
                 <ManagementTabs />
@@ -68,6 +73,8 @@ export class EditDeleteUser extends React.Component {
                         <p></p>
                     </div>
                 </div>
+            </div>
+            <Footer />
             </div>
         )
     }
