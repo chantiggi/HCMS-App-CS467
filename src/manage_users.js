@@ -4,7 +4,27 @@ import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
 
 export class ManageUsers extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            users: [],
+        };
+    }
+
+    componentDidMount() {
+        const {match: {params}} = this.props;
+        fetch('/restapi/users', {
+            method: "GET"
+        })
+        .then(response => response.json())
+        .then(data => this.setState({users: data}))
+        .catch(err => console.log("Error reading data: ", err))
+    }
+
     render() {
+        const {users} = this.state;
+
         return (
             <div className="container manage-users-container">
 
@@ -28,17 +48,18 @@ export class ManageUsers extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>User First Name</td>
-                                <td>User Last Name</td>
-                                <td>User Handler Level</td>
-                                <td>User Email</td>
-                                <td>Admin Y/N</td>
+                            {users.map(user =>
+                            <tr key={user.userID}>
+                                <td>{user.fname}</td>
+                                <td>{user.lname}</td>
+                                <td>{user.handlerLevelID}</td>
+                                <td>{user.email}</td>
+                                <td>{user.isAdmin}</td>
                                 <td className="edit-del-user">
                                     <Link to={'/editdeleteuser'} className="btn btn-solid edit-del-user" id="edit-del-btn">Edit/Delete</Link>
                                 </td>
                             </tr>
+                            )}
                         </tbody>
                     </table>
 
@@ -49,3 +70,4 @@ export class ManageUsers extends React.Component {
         )
     }
 }
+
