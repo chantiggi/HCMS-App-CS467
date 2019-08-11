@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +32,9 @@ export class ViewHorsesPage extends React.Component {
         const {horses} = this.state;
 
         return (
+            <div>
+            <NavBar />
+
             <div className="container">
                 <div className="input-group">
                     <input type="text" placeholder="Search horses..." />
@@ -53,6 +58,8 @@ export class ViewHorsesPage extends React.Component {
                         )}
                     </div>
                  </div>
+            </div>
+            <Footer />
             </div>
         )
     }

@@ -1,9 +1,13 @@
 import React from 'react';
 import './stylesheets/med_style.css';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class MedPage extends React.Component {
     render() {
         return (
+            <div>
+            <NavBar />
             <div className="container">
                 <h1>Horse Medications</h1>
                 <div className="toggle row">
@@ -53,6 +57,8 @@ export class MedPage extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <Footer />
             </div>
         )
     }

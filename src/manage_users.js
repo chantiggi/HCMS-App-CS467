@@ -2,6 +2,8 @@ import React from 'react';
 import './stylesheets/manage_users.css';
 import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class ManageUsers extends React.Component {
     constructor(props) {
@@ -26,6 +28,9 @@ export class ManageUsers extends React.Component {
         const {users} = this.state;
 
         return (
+            <div>
+            <NavBar />
+
             <div className="container manage-users-container">
 
                 <ManagementTabs />
@@ -66,6 +71,8 @@ export class ManageUsers extends React.Component {
                     <Link to={'/adduser'} className="btn add-user btn-solid" id="add-btn">Add New User</Link>
 
                 </div>
+            </div>
+            <Footer />
             </div>
         )
     }

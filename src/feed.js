@@ -2,6 +2,8 @@ import React from 'react';
 import './stylesheets/feed_style.css';
 import { FeedList } from './feedList.js';
 import { MedList } from './medList.js';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 export class FeedPage extends React.Component {
     constructor(props) {
@@ -24,6 +26,8 @@ export class FeedPage extends React.Component {
         const {horses} = this.state;
 
         return (
+            <div>
+            <NavBar />
             <div className="container">
                 <h1>Horse Feed</h1>
                 <table className="table table-striped">
@@ -77,6 +81,8 @@ export class FeedPage extends React.Component {
                         )}
                     </tbody>
                 </table>
+            </div>
+            <Footer />
             </div>
         )
     }

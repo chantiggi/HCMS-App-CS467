@@ -6,6 +6,8 @@ import { AmountsDropdown } from './dropdownMenus/amountsDropdown';
 import { UnitsDropdown } from './dropdownMenus/unitsDropdown';
 import { FeedDropdown } from './dropdownMenus/feedDropdown';
 import { MedsDropdown } from './dropdownMenus/medsDropdown';
+import { NavBar } from './navbar';
+import { Footer } from './footer';
 
 
 export class AddEditHorse extends React.Component {
@@ -30,6 +32,8 @@ export class AddEditHorse extends React.Component {
         const {horses} = this.state;
 
         return (
+            <div>
+            <NavBar />
             <div className="container">
 
                 <ManagementTabs />
@@ -125,6 +129,8 @@ export class AddEditHorse extends React.Component {
                         <button type="submit" className="btn" id="submit-horse">Submit Horse</button>
                     </form>
                 </div>
+            </div>
+            <Footer />
             </div>
         )
     }
