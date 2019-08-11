@@ -38,11 +38,6 @@ export class AddEditHorse extends React.Component {
 
         return (
 
-            <div>
-            <NavBar />
-            <div className="container">
-
-
           <div className="modal-dialog modal-lg">
               <div className="modal-content">
                   <div className="modal-header">
@@ -123,9 +118,7 @@ export class AddEditHorse extends React.Component {
                   </form>
                   </div>
               </div>
-          <Footer />
-          </div>
-
+            </div>
         )
     }
 }
