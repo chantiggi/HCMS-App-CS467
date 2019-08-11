@@ -1,9 +1,15 @@
 import React from 'react';
 import './stylesheets/manage_users.css';
+import './stylesheets/add_user.css';
 import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
+
+import { AddUserForm } from './add_user';
+import { EditUserForm } from './editdelete_user';
+
 import { NavBar } from './navbar';
 import { Footer } from './footer';
+
 
 export class ManageUsers extends React.Component {
     constructor(props) {
@@ -50,6 +56,7 @@ export class ManageUsers extends React.Component {
                                 <th>Email Address</th>
                                 <th>Administrator?</th>
                                 <th>&nbsp;</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,14 +68,70 @@ export class ManageUsers extends React.Component {
                                 <td>{user.email}</td>
                                 <td>{user.isAdmin}</td>
                                 <td className="edit-del-user">
-                                    <Link to={'/editdeleteuser'} className="btn btn-solid edit-del-user" id="edit-del-btn">Edit/Delete</Link>
+                                    <button type="button" className="btn btn-solid" id="edit-user-btn" data-toggle="modal" data-target=".edit-user-modal">Edit</button>
+
+                                    <div className="modal fade edit-user-modal" data-backdrop="static">
+                                        <div className="modal-dialog modal-lg">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h6>Edit User - [User]</h6>
+                                                    <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
+                                                </div>
+                                                <div className="modal-body">
+
+                                                  <EditUserForm />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+
+                                  <button type="button" className="btn btn-border" id="inactivate-user-btn" data-toggle="modal" data-target=".inactivate-user">Inactivate</button>
+
+                                  <div className="modal fade inactivate-user">
+                                      <div className="modal-dialog">
+                                          <div className="modal-content">
+                                              <div className="modal-header">
+                                                  <h6>Inactivate User - [User] </h6>
+                                                  <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
+                                              </div>
+                                              <div className="modal-body modal-sm">
+                                                <p>Are you sure you want to inactivate <b>[User]</b>?</p>
+                                              </div>
+                                              <div className="modal-footer">
+                                                <button type="button" className="btn inactivate-btn">Inactivate</button>
+                                                <button type="button" className="btn btn-border" data-dismiss="modal">Cancel</button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+
                                 </td>
                             </tr>
                             )}
                         </tbody>
                     </table>
 
-                    <Link to={'/adduser'} className="btn add-user btn-solid" id="add-btn">Add New User</Link>
+                    <button type="button" className="btn btn-solid" id="add-user-btn" data-toggle="modal" data-target=".add-user-modal">Add User</button>
+
+                    <div className="modal fade add-user-modal" data-backdrop="static">
+                        <div className="modal-dialog modal-lg">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h6>Add New User </h6>
+                                    <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
+                                </div>
+                                <div className="modal-body">
+
+                                  <AddUserForm />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

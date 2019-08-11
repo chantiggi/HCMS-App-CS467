@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { NavBar } from './navbar';
 import { Footer } from './footer';
 
+import { AddEditHorse } from './manage_horses_addedit'
+
 export class ManageHorses extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +40,7 @@ export class ManageHorses extends React.Component {
                 <div className="tab-content" id="manage-horses-tab">
 
                     <div id="manage-horses-main">
-                        <h5>To view a horse's full profile, including history, feed, medications, click Edit/Delete for the appropriate horse.</h5>
+                        <h5>To view a horse's full profile, including history, feed, medications, click the Edit button for the appropriate horse.</h5>
                         <table className="table table-striped table-bordered" id="manage-horses-table">
                             <thead className="table-head">
                                 <tr>
@@ -49,6 +51,7 @@ export class ManageHorses extends React.Component {
                                     <th>Daytime Location</th>
                                     <th>Nighttime Location</th>
                                     <th>Estimated Age</th>
+                                    <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -63,16 +66,46 @@ export class ManageHorses extends React.Component {
                                     <td>{horse.nightLocationName}</td>
                                     <td>{(new Date()).getFullYear() - horse.birthYear + " years" || "Unknown"}</td>
                                     <td>
-                                        <Link to={'/addedithorse'} className="btn btn-solid" id="edit-del-btn">Edit/Delete</Link>
+                                        <button type="button" className="btn btn-solid" id="edit-horse-btn" data-toggle="modal" data-target=".edit-horse-modal">Edit</button>
+
+                                        <div className="modal fade edit-horse-modal" data-backdrop="static">
+                                          <AddEditHorse />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" className="btn btn-border" id="inactivate-horse-btn" data-toggle="modal" data-target=".inactivate-horse">Inactivate</button>
+
+                                        <div className="modal fade inactivate-horse">
+                                            <div className="modal-dialog">
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h6>Inactivate - {horse.horseName}</h6>
+                                                        <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
+                                                    </div>
+                                                    <div className="modal-body modal-sm">
+                                                      <p>Are you sure you want to inactivate <b>{horse.horseName}</b>?</p>
+                                                    </div>
+                                                    <div className="modal-footer">
+                                                      <button type="button" className="btn inactivate-btn">Inactivate</button>
+                                                      <button type="button" className="btn btn-border" data-dismiss="modal">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </td>
                                 </tr>
                                 )}
                             </tbody>
                         </table>
 
-                        <button type="button" className="btn btn-solid" id="add-btn">Add New Horse</button>
-                    </div>
+                        <button type="button" className="btn btn-solid" id="add-btn" data-toggle="modal" data-target=".add-horse-modal">Add New Horse</button>
 
+                        <div className="modal fade add-horse-modal" data-backdrop="static">
+                          <AddEditHorse />
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <Footer />

@@ -88,9 +88,9 @@ export class ManageOrg extends React.Component {
 					<form className="form-feed">
 						<h5>Feed Information</h5>
 						<div className="row">
-						    <div class="col">
+						    <div className="col">
 						      <label for="org-feed-amount">Amount</label>
-						      <div class="input-group mb-2">
+						      <div className="input-group mb-2">
 						        <select className="form-control" id="org-feed-amount">
 						            <option value="" disabled selected>Select amount</option>
 						            <option>Type 1</option>
@@ -102,9 +102,9 @@ export class ManageOrg extends React.Component {
 						    </div>
 						</div>
 						<div className="row">
-						    <div class="col">
+						    <div className="col">
 						      <label for="org-feed-unit">Unit</label>
-						      <div class="input-group mb-2">
+						      <div className="input-group mb-2">
 						        <select className="form-control" id="org-feed-unit">
 						            <option value="" disabled selected>Select unit</option>
 						            <option>Type 1</option>
@@ -116,9 +116,9 @@ export class ManageOrg extends React.Component {
 						    </div>
 						</div>
 						<div className="row">
-						    <div class="col">
+						    <div className="col">
 						      <label for="org-feed-type">Type</label>
-						      <div class="input-group mb-2">
+						      <div className="input-group mb-2">
 						        <select className="form-control" id="org-feed-type">
 						            <option value="" disabled selected>Select type</option>
 						            <option>Type 1</option>
@@ -134,9 +134,9 @@ export class ManageOrg extends React.Component {
 					<form>
 						<h5>Medicine Information</h5>
 						<div className="row">
-								<div class="col">
+								<div className="col">
 									<label for="org-med-timing">Timing</label>
-									<div class="input-group mb-2">
+									<div className="input-group mb-2">
 										<select className="form-control" id="org-med-amount">
 												<option value="" disabled selected>Select timing</option>
 												<option>AM</option>
@@ -147,9 +147,9 @@ export class ManageOrg extends React.Component {
 								</div>
 						</div>
 						<div className="row">
-								<div class="col">
+								<div className="col">
 									<label for="org-med-unit">Amount</label>
-									<div class="input-group mb-2 mr-10">
+									<div className="input-group mb-2 mr-10">
 										<select className="form-control" id="org-med-amount">
 												<option value="" disabled selected>Select amount</option>
 												<option>Type 1</option>
@@ -161,9 +161,9 @@ export class ManageOrg extends React.Component {
 								</div>
 						</div>
 						<div className="row">
-								<div class="col">
+								<div className="col">
 									<label for="org-med-unit">Unit</label>
-									<div class="input-group mb-2 mr-sm-2">
+									<div className="input-group mb-2 mr-sm-2">
 										<select className="form-control" id="org-med-unit">
 												<option value="" disabled selected>Select unit</option>
 												<option>Type 1</option>
@@ -175,9 +175,9 @@ export class ManageOrg extends React.Component {
 								</div>
 						</div>
 						<div className="row">
-								<div class="col">
+								<div className="col">
 									<label for="org-med-type">Type</label>
-									<div class="input-group mb-2 mr-sm-2">
+									<div className="input-group mb-2 mr-sm-2">
 										<select className="form-control" id="org-med-type">
 												<option value="" disabled selected>Select type</option>
 												<option>Type 1</option>
