@@ -11,6 +11,7 @@ var Meds = function(meds) {
     this.medUnit = meds.unit;
     this.medName = meds.medName;
     this.medNotes = meds.medNotes;
+    this.horseMedID = meds.horseMedID;
     this.timingName = meds.timingName;
 }
 
@@ -30,7 +31,7 @@ Meds.getAllPossibleMeds = function(result) {
 }
 
 Meds.getHorseMeds = function (horseID, result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, Timing.timingName " +
+    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
     "LEFT JOIN Horse on Horse.horseID = HorseMed.horseID " +
     "LEFT JOIN Amount on Amount.amountID = HorseMed.amountID " +

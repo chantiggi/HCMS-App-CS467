@@ -50,3 +50,11 @@ exports.delete_a_horse = function(req, res) {
         res.json({ message: "Horse successfully deleted" });
     });
 }
+/*
+exports.list_all_horses_with_meds= function(req, res) {
+    Horse.getAllHorsesWithMeds(function(err, horse) {
+        if (err) { res.send(err); }
+        res.send(horse);
+    })
+}
+*/
