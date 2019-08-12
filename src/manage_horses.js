@@ -69,7 +69,7 @@ export class ManageHorses extends React.Component {
                                         <button type="button" className="btn btn-solid" id="edit-horse-btn" data-toggle="modal" data-target=".edit-horse-modal">Edit</button>
 
                                         <div className="modal fade edit-horse-modal" data-backdrop="static">
-                                          <AddEditHorse />
+                                          <AddEditHorse dialogTitle="Edit Horse" horseID={horse.horseID} />
                                         </div>
                                     </td>
                                     <td>
@@ -102,7 +102,7 @@ export class ManageHorses extends React.Component {
                         <button type="button" className="btn btn-solid" id="add-btn" data-toggle="modal" data-target=".add-horse-modal">Add New Horse</button>
 
                         <div className="modal fade add-horse-modal" data-backdrop="static">
-                          <AddEditHorse />
+                          <AddEditHorse dialogTitle="Add New Horse" horseID={null}/>
                         </div>
 
                     </div>
