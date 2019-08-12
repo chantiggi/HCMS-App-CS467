@@ -52,7 +52,7 @@ Meds.getHorseMeds = function (horseID, result) {
 
 // Not currently being used
 Meds.getAllHorsesAmMeds = function (result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, Timing.timingName " +
+    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
     "LEFT JOIN Horse on Horse.horseID = HorseMed.horseID " +
     "LEFT JOIN Amount on Amount.amountID = HorseMed.amountID " +
@@ -73,7 +73,7 @@ Meds.getAllHorsesAmMeds = function (result) {
 
 // Not currently being used
 Meds.getAllHorsesPmMeds = function (result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, Timing.timingName " +
+    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
     "LEFT JOIN Horse on Horse.horseID = HorseMed.horseID " +
     "LEFT JOIN Amount on Amount.amountID = HorseMed.amountID " +
@@ -94,7 +94,7 @@ Meds.getAllHorsesPmMeds = function (result) {
 
 // Not currently being used
 Meds.getHorseAmMeds = function (horseID, result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, Timing.timingName " +
+    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
     "LEFT JOIN Horse on Horse.horseID = HorseMed.horseID " +
     "LEFT JOIN Amount on Amount.amountID = HorseMed.amountID " +
@@ -115,7 +115,7 @@ Meds.getHorseAmMeds = function (horseID, result) {
 
 // Not currently being used
 Meds.getHorsePmMeds = function (horseID, result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, Timing.timingName " +
+    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
     "LEFT JOIN Horse on Horse.horseID = HorseMed.horseID " +
     "LEFT JOIN Amount on Amount.amountID = HorseMed.amountID " +

@@ -1,7 +1,7 @@
 import React from 'react';
 import './stylesheets/feed_style.css';
 import { FeedList } from './feedList.js';
-import { MedList } from './medList.js';
+import { HorseMedsModal } from './horseMedsModal';
 import { NavBar } from './navbar';
 import { Footer } from './footer';
 
@@ -11,6 +11,19 @@ export class FeedPage extends React.Component {
     
         this.state = {
             horses: [],
+            isOpen: false
+        };
+    }
+
+    toggleModal = (e, horse) => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+        if (horse) {
+            this.setState({
+                selectedHorseID: horse.horseID || null,
+                selectedHorseName: horse.horseName || null
+            });
         };
     }
 
@@ -22,6 +35,7 @@ export class FeedPage extends React.Component {
             .then(data => this.setState({horses: data}))
             .catch(err => console.log("Error reading data: ", err))
     }
+    
     render() {
         const {horses} = this.state;
 
@@ -48,39 +62,14 @@ export class FeedPage extends React.Component {
                                 <td>{horse.nightLocationName}</td>
                                 <td><FeedList horseID={horse.horseID}></FeedList></td>
                                 <td>
-                                    {horse.horseMedArray ? (
-                                        <button type="button" className="btn" id="med-btn" data-toggle="modal" data-target=".dialog-box">MEDS</button>
-                                    ) : ( '-' )}
-
-                                    <div className="modal fade dialog-box">
-                                        <div className="modal-dialog">
-                                            <div className="modal-content">
-                                                <div className="modal-header">
-                                                    <h6>Horse Medications - {horse.horseName}</h6>
-                                                    <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
-                                                </div>
-                                                <div className="modal-body modal-sm">
-                                                    *Need to pull this out into separate component so that it loads for the correct horse*
-                                                    <MedList horseID={horse.horseID}></MedList>
-                                                    <h6>AM</h6>
-                                                    <ul className="am-meds">
-                                                        <li>1 scoop probiotic</li>
-                                                    </ul>
-
-                                                    <h6>PM</h6>
-                                                    <ul className="pm-meds">
-                                                        <li>1/2 scoop glucosamine</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    {horse.horseMedArray ? (<button type="button" className="btn" id="med-btn" onClick={(e) => this.toggleModal(e, horse)}>MEDS</button>)
+                                    : ( '-' )}
                                 </td>
                             </tr>
                         )}
                     </tbody>
                 </table>
+                <HorseMedsModal show={this.state.isOpen} onClose={(e) => this.toggleModal(e, null)} horseID={this.state.selectedHorseID} horseName={this.state.selectedHorseName}></HorseMedsModal>
             </div>
             <Footer />
             </div>
