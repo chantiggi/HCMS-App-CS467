@@ -50,7 +50,7 @@ export class EditUserForm extends React.Component {
                           </div>
                       </div>
                   </div>
-                  <input type="submit" value="Add New User" className="btns addbtn" />
+                  <input type="submit" value="Edit User" className="btns addbtn" />
               </div>
           </form>
         )
