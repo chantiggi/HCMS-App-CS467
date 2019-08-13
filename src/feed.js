@@ -41,6 +41,7 @@ export class FeedPage extends React.Component {
 
         return (
             <div>
+            <HorseMedsModal show={this.state.isOpen} onClose={(e) => this.toggleModal(e, null)} horseID={this.state.selectedHorseID} horseName={this.state.selectedHorseName}></HorseMedsModal>
             <NavBar />
             <div className="container">
                 <h1>Horse Feed</h1>
@@ -69,7 +70,6 @@ export class FeedPage extends React.Component {
                         )}
                     </tbody>
                 </table>
-                <HorseMedsModal show={this.state.isOpen} onClose={(e) => this.toggleModal(e, null)} horseID={this.state.selectedHorseID} horseName={this.state.selectedHorseName}></HorseMedsModal>
             </div>
             <Footer />
             </div>

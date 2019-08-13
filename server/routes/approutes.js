@@ -23,22 +23,21 @@ module.exports = function(app) {
         .put(HorseCtrl.update_a_horse)
         .delete(HorseCtrl.delete_a_horse);
     
-/*
-    app.route('/restapi/onlyhorseswithmeds')
-        .get(HorseCtrl.list_all_horses_with_meds)
-*/
+    // Feed Routes
     app.route('/restapi/allfeed')
         .get(FeedCtrl.get_all_feed);
-
     app.route('/restapi/feed/:horseID')
         .get(FeedCtrl.get_horse_feed);
-    
+
+    // Med Routes    
     app.route('/restapi/meds/:horseID')
         .get(MedsCtrl.get_horse_meds);
     
+    // Handler Routes
     app.route('/restapi/allhandlerlevels')
         .get(HandlerCtrl.get_all_handler_lvls); 
 
+    // Location Routes    
     app.route('/restapi/alllocations')
         .get(LocationsCtrl.get_all_locations);
     
