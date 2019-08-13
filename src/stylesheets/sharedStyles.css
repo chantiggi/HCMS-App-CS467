@@ -133,10 +133,3 @@ footer>div>div>ul>li, footer>div>div>a{
 .no-border {
   border: none;
 }
-
-.modal-dialog {
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}

@@ -10,7 +10,20 @@ export class FeedPage extends React.Component {
         super(props);
     
         this.state = {
-            horses: []
+            horses: [],
+            isOpen: false
+        };
+    }
+
+    toggleModal = (e, horse) => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+        if (horse) {
+            this.setState({
+                selectedHorseID: horse.horseID || null,
+                selectedHorseName: horse.horseName || null
+            });
         };
     }
 
@@ -28,6 +41,7 @@ export class FeedPage extends React.Component {
 
         return (
             <div>
+            <HorseMedsModal show={this.state.isOpen} onClose={(e) => this.toggleModal(e, null)} horseID={this.state.selectedHorseID} horseName={this.state.selectedHorseName}></HorseMedsModal>
             <NavBar />
             <div className="container">
                 <h1>Horse Feed</h1>
@@ -49,7 +63,7 @@ export class FeedPage extends React.Component {
                                 <td>{horse.nightLocationName}</td>
                                 <td><FeedList horseID={horse.horseID}></FeedList></td>
                                 <td>
-                                    {horse.horseMedArray ? (<HorseMedsModal horseID={horse.horseID} horseName={horse.horseName}></HorseMedsModal>)
+                                    {horse.horseMedArray ? (<button type="button" className="btn" id="med-btn" onClick={(e) => this.toggleModal(e, horse)}>MEDS</button>)
                                     : ( '-' )}
                                 </td>
                             </tr>
