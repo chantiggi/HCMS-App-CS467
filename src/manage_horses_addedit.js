@@ -64,8 +64,8 @@ export class AddEditHorse extends React.Component {
                           <input type="text" className="form-control" id="horse-name" placeholder="Enter Name" defaultValue={someHorse.horseName || ""} required />
                       </div>
                       <HandlersDropdown dropdownID="handler-level" currentHandlerLevel={someHorse.handlerLevelID || null} required="true"></HandlersDropdown>
-                      <LocationsDropdown dropdownID="daytime-location" required="true" time="AM"></LocationsDropdown>
-                      <LocationsDropdown dropdownID="nighttime=location" required="true" time="PM"></LocationsDropdown>
+                      <LocationsDropdown dropdownID="daytime-location" required="true" time="AM" location={someHorse.dayLocationID}></LocationsDropdown>
+                      <LocationsDropdown dropdownID="nighttime=location" required="true" time="PM" location={someHorse.nightLocationID}></LocationsDropdown>
                       <div className="form-group">
                           <label htmlFor="birth-year">Estimated Birth Year</label>
                           <input type="number" className="form-control" id="birth-year" min="1900" max="9999" placeholder="Enter Year" defaultValue={someHorse.birthYear || null}></input>
