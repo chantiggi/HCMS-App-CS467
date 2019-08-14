@@ -39,6 +39,7 @@ export class AddEditHorse extends React.Component {
         let closeModal = () => this.setState({ isOpen: false })
         let openModal = () => this.setState({ isOpen: true })
         const {horse} = this.state;
+        
 
         return (
           <div className="add-edit-container">
@@ -61,26 +62,26 @@ export class AddEditHorse extends React.Component {
                     <div className="horse-info">
                       <div className="form-group">
                           <label htmlFor="horse-name">Horse Name<span className="required-input">*</span></label>
-                          <input type="text" className="form-control" id="horse-name" placeholder="Enter Name" defaultValue={someHorse.horseName} required />
+                          <input type="text" className="form-control" id="horse-name" placeholder="Enter Name" defaultValue={someHorse.horseName || ""} required />
                       </div>
-                      <HandlersDropdown dropdownID="handler-level" required="true"></HandlersDropdown>
+                      <HandlersDropdown dropdownID="handler-level" currentHandlerLevel={someHorse.handlerLevelID || null} required="true"></HandlersDropdown>
                       <LocationsDropdown dropdownID="daytime-location" required="true" time="AM"></LocationsDropdown>
                       <LocationsDropdown dropdownID="nighttime=location" required="true" time="PM"></LocationsDropdown>
                       <div className="form-group">
                           <label htmlFor="birth-year">Estimated Birth Year</label>
-                          <input type="number" className="form-control" id="birth-year" min="1900" max="9999" placeholder="Enter Year" defaultValue={someHorse.birthYear}></input>
+                          <input type="number" className="form-control" id="birth-year" min="1900" max="9999" placeholder="Enter Year" defaultValue={someHorse.birthYear || null}></input>
                       </div>
                       <div className="form-group">
                           <label htmlFor="horse-name">Description</label>
-                          <textarea className="form-control" id="description" defaultValue={someHorse.description}></textarea>
+                          <textarea className="form-control" id="description" defaultValue={someHorse.description || ""}></textarea>
                       </div>
                       <div className="form-group">
                           <label htmlFor="special-notes">Special Notes or Requirements</label>
-                          <textarea type="text" className="form-control" id="special-notes" defaultValue={someHorse.specialNotes}></textarea>
+                          <textarea type="text" className="form-control" id="special-notes" defaultValue={someHorse.specialNotes || ""}></textarea>
                       </div>
                       <div className="form-group">
                           <label htmlFor="history">History</label>
-                          <textarea type="text" className="form-control" id="history" defaultValue={someHorse.history}></textarea>
+                          <textarea type="text" className="form-control" id="history" defaultValue={someHorse.history || ""}></textarea>
                       </div>
                     </div>
                 </div>
@@ -93,7 +94,7 @@ export class AddEditHorse extends React.Component {
                         <UnitsDropdown dropdownID="feed-unit" required="true"></UnitsDropdown>
                         <FeedDropdown dropdownID="feed-type" required="true"></FeedDropdown>
                         <div className="form-group">
-                            <label htmlFor="feed-notes" defaultValue={someHorse.feedNotes}>Special Notes</label>
+                            <label htmlFor="feed-notes" defaultValue={someHorse.feedNotes || ""}>Special Notes</label>
                             <textarea className="form-control" id="feed-notes"></textarea>
                         </div>
                     </div>
@@ -117,7 +118,7 @@ export class AddEditHorse extends React.Component {
                       <MedsDropdown></MedsDropdown>
                       <div className="form-group">
                           <label htmlFor="med-notes">Special Notes</label>
-                          <textarea className="form-control" id="med-notes" defaultValue={someHorse.medNotes}></textarea>
+                          <textarea className="form-control" id="med-notes" defaultValue={someHorse.medNotes || ""}></textarea>
                       </div>
                     </div>
                     <button type="button" className="btn btn-border" id="add-med-btn">+ Additional Medicine</button>

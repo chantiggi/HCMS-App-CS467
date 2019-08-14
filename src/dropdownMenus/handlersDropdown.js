@@ -23,11 +23,13 @@ export class HandlersDropdown extends React.Component {
         if (this.props.required === "true") { required = true; }
         else { required = false; }
 
+        let currentHandlerLevel = this.props.currentHandlerLevel || "";
+
         return (
             <div className="form-group">
                 <label htmlFor={this.props.dropdownID}>Handler Level{required ? (<span className="required-input">*</span>) : ("")}</label>
-                <select className="form-control" id={this.props.dropdownID} required={required}>
-                    <option value="" defaultValue>Select Handler Level</option>
+                <select className="form-control" id={this.props.dropdownID} value={currentHandlerLevel} required={required}>
+                    <option value="" >Select Handler Level</option>
                     {handlers.map(handlerLevel =>
                         <option key={handlerLevel.handlerLevelID} value={handlerLevel.handlerLevelID}>{handlerLevel.handlerLevelName}</option>
                     )}
