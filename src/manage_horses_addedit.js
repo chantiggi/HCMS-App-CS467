@@ -39,7 +39,6 @@ export class AddEditHorse extends React.Component {
         let closeModal = () => this.setState({ isOpen: false })
         let openModal = () => this.setState({ isOpen: true })
         const {horse} = this.state;
-        
 
         return (
           <div className="add-edit-container">
