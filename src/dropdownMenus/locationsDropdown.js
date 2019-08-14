@@ -4,9 +4,24 @@ export class LocationsDropdown extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            locations: [],
-        };
+        if(this.props.location) {
+          this.state = {
+              locations: [],
+              value: this.props.location
+          };
+        }
+        else {
+          this.state = {
+              locations: [],
+              value: ''
+          };
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
     }
 
     componentDidMount() {
@@ -26,8 +41,8 @@ export class LocationsDropdown extends React.Component {
         return (
             <div className="form-group">
                 <label htmlFor={this.props.dropdownID}>{this.props.time === "AM" ? "Daytime" : "Nighttime"} Location{required ? (<span className="required-input">*</span>) : ("")}</label>
-                <select className="form-control" id={this.props.dropdownID} required={required}>
-                    <option value="" defaultValue>Select Location</option>
+                <select className="form-control" id={this.props.dropdownID} value={this.state.value} onChange={this.handleChange} required={required}>
+                    <option value="">Select Location</option>
                     {locations.map(location =>
                         <option key={location.locationID} value={location.locationID}>{location.locationName}</option>
                     )}
