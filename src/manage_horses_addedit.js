@@ -87,16 +87,28 @@ export class AddEditHorse extends React.Component {
 
                 {/****Horse Feed Information****/}
                 <div className="section-wrapper">
+
                     <h5 className="form-heading" id="feed-info-header">Feed Information</h5>
+
                     <div className="feed-info">
-                        <AmountsDropdown dropdownID="feed-amount" required="true"></AmountsDropdown>
-                        <UnitsDropdown dropdownID="feed-unit" required="true"></UnitsDropdown>
-                        <FeedDropdown dropdownID="feed-type" required="true"></FeedDropdown>
+                        <div className="row">
+                          <div className="col-sm">
+                              <AmountsDropdown dropdownID="feed-amount" required="true"></AmountsDropdown>
+                          </div>
+                          <div className="col-sm">
+                              <UnitsDropdown dropdownID="feed-unit" required="true"></UnitsDropdown>
+                          </div>
+                          <div className="col-sm">
+                              <FeedDropdown dropdownID="feed-type" required="true"></FeedDropdown>
+                          </div>
+                        </div>
                         <div className="form-group">
                             <label htmlFor="feed-notes" defaultValue={someHorse.feedNotes || ""}>Special Notes</label>
                             <textarea className="form-control" id="feed-notes"></textarea>
                         </div>
+
                     </div>
+                    <hr></hr>
                     <button type="button" className="btn btn-border" id="add-feed-btn">+ Additional Feed</button>
                 </div>
 
@@ -120,6 +132,7 @@ export class AddEditHorse extends React.Component {
                           <textarea className="form-control" id="med-notes" defaultValue={someHorse.medNotes || ""}></textarea>
                       </div>
                     </div>
+                    <hr></hr>
                     <button type="button" className="btn btn-border" id="add-med-btn">+ Additional Medicine</button>
                 </div>
                 <button type="submit" className="btn btn-solid submit-horse-btn" id="submit-horse">Submit Horse</button>
