@@ -139,3 +139,7 @@ footer>div>div>ul>li, footer>div>div>a{
     color: red;
     text-align: center;
 }
+
+.jumbotron {
+    text-align: center;
+}
