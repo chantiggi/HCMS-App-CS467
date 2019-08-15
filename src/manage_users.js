@@ -9,7 +9,7 @@ import { EditUserForm } from './editdelete_user';
 
 import { NavBar } from './navbar';
 import { Footer } from './footer';
-
+import { InactivateModal } from './inactivate_modal.js'
 
 export class ManageUsers extends React.Component {
     constructor(props) {
@@ -43,7 +43,7 @@ export class ManageUsers extends React.Component {
 
                 <div className="form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" for="exampleCheck1">Show Inactive Users</label>
+                    <label className="form-check-label" htmlFor="exampleCheck1">Show Inactive Users</label>
                 </div>
 
                 <div className="tab-content" id="manage-users-tab">
@@ -68,46 +68,13 @@ export class ManageUsers extends React.Component {
                                 <td>{user.email}</td>
                                 <td>{user.isAdmin}</td>
                                 <td className="edit-del-user">
-                                    <button type="button" className="btn btn-solid" id="edit-user-btn" data-toggle="modal" data-target=".edit-user-modal">Edit</button>
 
-                                    <div className="modal fade edit-user-modal" data-backdrop="static">
-                                        <div className="modal-dialog modal-lg">
-                                            <div className="modal-content">
-                                                <div className="modal-header">
-                                                    <h6>Edit User - [User]</h6>
-                                                    <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
-                                                </div>
-                                                <div className="modal-body">
-
-                                                  <EditUserForm />
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <EditUserForm modeTitle="Edit" userID={user.userID}/>
 
                                 </td>
                                 <td>
 
-                                  <button type="button" className="btn btn-border" id="inactivate-user-btn" data-toggle="modal" data-target=".inactivate-user">Inactivate</button>
-
-                                  <div className="modal fade inactivate-user">
-                                      <div className="modal-dialog">
-                                          <div className="modal-content">
-                                              <div className="modal-header">
-                                                  <h6>Inactivate User - [User] </h6>
-                                                  <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
-                                              </div>
-                                              <div className="modal-body modal-sm">
-                                                <p>Are you sure you want to inactivate <b>[User]</b>?</p>
-                                              </div>
-                                              <div className="modal-footer">
-                                                <button type="button" className="btn inactivate-btn">Inactivate</button>
-                                                <button type="button" className="btn btn-border" data-dismiss="modal">Cancel</button>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                    <InactivateModal targetType="User" targetID={user.userID} targetName={user.username}/>
 
                                 </td>
                             </tr>
@@ -140,4 +107,3 @@ export class ManageUsers extends React.Component {
         )
     }
 }
-
