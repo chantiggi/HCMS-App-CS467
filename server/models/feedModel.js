@@ -4,9 +4,12 @@ var sql = require('./db.js');
 //Feed object constructor
 var Feed = function(feed) {
     this.feed = feed.feed;
+    this.horseFeedID = feed.horseFeedID;
     this.horseID = feed.horseID;
     this.horseName = feed.horseName;
+    this.amountID = feed.amountID;
     this.amount = feed.amount;
+    this.unitID = feed.unitID;
     this.unit = feed.unit;
     this.feedID = feed.feedID;
     this.feedName = feed.feedName;
@@ -28,7 +31,9 @@ Feed.getAllPossibleFeed =  function(result) {
 }
 
 Feed.getHorseFeed = function(horseID, result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Feed.feedID, Feed.feedName, HorseFeed.feedNotes " +
+    sql.query("SELECT Horse.horseID, Horse.horseName, " +
+    "Amount.amountID, Amount.amount, Unit.unitID, Unit.unit, Feed.feedID, Feed.feedName, " +
+    "HorseFeed.feedNotes, HorseFeed.horseFeedID " +
     "FROM HorseFeed " +
     "LEFT JOIN Horse on Horse.horseID = HorseFeed.horseID " +
     "LEFT JOIN Amount on Amount.amountID = HorseFeed.amountID " +

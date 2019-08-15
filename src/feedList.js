@@ -24,7 +24,7 @@ export class FeedList extends React.Component {
         return (
             <ul>
                 {feed.map(currentFeed =>
-                    <li key={currentFeed.feedID}>{currentFeed.amount} {currentFeed.unit} {currentFeed.feedName} {currentFeed.feedNotes ? ('(Notes: ' + currentFeed.feedNotes + ')') : ''}</li>
+                    <li key={currentFeed.horseFeedID}>{currentFeed.amount} {currentFeed.unit} {currentFeed.feedName} {currentFeed.feedNotes ? ('(Notes: ' + currentFeed.feedNotes + ')') : ''}</li>
                 )}
             </ul>
         )

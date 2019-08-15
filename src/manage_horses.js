@@ -72,7 +72,7 @@ export class ManageHorses extends React.Component {
                                 )}
                             </tbody>
                         </table>
-                        <AddEditHorse modeTitle="Add Horse" horseID={null}/>
+                        <AddEditHorse modeTitle="Add Horse"/>
                     </div>
                 </div>
             </div>

@@ -12,11 +12,11 @@ module.exports = function(app) {
     var MedsCtrl = require('../controllers/MedsController');
     var UserCtrl = require('../controllers/UserController');
     var OrgCtrl = require('../controllers/OrgController');
+    var TimeCtrl = require('../controllers/TimeController');
 
     // LogIn Validation Routes
     app.route('/restapi/validateLogIn/:username/:password')
         .get(ValidationCtrl.validate_login);
-
 
     // Horse Routes
     app.route('/restapi/horses')
@@ -62,6 +62,10 @@ module.exports = function(app) {
     // Unit Routes    
     app.route('/restapi/allunits')
         .get(UnitsCtrl.get_all_units);
+
+    // Timing Routes
+    app.route('/restapi/alltimes')
+        .get(TimeCtrl.get_all_times);
 
     //User Routes
     app.route('/restapi/users')

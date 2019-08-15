@@ -24,26 +24,20 @@ export class Home extends React.Component {
                     <div className="row">
                         <div className="col-sm-4">
                             <div className="card text-center">
-                                <img className="card-img-top" src={HorseFeed}></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Feed</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4">
-                            <div className="card text-center">
+                                <h5 className="card-header">Medications</h5>
                                 <img className="card-img-top" src={HorseMeds}></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Medications</h5>
-                                </div>
                             </div>
                         </div>
                         <div className="col-sm-4">
                             <div className="card text-center">
+                                <h5 className="card-header">Feed</h5>
+                                <img className="card-img-top" src={HorseFeed}></img>
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="card text-center">
+                                <h5 className="card-header">Handlers</h5>
                                 <img className="card-img-top" src={HorseHandler}></img>
-                                <div className="card-body">
-                                    <h5 className="card-title">Handlers</h5>
-                                </div>
                             </div>
                         </div>
                     </div>

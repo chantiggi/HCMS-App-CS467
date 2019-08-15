@@ -17,7 +17,7 @@ export class EditUserForm extends React.Component {
         var currentUserID;
         if (this.props.userID)
         {
-          let currentUserID = this.props.userID;
+          currentUserID = this.props.userID;
           fetch(`/restapi/users/${currentUserID}`, {
               method: "GET"
           })

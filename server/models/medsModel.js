@@ -4,14 +4,17 @@ var sql = require('./db.js');
 //Meds object constructor
 var Meds = function(meds) {
     this.meds = meds.meds;
+    this.horseMedID = meds.horseMedID;
     this.horseID = meds.horseID;
     this.horseName = meds.horseName;
+    this.amountID = meds.amountID;
+    this.amount = meds.amount;
+    this.unitID = meds.unitID;
+    this.unit = meds.unit;
     this.medID = meds.medID;
-    this.medAmt = meds.amount;
-    this.medUnit = meds.unit;
     this.medName = meds.medName;
     this.medNotes = meds.medNotes;
-    this.horseMedID = meds.horseMedID;
+    this.timingID = meds.timingID;
     this.timingName = meds.timingName;
 }
 
@@ -31,7 +34,9 @@ Meds.getAllPossibleMeds = function(result) {
 }
 
 Meds.getHorseMeds = function (horseID, result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
+    sql.query("SELECT HorseMed.horseMedID, Horse.horseID, Horse.horseName, " +
+    "Amount.amountID, Amount.amount, Unit.unitID, Unit.unit, Med.medID, Med.medName," +
+    "HorseMed.medNotes, Timing.timingID, Timing.timingName " +
     "FROM HorseMed " +
     "LEFT JOIN Horse on Horse.horseID = HorseMed.horseID " +
     "LEFT JOIN Amount on Amount.amountID = HorseMed.amountID " +

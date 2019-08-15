@@ -4,9 +4,23 @@ export class AmountsDropdown extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            amounts: [],
-        };
+        if(this.props.amount) {
+            this.state = {
+                amounts: [],
+                value: this.props.amount
+            };
+        }
+        else {
+            this.state = {
+                locations: [],
+                value: ''
+            };
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
 
     componentDidMount() {
@@ -26,8 +40,8 @@ export class AmountsDropdown extends React.Component {
         return (
             <div className="form-group">
                 <label htmlFor={this.props.dropdownID}>Amount{required ? (<span className="required-input">*</span>) : ("")}</label>
-                <select className="form-control" id={this.props.dropdownID} required={required}>
-                    <option value="" defaultValue>Select Amount</option>
+                <select className="form-control" id={this.props.dropdownID} value={this.state.value} onChange={this.handleChange} required={required}>
+                    <option value="">Select Amount</option>
                     {amounts.map(amount =>
                         <option key={amount.amountID} value={amount.amountID}>{amount.amount}</option>
                     )}
