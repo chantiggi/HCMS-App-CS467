@@ -26,14 +26,14 @@ module.exports = function(app) {
         .get(HorseCtrl.get_a_horse)
         .put(HorseCtrl.update_a_horse)
         .delete(HorseCtrl.delete_a_horse);
-    
+
     // Feed Routes
     app.route('/restapi/allfeed')
         .get(FeedCtrl.get_all_feed);
     app.route('/restapi/feed/:horseID')
         .get(FeedCtrl.get_horse_feed);
 
-    // Med Routes    
+    // Med Routes
     app.route('/restapi/meds/:horseID')
         .get(MedsCtrl.get_horse_meds);
     app.route('/restapi/allmeds')
@@ -46,27 +46,30 @@ module.exports = function(app) {
         .get(MedsCtrl.get_horse_am_meds);
     app.route('/restapi/pm-meds/:horseID')
         .get(MedsCtrl.get_horse_pm_meds);
-    
+
     // Handler Routes
     app.route('/restapi/allhandlerlevels')
-        .get(HandlerCtrl.get_all_handler_lvls); 
+        .get(HandlerCtrl.get_all_handler_lvls);
 
-    // Location Routes    
+    // Location Routes
     app.route('/restapi/alllocations')
         .get(LocationsCtrl.get_all_locations);
-    
+
     // Amount Routes
     app.route('/restapi/allamounts')
         .get(AmtsCtrl.get_all_amounts); 
     
     // Unit Routes    
     app.route('/restapi/allunits')
-        .get(UnitsCtrl.get_all_units);      
+        .get(UnitsCtrl.get_all_units);
 
     //User Routes
     app.route('/restapi/users')
         .get(UserCtrl.list_all_users)
         .post(UserCtrl.add_user);
+    app.route('/restapi/users/:userID')
+        .get(UserCtrl.get_a_user)
+        .put(UserCtrl.update_a_user)
 
     //Org Routes
     app.route('/restapi/org')

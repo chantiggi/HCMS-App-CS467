@@ -5,6 +5,7 @@ import { NavBar } from './navbar';
 import { Footer } from './footer';
 
 import { AddEditHorse } from './manage_horses_addedit'
+import { InactivateModal } from './inactivate_modal.js'
 
 export class ManageHorses extends React.Component {
   constructor(props) {
@@ -65,7 +66,7 @@ export class ManageHorses extends React.Component {
                                         <AddEditHorse modeTitle="Edit" horseID={horse.horseID}/>
                                     </td>
                                     <td>
-                                      Test
+                                        <InactivateModal targetType="Horse" targetID={horse.horseID} targetName={horse.horseName}/>
                                     </td>
                                 </tr>
                                 )}
