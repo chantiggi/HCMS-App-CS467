@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class MedList extends React.Component {
+export class AMMedList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -11,7 +11,7 @@ export class MedList extends React.Component {
 
     componentDidMount() {
         const horseID = this.props.horseID;
-        fetch(`/restapi/meds/${horseID}`, {
+        fetch(`/restapi/am-meds/${horseID}`, {
             method: "GET",
         })
         .then(response => response.json())
@@ -24,7 +24,7 @@ export class MedList extends React.Component {
         return (
             <ul>
             {meds.map(currentMed =>
-                <li key={currentMed.horseMedID}>{currentMed.timingName}: {currentMed.amount} {currentMed.unit} {currentMed.medName} {currentMed.medNotes ? ('(Notes: ' + currentMed.medNotes + ')') : ''}</li>
+                <li key={currentMed.horseMedID}>{currentMed.amount} {currentMed.unit} {currentMed.medName} {currentMed.medNotes ? ('(Notes: ' + currentMed.medNotes + ')') : ''}</li>
             )}
             </ul>
         )

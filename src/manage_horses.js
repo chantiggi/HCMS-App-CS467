@@ -1,34 +1,33 @@
 import React from 'react';
 import './stylesheets/manage_horses_style.css';
 import { ManagementTabs } from './managementtabs';
-import { Link } from 'react-router-dom';
 import { NavBar } from './navbar';
 import { Footer } from './footer';
 
+import { AddEditHorse } from './manage_horses_addedit'
+import { InactivateModal } from './inactivate_modal.js'
+
 export class ManageHorses extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+      super(props);
 
-        this.state = {
-            horses: [],
-        };
-    }
+      this.state = {
+          horses: []
+      };
+  }
 
-    componentDidMount() {
-        const {match: {params}} = this.props;
-        fetch('/restapi/horses', {
-            method: "GET"
-        })
-        .then(response => response.json())
-        .then(data => this.setState({horses: data}))
-        .catch(err => console.log("Error reading data: ", err))
-    }
-
+  componentDidMount() {
+      fetch('/restapi/horses', {
+          method: "GET"
+      })
+          .then(response => response.json())
+          .then(data => this.setState({horses: data}))
+          .catch(err => console.log("Error reading data: ", err))
+  }
     render() {
         const {horses} = this.state;
 
         return (
-
             <div>
             <NavBar />
             <div className="container">
@@ -38,7 +37,7 @@ export class ManageHorses extends React.Component {
                 <div className="tab-content" id="manage-horses-tab">
 
                     <div id="manage-horses-main">
-                        <h5>To view a horse's full profile, including history, feed, medications, click Edit/Delete for the appropriate horse.</h5>
+                        <h5>To view a horse's full profile, including history, feed, medications, click the Edit button for the appropriate horse.</h5>
                         <table className="table table-striped table-bordered" id="manage-horses-table">
                             <thead className="table-head">
                                 <tr>
@@ -49,6 +48,7 @@ export class ManageHorses extends React.Component {
                                     <th>Daytime Location</th>
                                     <th>Nighttime Location</th>
                                     <th>Estimated Age</th>
+                                    <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -63,16 +63,17 @@ export class ManageHorses extends React.Component {
                                     <td>{horse.nightLocationName}</td>
                                     <td>{(new Date()).getFullYear() - horse.birthYear + " years" || "Unknown"}</td>
                                     <td>
-                                        <Link to={'/addedithorse'} className="btn btn-solid" id="edit-del-btn">Edit/Delete</Link>
+                                        <AddEditHorse modeTitle="Edit" horseID={horse.horseID}/>
+                                    </td>
+                                    <td>
+                                        <InactivateModal targetType="Horse" targetID={horse.horseID} targetName={horse.horseName}/>
                                     </td>
                                 </tr>
                                 )}
                             </tbody>
                         </table>
-
-                        <button type="button" className="btn btn-solid" id="add-btn">Add New Horse</button>
+                        <AddEditHorse modeTitle="Add Horse"/>
                     </div>
-
                 </div>
             </div>
             <Footer />

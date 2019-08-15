@@ -4,9 +4,24 @@ export class UnitsDropdown extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            units: [],
-        };
+        if(this.props.unit) {
+            this.state = {
+                units: [],
+                value: this.props.unit
+            };
+        }
+        else {
+            this.state = {
+                units: [],
+                value: ''
+            };
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
 
     componentDidMount() {
@@ -26,8 +41,8 @@ export class UnitsDropdown extends React.Component {
         return (
             <div className="form-group">
                 <label htmlFor={this.props.dropdownID}>Unit{required ? (<span className="required-input">*</span>) : ("")}</label>
-                <select className="form-control" id={this.props.dropdownID} required={required}>
-                    <option value="" defaultValue>Select Unit</option>
+                <select className="form-control" id={this.props.dropdownID} value={this.state.value} onChange={this.handleChange} required={required}>
+                    <option value="">Select Unit</option>
                     {units.map(unit =>
                         <option key={unit.unitID} value={unit.unitID}>{unit.unit}</option>
                     )}

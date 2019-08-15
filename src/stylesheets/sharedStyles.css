@@ -6,6 +6,10 @@ html,body{
     min-height: 100%;
 }
 
+.container {
+	padding-top: 20px;
+}
+
 /************************************************************************************************************
 *   Active navbar links, navbar links on hover, and dropdown items on hover should share a color
 *************************************************************************************************************/
@@ -100,6 +104,19 @@ footer>div>div>ul>li, footer>div>div>a{
 }
 
 /************************************************************************************************************
+*   White Buttons
+*************************************************************************************************************/
+.btn-border {
+  background: white;
+  color: lightseagreen;
+  border-radius: 3px;
+  border: 1px solid lightseagreen;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/************************************************************************************************************
 *   Styling for photo in edit/delete horses
 *************************************************************************************************************/
 #photo {
@@ -108,4 +125,21 @@ footer>div>div>ul>li, footer>div>div>a{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+/************************************************************************************************************
+*   Styling for Forms without Border
+*************************************************************************************************************/
+.no-border {
+  border: none;
+}
+
+.error-msg {
+    margin: 5px;
+    color: red;
+    text-align: center;
+}
+
+.jumbotron {
+    text-align: center;
 }

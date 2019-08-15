@@ -4,9 +4,23 @@ export class FeedDropdown extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            feed: [],
-        };
+        if(this.props.feed) {
+            this.state = {
+                feed: [],
+                value: this.props.feed
+            };
+        }
+        else {
+            this.state = {
+                feed: [],
+                value: ''
+            }
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
 
     componentDidMount() {
@@ -26,8 +40,8 @@ export class FeedDropdown extends React.Component {
         return (
             <div className="form-group">
                 <label htmlFor={this.props.dropdownID}>Feed Type{required ? (<span className="required-input">*</span>) : ("")}</label>
-                <select className="form-control" id={this.props.dropdownID} required={required}>
-                <option value="" defaultValue>Select Feed Type</option>
+                <select className="form-control" id={this.props.dropdownID} value={this.state.value} onChange={this.handleChange} required={required}>
+                <option value="">Select Feed Type</option>
                     {feed.map(currentFeed =>
                         <option key={currentFeed.feedID} value={currentFeed.feedID}>{currentFeed.feedName}</option>
                     )}

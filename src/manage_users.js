@@ -1,9 +1,15 @@
 import React from 'react';
 import './stylesheets/manage_users.css';
+import './stylesheets/add_user.css';
 import { ManagementTabs } from './managementtabs';
 import { Link } from 'react-router-dom';
+
+import { AddUserForm } from './add_user';
+import { EditUserForm } from './editdelete_user';
+
 import { NavBar } from './navbar';
 import { Footer } from './footer';
+import { InactivateModal } from './inactivate_modal.js'
 
 export class ManageUsers extends React.Component {
     constructor(props) {
@@ -37,7 +43,7 @@ export class ManageUsers extends React.Component {
 
                 <div className="form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" for="exampleCheck1">Show Inactive Users</label>
+                    <label className="form-check-label" htmlFor="exampleCheck1">Show Inactive Users</label>
                 </div>
 
                 <div className="tab-content" id="manage-users-tab">
@@ -50,6 +56,7 @@ export class ManageUsers extends React.Component {
                                 <th>Email Address</th>
                                 <th>Administrator?</th>
                                 <th>&nbsp;</th>
+                                <th>&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -61,14 +68,21 @@ export class ManageUsers extends React.Component {
                                 <td>{user.email}</td>
                                 <td>{user.isAdmin}</td>
                                 <td className="edit-del-user">
-                                    <Link to={'/editdeleteuser'} className="btn btn-solid edit-del-user" id="edit-del-btn">Edit/Delete</Link>
+
+                                    <EditUserForm modeTitle="Edit" userID={user.userID}/>
+
+                                </td>
+                                <td>
+
+                                    <InactivateModal targetType="User" targetID={user.userID} targetName={user.username}/>
+
                                 </td>
                             </tr>
                             )}
                         </tbody>
                     </table>
 
-                    <Link to={'/adduser'} className="btn add-user btn-solid" id="add-btn">Add New User</Link>
+                    <AddUserForm modeTitle="Add User" />
 
                 </div>
             </div>
@@ -77,4 +91,3 @@ export class ManageUsers extends React.Component {
         )
     }
 }
-
