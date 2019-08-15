@@ -133,3 +133,13 @@ footer>div>div>ul>li, footer>div>div>a{
 .no-border {
   border: none;
 }
+
+.error-msg {
+    margin: 5px;
+    color: red;
+    text-align: center;
+}
+
+.jumbotron {
+    text-align: center;
+}

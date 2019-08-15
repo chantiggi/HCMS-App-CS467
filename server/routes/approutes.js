@@ -2,6 +2,7 @@
 
 module.exports = function(app) {
     // Controllers
+    var ValidationCtrl = require('../controllers/ValidationController');
     var HorseCtrl = require('../controllers/HorseController');
     var HandlerCtrl = require('../controllers/HandlerController');
     var LocationsCtrl = require('../controllers/LocationsController');
@@ -12,12 +13,15 @@ module.exports = function(app) {
     var UserCtrl = require('../controllers/UserController');
     var OrgCtrl = require('../controllers/OrgController');
 
+    // LogIn Validation Routes
+    app.route('/restapi/validateLogIn/:username/:password')
+        .get(ValidationCtrl.validate_login);
+
 
     // Horse Routes
     app.route('/restapi/horses')
         .get(HorseCtrl.list_all_horses)
-        .post(HorseCtrl.add_horse);
-
+        .post(HorseCtrl.add_horse);    
     app.route('/restapi/horses/:horseID')
         .get(HorseCtrl.get_a_horse)
         .put(HorseCtrl.update_a_horse)
@@ -32,6 +36,16 @@ module.exports = function(app) {
     // Med Routes
     app.route('/restapi/meds/:horseID')
         .get(MedsCtrl.get_horse_meds);
+    app.route('/restapi/allmeds')
+        .get(MedsCtrl.get_all_meds);
+    app.route('/restapi/am-meds')
+        .get(MedsCtrl.list_all_horses_am_meds);
+    app.route('/restapi/pm-meds')
+        .get(MedsCtrl.list_all_horses_pm_meds);
+    app.route('/restapi/am-meds/:horseID')
+        .get(MedsCtrl.get_horse_am_meds);
+    app.route('/restapi/pm-meds/:horseID')
+        .get(MedsCtrl.get_horse_pm_meds);
 
     // Handler Routes
     app.route('/restapi/allhandlerlevels')
@@ -41,37 +55,21 @@ module.exports = function(app) {
     app.route('/restapi/alllocations')
         .get(LocationsCtrl.get_all_locations);
 
+    // Amount Routes
     app.route('/restapi/allamounts')
-        .get(AmtsCtrl.get_all_amounts);
-
+        .get(AmtsCtrl.get_all_amounts); 
+    
+    // Unit Routes    
     app.route('/restapi/allunits')
         .get(UnitsCtrl.get_all_units);
-
-    app.route('/restapi/allmeds')
-        .get(MedsCtrl.get_all_meds);
-
-    app.route('/restapi/am-meds')
-        .get(MedsCtrl.list_all_horses_am_meds);
-
-    app.route('/restapi/pm-meds')
-        .get(MedsCtrl.list_all_horses_pm_meds);
-
-    app.route('/restapi/am-meds/:horseID')
-        .get(MedsCtrl.get_horse_am_meds);
-
-    app.route('/restapi/pm-meds/:horseID')
-        .get(MedsCtrl.get_horse_pm_meds);
-
 
     //User Routes
     app.route('/restapi/users')
         .get(UserCtrl.list_all_users)
         .post(UserCtrl.add_user);
-
     app.route('/restapi/users/:userID')
         .get(UserCtrl.get_a_user)
         .put(UserCtrl.update_a_user)
-
 
     //Org Routes
     app.route('/restapi/org')
