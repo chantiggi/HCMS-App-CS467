@@ -45,5 +45,37 @@ var User = function (user) {
     });
 };
 
+// Currently being used to display user information in the Edit Modal on Manage Users page, selects users with OrgID: 1
+User.getUserById = function(userID, result) {
+    sql.query("SELECT User.userID, User.username, User.password, User.fname, User.lname, User.email, User.isAdmin, " +
+        "User.isActive, User.handlerLevelID, HandlerLevel.handlerLevelName, User.orgID, Organization.orgName " +
+        "FROM User " +
+        "LEFT JOIN HandlerLevel on User.handlerLevelID = HandlerLevel.handlerLevelID " +
+        "LEFT JOIN Organization on User.orgID = Organization.orgID " +
+        "WHERE User.userID = ?", userID, function (err, res) {
+            if (err) {
+                console.log("Error with SQL query: ", err);
+                result(null, err);
+            }
+            else {
+                console.log("Horse data returned is: ", res);
+                result(null, res);
+            }
+        });
+};
+
+
+// This is based on horseModel.js's updateHorseById: Still needs to be updated with a real query
+User.updateUserById = function (userID, user, result) {
+    sql.query('UPDATE User SET User = ? WHERE userID = ?', [user.user, userID], function (err, res) {
+        if (err) {
+            console.log("Error with SQL query: ", err);
+            result(null, err);
+        }
+        else {
+            result(null, res);
+        }
+    });
+};
 
 module.exports = User;
