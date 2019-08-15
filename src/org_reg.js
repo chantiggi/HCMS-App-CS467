@@ -11,29 +11,29 @@ export class OrgReg extends React.Component {
                       <h5>Organization Information</h5>
 	                      <div className="row">
 	                          <div className="col-50">
-	                              <label for="org"><i className="fa fa-envelope"></i> Name</label>
+	                              <label htmlFor="org"><i className="fa fa-envelope"></i> Name</label>
 	                              <input type="text" id="org" name="org" placeholder="Organization Name" />
 	                          </div>
 	                      </div>                      
 
 	                      <div className="row">
 	                          <div className="col-50">
-	                              <label for="org"><i className="fa fa-envelope"></i> Address</label>
+	                              <label htmlFor="orgadd"><i className="fa fa-envelope"></i> Address</label>
 	                              <input type="text" id="orgadd" name="orgadd" placeholder="Street Address" />
 	                          </div>
 	                      </div> 
 
 	                      <div className="row">
 	                          <div className="col-50">
-	                              <label for="org"><i className="fa fa-envelope"></i> City</label>
+	                              <label htmlFor="city"><i className="fa fa-envelope"></i> City</label>
 	                              <input type="text" id="city" name="city" placeholder="City" />
 	                          </div>
 	                          <div className="col-25">
-	                              <label for="org"><i className="fa fa-envelope"></i> State</label>
-	                              <input type="text" id="city" name="state" placeholder="State" />
+	                              <label htmlFor="state"><i className="fa fa-envelope"></i> State</label>
+	                              <input type="text" id="state" name="state" placeholder="State" />
 	                          </div>	 
 	                          <div className="col-25">
-	                              <label for="org"><i className="fa fa-envelope"></i> Zip Code</label>
+	                              <label htmlFor="zipcode"><i className="fa fa-envelope"></i> Zip Code</label>
 	                              <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" />
 	                          </div>	                                                   
 	                      </div> 	                      
@@ -41,18 +41,18 @@ export class OrgReg extends React.Component {
                       <h5>Administrator Information</h5>
                       <div className="row">
                           <div className="col">
-                              <label for="fname">First Name</label>
+                              <label htmlFor="fname">First Name</label>
                               <input type="text" id="fname" name="fname" placeholder="John" />
                           </div>
                           <div className="col">
-                              <label for="lname">Last Name</label>
+                              <label htmlFor="lname">Last Name</label>
                               <input type="text" id="lname" name="lname" placeholder="Smith" />
                           </div>
                       </div>
 
                       <div className="row">
                           <div className="col">
-                              <label for="email"><i className="fa fa-envelope"></i> Email Address</label>
+                              <label htmlFor="email"><i className="fa fa-envelope"></i> Email Address</label>
                               <input type="text" id="email" name="email" placeholder="john@example.com" />
                           </div>
                       </div>
@@ -60,7 +60,7 @@ export class OrgReg extends React.Component {
 
 
                   </div>
-                  <input type="submit" value="Add New Organizatiom" className="btns addbtn" />
+                  <input type="submit" value="Add New Organization" className="btns addbtn" />
               </div>
           </form>
         )
