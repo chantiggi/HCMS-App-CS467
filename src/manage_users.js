@@ -82,23 +82,7 @@ export class ManageUsers extends React.Component {
                         </tbody>
                     </table>
 
-                    <button type="button" className="btn btn-solid" id="add-user-btn" data-toggle="modal" data-target=".add-user-modal">Add User</button>
-
-                    <div className="modal fade add-user-modal" data-backdrop="static">
-                        <div className="modal-dialog modal-lg">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h6>Add New User </h6>
-                                    <button type="button" className="close" aria-label="Close" data-dismiss="modal">X</button>
-                                </div>
-                                <div className="modal-body">
-
-                                  <AddUserForm />
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <AddUserForm modeTitle="Add User" />
 
                 </div>
             </div>
