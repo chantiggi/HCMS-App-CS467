@@ -11,7 +11,7 @@ module.exports = function(app) {
     var MedsCtrl = require('../controllers/MedsController');
     var UserCtrl = require('../controllers/UserController');
     var OrgCtrl = require('../controllers/OrgController');
-
+    var HomeCtrl = require('../controllers/HomeController');
 
     // Horse Routes
     app.route('/restapi/horses')
@@ -22,19 +22,22 @@ module.exports = function(app) {
         .get(HorseCtrl.get_a_horse)
         .put(HorseCtrl.update_a_horse)
         .delete(HorseCtrl.delete_a_horse);
-
+    
+    // Feed Routes
     app.route('/restapi/allfeed')
         .get(FeedCtrl.get_all_feed);
-
     app.route('/restapi/feed/:horseID')
         .get(FeedCtrl.get_horse_feed);
-    
+
+    // Med Routes    
     app.route('/restapi/meds/:horseID')
         .get(MedsCtrl.get_horse_meds);
     
+    // Handler Routes
     app.route('/restapi/allhandlerlevels')
         .get(HandlerCtrl.get_all_handler_lvls); 
 
+    // Location Routes    
     app.route('/restapi/alllocations')
         .get(LocationsCtrl.get_all_locations);
     
@@ -68,8 +71,19 @@ module.exports = function(app) {
 
     //Org Routes
     app.route('/restapi/org')
-        .get(OrgCtrl.list_org);
+        .get(OrgCtrl.list_org)
+        .post(OrgCtrl.add_org);
 
+    app.route('/restapi/org/:orgID')
+        .get(OrgCtrl.get_org)
+        .put(OrgCtrl.update_org);
+
+    //Home Routes
+    app.route('/restapi/home')
+        .get(HomeCtrl.get_blog);
+
+    app.route('/restapi/home/:orgNoteID')
+        .get(HomeCtrl.get_a_blog)        
 
     /* Render the page using index.pug file*/
     app.get('*', (req, res) => {
