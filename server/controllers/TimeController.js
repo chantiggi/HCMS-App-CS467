@@ -1,6 +1,6 @@
 'use strict';
 
-var Time = require('../models/timeModel.js');
+var Time = require('../models/TimeModel.js');
 
 // Get all available times for dropdown lists
 exports.get_all_times = function(req, res) {

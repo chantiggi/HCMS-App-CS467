@@ -21,30 +21,13 @@ export class AddEditHorse extends React.Component {
         this.getMedData = this.getMedData.bind(this);
     }
 
-    getHandlerData(val) {
-        console.log("Handler val in add/edit page is: ", val);
-        this.setState({handlerLevelID: val});
-    }
+    getHandlerData(val) { this.setState({handlerLevelID: val}); }
+    getAMLocData(val) { this.setState({dayLocationID: val}); }
+    getPMLocData(val) { this.setState({nightLocationID: val}); }
+    getFeedData(val) { this.setState({feedArray: val}); }
+    getMedData(val) { this.setState({medArray: val}); }
 
-    getAMLocData(val) {
-        console.log("AM location val in add/edit page is: ", val);
-        this.setState({dayLocationID: val});
-    }
-
-    getPMLocData(val) {
-        console.log("PM location val in add/edit page is: ", val)
-        this.setState({nightLocationID: val});
-    }
-
-    getFeedData(val) {
-        console.log("feed val in add/edit page is: ", val);
-    }
-
-    getMedData(val) {
-        console.log("med val in add/edit page is: ", val);
-    }
-
-    getAllHorseInfo() {
+    getHorseInfo() {
         if (this.props.horseID)
         {
           let currentHorseID = this.props.horseID;
@@ -68,10 +51,34 @@ export class AddEditHorse extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         if (this.state.horse === null) {
-            console.log("horse is null - you must have hit submit from the add horse modal");
-            console.log("this.state = ", this.state);
             fetch(`restapi/horses`, {
                 method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    horseName: this.state.horseName,
+                    description: this.state.description || null,
+                    birthYear: this.state.birthYear || null,
+                    specialNotes: this.state.specialNotes || null,
+                    history: this.state.history || null,
+                    isActive: 1,
+                    handlerLevelID: this.state.handlerLevelID,
+                    dayLocationID: this.state.dayLocationID,
+                    nightLocationID: this.state.nightLocationID,
+                    orgID: 1,
+                    feedArray: this.state.feedArray,
+                    medArray: this.state.medArray
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log("Data = ", data))
+            .catch(err => console.log("Error reading data: ", err))
+        }
+        else {
+            fetch(`restapi/horses/${this.props.horseID}`, {
+                method: "PUT",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -93,17 +100,11 @@ export class AddEditHorse extends React.Component {
             .then(data => console.log("Data = ", data))
             .catch(err => console.log("Error reading data: ", err))
         }
-        else {
-            console.log("horse not null - you must have hit submit from the edit modal");
-            console.log("this.state = ", this.state);
-            fetch(`restapi/horses/${this.props.horseID}`, {
-                method: "PUT"
-            })
-        }
+        this.setState({isOpen: false});
     }
 
     componentDidMount() {
-        this.getAllHorseInfo();
+        this.getHorseInfo();
     }
 
     render() {
@@ -168,8 +169,6 @@ export class AddEditHorse extends React.Component {
                 <div className="section-wrapper">
                     <h5 className="form-heading" id="med-info-header">Medicine Information</h5>
                         <MedsForm horseID={horse ? horse.horseID : null} sendData={this.getMedData}></MedsForm>
-                        <button type="button" className="btn btn-border" id="add-med-btn">+ Additional Medicine</button>
-                    <br></br><br></br>
                 </div>
                 
                 <button type="submit" className="btn btn-solid submit-horse-btn" id="submit-horse" onClick={this.handleSubmit}>Submit Horse</button>

@@ -3,7 +3,7 @@ import { AmountsDropdown } from './dropdownMenus/amountsDropdown';
 import { UnitsDropdown } from './dropdownMenus/unitsDropdown';
 import { MedsDropdown } from './dropdownMenus/medsDropdown';
 import { TimingDropdown } from './dropdownMenus/timingDropdown';
-
+import { AddNewMedsModal } from './addNewMedsModal';
 
 export class MedsForm extends React.Component {
     constructor(props) {
@@ -12,6 +12,22 @@ export class MedsForm extends React.Component {
         this.state = {
             meds: []
         };
+        this.getMedData = this.getMedData.bind(this);
+    }
+
+    getMedData(val) {
+        let medsToAddTo = this.state.meds;
+        // Make a temporary horseMedID to use as key for initial display. We will ignore
+        // this in the query so that the database autogenerates its own HorseMedID
+        val.horseMedID = new Date().getUTCMilliseconds();
+        medsToAddTo.push(val);
+        this.setState({meds: medsToAddTo});
+        this.props.sendData(this.state.meds);
+    }
+
+    handleChange = (event) => {
+        const value = event.target.value;
+        this.setState({...this.state, [event.target.name]: value});
     }
 
     componentDidMount() {
@@ -30,7 +46,7 @@ export class MedsForm extends React.Component {
 
         return (
             <div>
-                {meds ? (meds.map(currentMed =>                     
+                {meds.map(currentMed =>                     
                 <div className="med-info" key={currentMed.horseMedID}>
                     <div className="row">
                         <div className="col-sm">
@@ -48,33 +64,12 @@ export class MedsForm extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="med-notes">Special Notes</label>
-                        <textarea className="form-control" id="med-notes" defaultValue={currentMed.medNotes || ""}></textarea>
-                    </div>
-                    <hr></hr>
-                </div>
-                )) : (
-                <div className="med-info">
-                    <div className="row">
-                        <div className="col-sm">
-                            <TimingDropdown></TimingDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <AmountsDropdown dropdownID="med-amount" required="false"></AmountsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <UnitsDropdown dropdownID="med-unit" required="false"></UnitsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <MedsDropdown></MedsDropdown>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="med-notes">Special Notes</label>
-                        <textarea className="form-control" id="med-notes"></textarea>
+                        <textarea className="form-control" id="med-notes" name="medNotes" value={currentMed.medNotes ? currentMed.medNotes : ""} onChange={this.handleChange}></textarea>
                     </div>
                     <hr></hr>
                 </div>
                 )}
+                <AddNewMedsModal sendData={this.getMedData}></AddNewMedsModal>
             </div>
         )
     }

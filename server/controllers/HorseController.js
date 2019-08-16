@@ -12,10 +12,7 @@ exports.list_all_horses = function(req, res) {
 
 // Add a new horse
 exports.add_horse = function(req, res) {
-    console.log("req.body = ", req.body);
-    var newHorse = new Horse(req.body);
-
-    console.log("newHorse in controller = ", newHorse);
+    let newHorse = req.body;
 
     // handles null error
     if (!newHorse.horseName || !newHorse.handlerLevelID || 
@@ -41,7 +38,7 @@ exports.get_a_horse = function(req, res) {
 
 // Update an individual horse
 exports.update_a_horse = function(req, res) {
-    Horse.updateHorseById(req.params.horseID, new Horse(req.body), function(err, horse) {
+    Horse.updateHorseById(req.body, function(err, horse) {
         if (err) { res.send(err); }
         res.json(horse);
     });

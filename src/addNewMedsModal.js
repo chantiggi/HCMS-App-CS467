@@ -2,21 +2,21 @@ import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { AmountsDropdown } from './dropdownMenus/amountsDropdown';
 import { UnitsDropdown } from './dropdownMenus/unitsDropdown';
-import { FeedDropdown } from './dropdownMenus/feedDropdown';
+import { MedsDropdown } from './dropdownMenus/medsDropdown';
 
-export class AddNewFeedModal extends React.Component {
+export class AddNewMedsModal extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             amountID: '',
             unitID: '',
-            feedID: '',
-            feedNotes: null
+            medID: '',
+            medNotes: null
         }
         this.getAmountData = this.getAmountData.bind(this);
         this.getUnitData = this.getUnitData.bind(this);
-        this.getFeedData = this.getFeedData.bind(this);
+        this.getMedData = this.getMedData.bind(this);
     }
 
     getAmountData(val) {
@@ -29,18 +29,18 @@ export class AddNewFeedModal extends React.Component {
         this.setState({unitID: Number(val)});
     }
 
-    getFeedData(val) {
-        console.log("Feed val = ", val)
-        this.setState({feedID: Number(val)});
+    getMedData(val) {
+        console.log("Med val = ", val)
+        this.setState({medID: Number(val)});
     }
 
     handleNotesChange = (event) => {
-        this.setState({feedNotes: event.target.value});
+        this.setState({medNotes: event.target.value});
     }
- 
+
     handleSubmit = () => {
-        let newFeed = this.state;
-        this.props.sendData(newFeed);
+        let newMed = this.state;
+        this.props.sendData(newMed);
         this.setState({isOpen: false});
     }
 
@@ -50,12 +50,12 @@ export class AddNewFeedModal extends React.Component {
 
         return (
           <div>
-            <button type="button" className="btn btn-border" id="add-feed-btn" onClick={openModal}>+ Additional Feed</button>
+            <button type="button" className="btn btn-border" id="add-med-btn" onClick={openModal}>+ Additional Med</button>
 
             <Modal show={this.state.isOpen} onHide={closeModal} size="lg" backdrop="static">
               <Modal.Header closeButton>
                   <Modal.Title>
-                    <h6>Add New Feed</h6>
+                    <h6>Add New Medication</h6>
                   </Modal.Title>
               </Modal.Header>
 
@@ -63,22 +63,22 @@ export class AddNewFeedModal extends React.Component {
                 <div className="feed-info">
                     <div className="row">
                         <div className="col-sm">
-                            <AmountsDropdown dropdownID="feed-amount" required="true" sendData={this.getAmountData}></AmountsDropdown>
+                            <AmountsDropdown dropdownID="med-amount" required="true" sendData={this.getAmountData}></AmountsDropdown>
                         </div>
                         <div className="col-sm">
-                            <UnitsDropdown dropdownID="feed-unit" required="true" sendData={this.getUnitData}></UnitsDropdown>
+                            <UnitsDropdown dropdownID="med-unit" required="true" sendData={this.getUnitData}></UnitsDropdown>
                         </div>
                         <div className="col-sm">
-                            <FeedDropdown dropdownID="feed-type" required="true" sendData={this.getFeedData}></FeedDropdown>
+                            <MedsDropdown dropdownID="med-type" required="true" sendData={this.getMedData}></MedsDropdown>
                         </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="feed-notes">Special Notes</label>
-                            <textarea className="form-control" id="feed-notes" onChange={this.handleNotesChange}></textarea>
+                            <label htmlFor="med-notes">Special Notes</label>
+                            <textarea className="form-control" id="med-notes" onChange={this.handleNotesChange}></textarea>
                         </div>
                     <hr></hr>
                     </div>
-                <button type="submit" className="btn btn-solid submit-feed-btn" id="submit-feed" onClick={this.handleSubmit}>Add New Feed</button>
+                <button type="submit" className="btn btn-solid submit-feed-btn" id="submit-med" onClick={this.handleSubmit}>Add New Med</button>
               </Modal.Body>
             </Modal>
           </div>

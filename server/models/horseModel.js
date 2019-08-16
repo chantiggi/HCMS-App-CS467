@@ -11,7 +11,7 @@ var Horse = function (horse) {
     this.birthYear = horse.birthYear || null;
     this.specialNotes = horse.specialNotes || null;
     this.history = horse.history || null;
-    this.isActive = horse.isActive || 1;
+    this.isActive = horse.isActive;
     this.handlerLevelID = horse.handlerLevelID;
     this.handlerLevelName = horse.handlerLevelName || null;
     this.dayLocationID = horse.dayLocationID;
@@ -59,60 +59,44 @@ Horse.getAllHorses = function (result) {
                 result(null, err);
             }
             else {
-                console.log("Horses returned are: ", res);
+                //console.log("Horses returned are: ", res);
                 result(null, res);
             }
         });
 };
 
-// Still needs to be updated with a real query
 Horse.createHorse = function (newHorse, result) {
-    sql.query('INSERT INTO Horse (horseName, description, birthYear, specialNotes, history, isActive, handlerLevelID, dayLocationID, nightLocationID, orgID) ' +
-    'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', newHorse.horseName, newHorse.description, newHorse.birthYear, newHorse.specialNotes, newHorse.history, 
-    newHorse.isActive, newHorse.handlerLevelID, newHorse.dayLocationID, newHorse.nightLocationID, newHorse.orgID, 
+    console.log("newHorse = ", newHorse);
+    let sqlQuery = 'INSERT INTO Horse (horseName, description, birthYear, specialNotes, history, isActive, ' +
+    'handlerLevelID, dayLocationID, nightLocationID, orgID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    sql.query(sqlQuery, [newHorse.horseName, newHorse.description, newHorse.birthYear, newHorse.specialNotes, newHorse.history, newHorse.isActive, 
+        newHorse.handlerLevelID, newHorse.dayLocationID, newHorse.nightLocationID, newHorse.orgID],
     function (err, res) {
         if (err) {
             console.log("Error with SQL query: ", err);
             result(null, err);
         }
         else {
-            console.log("The new horse's ID is: ", res);
+            console.log("The new horse's ID is: ", res.insertId);
+            if (newHorse.feedArray) {
+                let sqlQuery2 = 'INSERT INTO HorseFeed (horseID, amountID, unitID, feedID, feedNotes) VALUES (?, ?, ?, ?, ?)';
+                newHorse.feedArray.forEach(element => {
+                    sql.query(sqlQuery2, [res.insertId, element.amountID, element.unitID, element.feedID, element.feedNotes],
+                        function(err2, res2) {
+                            if (err2) {
+                                console.log("Error with SQL query: ", err2);
+                                result(null, err2);
+                            }
+                            else{
+                                console.log("Results of adding horseFeed are: ", res2);
+                            }
+                    })
+                });
+            }
             result(null, res);
         }
     });
 };
-
-/*
-// Original - list of feed separated by commas - meds not added yet
-Horse.getHorseById = function(horseID, result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Horse.photo, Horse.description, " +
-    "Horse.birthYear, Horse.specialNotes, Horse.history, Horse.isActive, " +
-    "Horse.handlerLevelID, Horse.dayLocationID AS dayLocationID, Horse.nightLocationID AS nightLocationID, Horse.orgID, " +
-    "HandlerLevel.handlerLevelName, dayLoc.locationName AS dayLocationName, nightLoc.locationName AS nightLocationName, horseFeed " +
-    "FROM Horse " +
-    "LEFT JOIN HandlerLevel ON Horse.handlerLevelID = HandlerLevel.handlerLevelID " +
-    "LEFT JOIN Location AS dayLoc ON Horse.dayLocationID = dayLoc.locationID " +
-    "LEFT JOIN Location AS nightLoc ON Horse.nightLocationID = nightLoc.locationID " +
-    "LEFT JOIN (SELECT Horse.horseID as horseID, group_concat(Amount.amount, ' ', Unit.unit, ' ', Feed.feedName, ' (Notes: ', IFNULL(HorseFeed.feedNotes, 'N/A'), ')' separator ', ') AS horseFeed " +
-        "FROM Horse " +
-        "LEFT JOIN HorseFeed ON Horse.horseID = HorseFeed.horseID " +
-        "LEFT JOIN Amount ON Amount.amountID = HorseFeed.amountID " +
-        "LEFT JOIN Unit ON Unit.unitID = HorseFeed.unitID " +
-        "LEFT JOIN Feed ON Feed.feedID = HorseFeed.feedID " +
-        "GROUP BY Horse.horseID) AS tmp " +
-    "ON Horse.horseID = tmp.horseID " +
-    "WHERE Horse.horseID = ?", horseID, function(err, res) {
-        if (err) {
-            console.log("Error with SQL query: ", err);
-            result(null, err);
-        }
-        else {
-            console.log("Horse data returned is: ", res);
-            result(null, res);
-        }
-    });
-}
-*/
 
 // Currently being used to display an individual horse - we might be able to split
 // out the getFeed and get Meds into their own functions to simplify this some. 
@@ -154,20 +138,24 @@ Horse.getHorseById = function (horseID, result) {
                 result(null, err);
             }
             else {
-                console.log("Horse data returned is: ", res);
+                //console.log("Horse data returned is: ", res);
                 result(null, res);
             }
         });
 }
 
 // Still needs to be updated with a real query
-Horse.updateHorseById = function (horseID, horse, result) {
-    sql.query('UPDATE Horse SET Horse = ? WHERE horseID = ?', [horse.horse, horseID], function (err, res) {
+Horse.updateHorseById = function (horse, result) {
+    sql.query('UPDATE Horse SET horseName = ?, description = ?, birthYear = ?, specialNotes = ?, history = ?, isActive = ?, ' +
+    'handlerLevelID = ?, dayLocationID = ?, nightLocationID = ?, orgID = ? ' +
+    'WHERE horseID = ?', [horse.horseName, horse.description, horse.birthYear, horse.specialNotes, horse.history, horse.isActive, 
+        horse.handlerLevelID, horse.dayLocationID, horse.nightLocationID, horse.orgID, horse.horseID], function (err, res) {
         if (err) {
             console.log("Error with SQL query: ", err);
             result(null, err);
         }
         else {
+            console.log("Result of the update is: ", res);
             result(null, res);
         }
     });
