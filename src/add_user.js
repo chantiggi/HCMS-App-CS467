@@ -10,12 +10,7 @@ export class AddUserForm extends React.Component {
         this.state = {
             user: null,
             isOpen: false,
-            fname: "",
-            lname: "",
-            email: "",
-            username: "",
             isAdminChecked: false,
-            isAdmin: 0,
         };
 
         this.getHandlerData = this.getHandlerData.bind(this);
@@ -34,7 +29,7 @@ export class AddUserForm extends React.Component {
             currentValue = event.target.checked;
             console.log("Current checkbox value: " + currentValue + ", isAdmin status before change state: " + this.state.isAdmin);
 
-            // Change User to general user
+            // Change User to admin
             if (currentValue) {
                 this.setState({
                     [event.target.name]: currentValue,
@@ -42,7 +37,7 @@ export class AddUserForm extends React.Component {
                 });
             }
 
-            // Change User to admin
+            // Change User to general user
             else {
                 this.setState({
                     [event.target.name]: currentValue,
@@ -61,32 +56,40 @@ export class AddUserForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         console.log('handleSubmit: ', this.state);
-        fetch('restapi/users', {
-            method: "POST",
-            headers: {
-                'Accept' : 'application/json',
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({
-                fname: this.state.fname,
-                lname: this.state.lname,
-                username: this.state.username,
-                email: this.state.email,
-                handlerLevelID: this.state.handlerLevelID,
-                isAdmin: this.state.isAdmin,
-                orgID: 1
-            })
-        })
-        .then(response => response.json())
-        .then(data => console.log("User Data: ", data))
-        .catch(err => console.log("Error submitting data: ", err));
 
-        this.setState({isOpen: false});
+        if (this.state.user === null) {
+            fetch('restapi/users', {
+                method: "POST",
+                headers: {
+                    'Accept' : 'application/json',
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    fname: this.state.fname,
+                    lname: this.state.lname,
+                    username: this.state.username,
+                    email: this.state.email,
+                    handlerLevelID: this.state.handlerLevelID,
+                    isAdmin: this.state.isAdmin,
+                    isActive: 1,
+                    orgID: 1
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log("User Data: ", data))
+            .catch(err => console.log("Error submitting data: ", err));
+        }
+        this.setState({isOpen: false})
     }
+
 
     render() {
         let closeModal = () => this.setState({ isOpen: false })
         let openModal = () => this.setState({ isOpen: true })
+        let {user} = this.state;
+        if (user) {
+            user = user[0];
+        }
 
         return (
             <div className="edit-container">

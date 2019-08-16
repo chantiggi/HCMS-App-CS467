@@ -18,28 +18,24 @@ export class EditUserForm extends React.Component {
         this.getUserData = this.getUserData.bind(this);
     }
 
-    getHandlerData(val) {
-        this.setState({handlerLevelID: val});
-    }
-
-    getUserData(){
-        if (this.props.userID)
-        {
-          let currentUserID = this.props.userID;
-          fetch(`restapi/users/${currentUserID}`, {
-              method: "GET"
-          })
-
-          .then(response => response.json())
-          .then(data => this.setState({user: data}))
-          .catch(err => console.log("Error reading data: ", err))
+    getHandlerData(val) {this.setState({handlerLevelID: val});}
+    isAdminChecked(isUserAdmin) {
+        if (isUserAdmin) {
+            return true;
         }
         else {
-          this.setState({user: null});
+            return false;
         }
     }
 
     handleChange = (event) => {
+        if (event.target.type != 'checkbox') {
+            console.log();
+            const value = event.target.value;
+            this.setState({[event.target.name]: value});
+            console.log(this.state[event.target.name]);
+        }
+
         if (event.target.type == 'checkbox') {
             const checked = event.target.checked;
 
@@ -60,36 +56,84 @@ export class EditUserForm extends React.Component {
             }
         }
 
-        else {
-            const value = event.target.value;
-            this.setState({...this.state, [event.target.name]: value});
-            console.log(this.state[event.target.name]);
-        }
+
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
         console.log('handleSubmit: ', this);
-        fetch(`restapi/users/${this.props.userID}`, {
-            method: "PUT",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                fname: this.state.fname,
-                lname: this.state.lname,
-                username: this.state.username,
-                email: this.state.email,
-                handlerLevelID: this.state.handlerLevelID,
-                isAdmin: this.state.isAdmin,
-                orgID: 1
+        console.log('this.state');
+        if (this.state.user === null) {
+            fetch('restapi/users', {
+                method: "POST",
+                headers: {
+                    'Accept' : 'application/json',
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    fname: this.state.fname,
+                    lname: this.state.lname,
+                    username: this.state.username,
+                    email: this.state.email,
+                    handlerLevelID: this.state.handlerLevelID,
+                    isAdmin: this.state.isAdmin,
+                    isActive: 1,
+                    orgID: 1
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => console.log("Data = ", data))
-        .catch(err => console.log("Error reading data: ", err))
+            .then(response => response.json())
+            .then(data => console.log("User Data: ", data))
+            .catch(err => console.log("Error submitting data: ", err));
+        }
+        else {
+            console.log("This is first name on state: ", this.state.fname);
+            console.log("This is first name on state user fname: ", this.state.user[0].fname);
+            console.log("Updating User...");
 
+            if (this.state.userID === undefined) {
+                this.setState({userID: this.state.user[0].userID});
+            }
+            if (this.state.fname === undefined) {
+                this.setState({userID: this.state.user[0].fname});
+            }
+            if (this.state.lname === undefined) {
+                this.setState({userID: this.state.user[0].lname});
+            }
+            if (this.state.username === undefined) {
+                this.setState({userID: this.state.user[0].username});
+            }
+            if (this.state.email === undefined) {
+                this.setState({userID: this.state.user[0].email});
+            }
+            if (this.state.handlerLevelID === undefined) {
+                this.setState({userID: this.state.user[0].handlerLevelID});
+            }
+            if (this.state.isAdmin === undefined) {
+                this.setState({userID: this.state.user[0].isAdmin});
+            }
+
+            fetch(`restapi/users/${this.props.userID}`, {
+                method: "PUT",
+                headers: {
+                    'Accept' : 'application/json',
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    userID: this.state.userID || this.state.user[0].userID,
+                    fname: this.state.fname || this.state.fname[0].fname,
+                    lname: this.state.lname || this.state.user[0].lname,
+                    username: this.state.username || this.state.user[0].username,
+                    email: this.state.email || this.state.user[0].email,
+                    handlerLevelID: this.state.handlerLevelID || this.state.user[0].handlerLevelID,
+                    isAdmin: this.state.isAdmin || this.state.user[0].isAdmin,
+                    isActive: 1,
+                    orgID: 1
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log("User Data: ", data))
+            .catch(err => console.log("Error submitting data: ", err));
+        }
         this.setState({isOpen: false});
     }
 
@@ -97,10 +141,30 @@ export class EditUserForm extends React.Component {
         this.getUserData();
     }
 
+    getUserData(){
+        if (this.props.userID)
+        {
+          let currentUserID = this.props.userID;
+          fetch(`restapi/users/${currentUserID}`, {
+              method: "GET"
+          })
+
+          .then(response => response.json())
+          .then(data => this.setState({user: data}))
+          .catch(err => console.log("Error reading data: ", err))
+        }
+        else {
+          this.setState({user: null});
+        }
+    }
+
     render() {
         let closeModal = () => this.setState({ isOpen: false })
         let openModal = () => this.setState({ isOpen: true })
-        const {user} = this.state;
+        let {user} = this.state;
+        if (user) {
+            user = user[0];
+        }
 
         return (
             <div className="edit-container">
@@ -114,7 +178,6 @@ export class EditUserForm extends React.Component {
                     </Modal.Header>
 
                     <Modal.Body>
-                    {user.map(someUser =>
                         <form className="no-border" onSubmit={this.handleSubmit}>
                             <div className="row">
                                 <div className="col-50">
@@ -122,39 +185,39 @@ export class EditUserForm extends React.Component {
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="fname">First Name</label>
-                                            <input type="text" id="fname" name="fname" placeholder="John" defaultValue={ user ? someUser.fname : undefined} onChange={this.handleChange}/>
+                                            <input type="text" id="fname" name="fname" placeholder="John" defaultValue={ user ? user.fname : undefined} onChange={this.handleChange}/>
                                         </div>
                                         <div className="col">
                                             <label htmlFor="lname">Last Name</label>
-                                            <input type="text" id="lname" name="lname" placeholder="Smith" defaultValue={ user ? someUser.lname : undefined} onChange={this.handleChange}/>
+                                            <input type="text" id="lname" name="lname" placeholder="Smith" defaultValue={ user ? user.lname : undefined} onChange={this.handleChange}/>
                                         </div>
                                     </div>
 
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="username">Username</label>
-                                            <input type="text" id="username" name="username" placeholder="username" defaultValue={ user ? someUser.username : undefined} onChange={this.handleChange}  required/>
+                                            <input type="text" id="username" name="username" placeholder="username" defaultValue={ user ? user.username : undefined} onChange={this.handleChange}  required/>
                                         </div>
                                         <div className="col">
                                             <label htmlFor="email"><i className="fa fa-envelope"></i> Email Address</label>
-                                            <input type="text" id="email" name="email" placeholder="john@example.com" defaultValue={ user ? someUser.email : undefined} onChange={this.handleChange}  required/>
+                                            <input type="text" id="email" name="email" placeholder="john@example.com" defaultValue={ user ? user.email : undefined} onChange={this.handleChange}  required/>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col">
-                                            <HandlersDropdown dropdownID="handler-level" currentHandlerLevel={someUser.handlerLevelID} required="true" sendData={this.getHandlerData} ></HandlersDropdown>
+                                            <HandlersDropdown dropdownID="handler-level" currentHandlerLevel={user ? user.handlerLevelID : null} required="true" sendData={this.getHandlerData} ></HandlersDropdown>
                                         </div>
                                     </div>
                                     <div className="form-group form-inline">
                                         <label className="isAdmin-label" htmlFor="exampleCheck1">Is the user an <a href="#" title="User is given access to Manage Preferences" data-toggle="popover" data-trigger="hover" data-content="Some content">Administrator</a>?</label>
-                                        <input name="isAdminChecked" type="checkbox" className="" id="exampleCheck1" defaultChecked={someUser.isAdmin === 1 ? true : false} onChange={this.handleChange} />
+                                        <input name="isAdminChecked" type="checkbox" className="" id="exampleCheck1" defaultChecked={user ? this.isAdminChecked(user.isAdmin) : false} onChange={this.handleChange} />
                                     </div>
 
                                     {/*
                                         <div className="row">
                                             <div className="col-50">
                                                 <label htmlFor="org"><i className="fa fa-envelope"></i> Organization Name</label>
-                                                <input type="text" id="org" name="org" placeholder="Organization Name" defaultdefaultValue={someUser.orgName}/>
+                                                <input type="text" id="org" name="org" placeholder="Organization Name" defaultdefaultValue={user.orgName}/>
                                             </div>
                                         </div>
 
@@ -164,7 +227,6 @@ export class EditUserForm extends React.Component {
                                 <input type="submit" value="Edit User" className="btn-solid addbtn" />
                             </div>
                         </form>
-                    )}
                     </Modal.Body>
                 </Modal>
             </div>

@@ -70,9 +70,9 @@ User.getUserById = function(userID, result) {
 
 
 // This is based on horseModel.js's updateHorseById: Still needs to be updated with a real query
-User.updateUserById = function (userID, user, result) {
-    sql.query('UPDATE User SET fname = ?, lname = ?, username = ?, email = ?, handlerLevelID = ?,  isAdmin = ?, orgID = ?' +
-    ' WHERE userID = ?', [user.fname, user.lname, user.username, user.email, user.handlerLevelID, user.isAdmin, user.orgID, user.userID], function (err, res) {
+User.updateUserById = function (user, result) {
+    sql.query('UPDATE User SET fname = ?, lname = ?, username = ?, email = ?, handlerLevelID = ?,  isAdmin = ?, isActive = ?, orgID = ?' +
+    ' WHERE userID = ?', [user.fname, user.lname, user.username, user.email, user.handlerLevelID, user.isAdmin, user.isActive, user.orgID, user.userID], function (err, res) {
         if (err) {
             console.log("Error with SQL query: ", err);
             result(null, err);
