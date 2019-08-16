@@ -18,48 +18,33 @@ var Horse = function (horse) {
     this.dayLocationName = horse.dayLocationName || null;
     this.nightLocationID = horse.nightLocationID;
     this.nightLocationName = horse.nightLocationName || null;
-    this.horseFeedArray = horse.horseFeedArray || null;
-    this.horseMedArray = horse.horseMedArray || null;
+    this.hasFeed = horse.hasFeed || null;
+    this.hasMeds = horse.hasMeds || null;
     this.orgID = horse.orgID || null;
 }
 
-// Should we try to split off the feed and med queries to be separate?
 Horse.getAllHorses = function (result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Horse.photo, Horse.description, " +
-    "Horse.birthYear, Horse.specialNotes, Horse.history, Horse.isActive, " +
-    "Horse.handlerLevelID, Horse.dayLocationID AS dayLocationID, Horse.nightLocationID AS nightLocationID, Horse.orgID, " +
-    "HandlerLevel.handlerLevelName, dayLoc.locationName AS dayLocationName, nightLoc.locationName AS nightLocationName, " +
-    "horseFeedArray, horseMedArray " +
-    "FROM Horse " +
-    "LEFT JOIN HandlerLevel ON Horse.handlerLevelID = HandlerLevel.handlerLevelID " +
-    "LEFT JOIN Location AS dayLoc ON Horse.dayLocationID = dayLoc.locationID " +
-    "LEFT JOIN Location AS nightLoc ON Horse.nightLocationID = nightLoc.locationID " +
-    "LEFT JOIN (SELECT Horse.horseID as horseID, " +
-        "JSON_ARRAYAGG(CONCAT(Amount.amount, ' ', Unit.unit, ' ', Feed.feedName, ' (Notes: ', IFNULL(HorseFeed.feedNotes, 'N/A'), ')')) AS horseFeedArray " +
-        "FROM Horse " +
-        "LEFT JOIN HorseFeed ON Horse.horseID = HorseFeed.horseID " +
-        "LEFT JOIN Amount ON Amount.amountID = HorseFeed.amountID " +
-        "LEFT JOIN Unit ON Unit.unitID = HorseFeed.unitID " +
-        "LEFT JOIN Feed ON Feed.feedID = HorseFeed.feedID " +
-        "GROUP BY Horse.horseID) AS tmp1 " +
-    "ON Horse.horseID = tmp1.horseID " +
-        "LEFT JOIN (SELECT Horse.horseID as horseID, " +
-        "JSON_ARRAYAGG(CONCAT(Timing.timingName, ': ', Amount.amount, ' ', Unit.unit, ' ', Med.medName, ' (Notes: ', IFNULL(HorseMed.medNotes, 'N/A'), ')')) AS horseMedArray " +
-        "FROM Horse " +
-        "LEFT JOIN HorseMed ON Horse.horseID = HorseMed.horseID " +
-        "LEFT JOIN Amount ON Amount.amountID = HorseMed.amountID " +
-        "LEFT JOIN Unit ON Unit.unitID = HorseMed.unitID " +
-        "LEFT JOIN Med ON Med.medID = HorseMed.medID " +
-        "LEFT JOIN Timing ON Timing.timingID = HorseMed.medTimingID " +
-        "GROUP BY Horse.horseID) AS tmp2 " +
-    "ON Horse.horseID = tmp2.horseID",
+    sql.query('SELECT Horse.horseID, Horse.horseName, Horse.photo, Horse.description, ' +
+    'Horse.birthYear, Horse.specialNotes, Horse.history, Horse.isActive, ' +
+    'Horse.handlerLevelID, Horse.dayLocationID AS dayLocationID, Horse.nightLocationID AS nightLocationID, Horse.orgID, ' +
+    'HandlerLevel.handlerLevelName, dayLoc.locationName AS dayLocationName, nightLoc.locationName AS nightLocationName, ' +
+    'EXISTS(SELECT * FROM HorseFeed WHERE HorseFeed.horseID = Horse.horseID) AS hasFeed, ' +
+    'EXISTS(SELECT * FROM HorseMed WHERE HorseMed.horseID = Horse.horseID) AS hasMeds ' +
+    'FROM Horse ' +
+    'LEFT JOIN HandlerLevel ON Horse.handlerLevelID = HandlerLevel.handlerLevelID ' +
+    'LEFT JOIN Location AS dayLoc ON Horse.dayLocationID = dayLoc.locationID ' +
+    'LEFT JOIN Location AS nightLoc ON Horse.nightLocationID = nightLoc.locationID ' +
+    'LEFT JOIN HorseFeed ON HorseFeed.horseID = Horse.horseID ' +
+    'LEFT JOIN HorseMed ON HorseMed.horseID = Horse.horseID ' +
+    'WHERE Horse.orgID = 1 ' +
+    'GROUP BY Horse.horseID',
         function (err, res) {
             if (err) {
                 console.log("Error with SQL query: ", err);
                 result(null, err);
             }
             else {
-                //console.log("Horses returned are: ", res);
+                console.log("Horses returned are: ", res);
                 result(null, res);
             }
         });
@@ -123,35 +108,20 @@ Horse.createHorse = function (newHorse, result) {
 // back as a string of an array instead of just an array so I had trouble breaking these
 // into a <ul> element, etc on the front end. In other words, this still needs some work...
 Horse.getHorseById = function (horseID, result) {
-    sql.query("SELECT Horse.horseID, Horse.horseName, Horse.photo, Horse.description, " +
-        "Horse.birthYear, Horse.specialNotes, Horse.history, Horse.isActive, " +
-        "Horse.handlerLevelID, Horse.dayLocationID AS dayLocationID, Horse.nightLocationID AS nightLocationID, Horse.orgID, " +
-        "HandlerLevel.handlerLevelName, dayLoc.locationName AS dayLocationName, nightLoc.locationName AS nightLocationName, " +
-        "horseFeedArray, horseMedArray " +
-        "FROM Horse " +
-        "LEFT JOIN HandlerLevel ON Horse.handlerLevelID = HandlerLevel.handlerLevelID " +
-        "LEFT JOIN Location AS dayLoc ON Horse.dayLocationID = dayLoc.locationID " +
-        "LEFT JOIN Location AS nightLoc ON Horse.nightLocationID = nightLoc.locationID " +
-        "LEFT JOIN (SELECT Horse.horseID as horseID, " +
-            "JSON_ARRAYAGG(CONCAT(Amount.amount, ' ', Unit.unit, ' ', Feed.feedName, ' (Notes: ', IFNULL(HorseFeed.feedNotes, 'N/A'), ')')) AS horseFeedArray " +
-            "FROM Horse " +
-            "LEFT JOIN HorseFeed ON Horse.horseID = HorseFeed.horseID " +
-            "LEFT JOIN Amount ON Amount.amountID = HorseFeed.amountID " +
-            "LEFT JOIN Unit ON Unit.unitID = HorseFeed.unitID " +
-            "LEFT JOIN Feed ON Feed.feedID = HorseFeed.feedID " +
-            "GROUP BY Horse.horseID) AS tmp1 " +
-        "ON Horse.horseID = tmp1.horseID " +
-        "LEFT JOIN (SELECT Horse.horseID as horseID, " +
-            "JSON_ARRAYAGG(CONCAT(Timing.timingName, ': ', Amount.amount, ' ', Unit.unit, ' ', Med.medName, ' (Notes: ', IFNULL(HorseMed.medNotes, 'N/A'), ')')) AS horseMedArray " +
-            "FROM Horse " +
-            "LEFT JOIN HorseMed ON Horse.horseID = HorseMed.horseID " +
-            "LEFT JOIN Amount ON Amount.amountID = HorseMed.amountID " +
-            "LEFT JOIN Unit ON Unit.unitID = HorseMed.unitID " +
-            "LEFT JOIN Med ON Med.medID = HorseMed.medID " +
-            "LEFT JOIN Timing ON Timing.timingID = HorseMed.medTimingID " +
-            "GROUP BY Horse.horseID) AS tmp2 " +
-        "ON Horse.horseID = tmp2.horseID " +
-        "WHERE Horse.horseID = ?", horseID, function (err, res) {
+    sql.query('SELECT Horse.horseID, Horse.horseName, Horse.photo, Horse.description, ' +
+    'Horse.birthYear, Horse.specialNotes, Horse.history, Horse.isActive, ' +
+    'Horse.handlerLevelID, Horse.dayLocationID AS dayLocationID, Horse.nightLocationID AS nightLocationID, Horse.orgID, ' +
+    'HandlerLevel.handlerLevelName, dayLoc.locationName AS dayLocationName, nightLoc.locationName AS nightLocationName, ' +
+    'EXISTS(SELECT * FROM HorseFeed WHERE HorseFeed.horseID = Horse.horseID) AS hasFeed, ' +
+    'EXISTS(SELECT * FROM HorseMed WHERE HorseMed.horseID = Horse.horseID) AS hasMeds ' +
+    'FROM Horse ' +
+    'LEFT JOIN HandlerLevel ON Horse.handlerLevelID = HandlerLevel.handlerLevelID ' +
+    'LEFT JOIN Location AS dayLoc ON Horse.dayLocationID = dayLoc.locationID ' +
+    'LEFT JOIN Location AS nightLoc ON Horse.nightLocationID = nightLoc.locationID ' +
+    'LEFT JOIN HorseFeed ON HorseFeed.horseID = Horse.horseID ' +
+    'LEFT JOIN HorseMed ON HorseMed.horseID = Horse.horseID ' +
+    'WHERE Horse.horseID = ?',
+        horseID, function (err, res) {
             if (err) {
                 console.log("Error with SQL query: ", err);
                 result(null, err);
