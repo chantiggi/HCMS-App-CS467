@@ -4,6 +4,8 @@ import { ManagementTabs } from './managementtabs';
 import { NavBar } from './navbar';
 import { Footer } from './footer';
 
+
+
 export class ManageOrg extends React.Component {
 	    constructor(props) {
         super(props);
@@ -21,10 +23,13 @@ export class ManageOrg extends React.Component {
         .then(response => response.json())
         .then(data => this.setState({org: data}))
         .catch(err => console.log("Error reading data: ", err))
+
     }
 
+
 	render() {
-		const {users} = this.state;
+		const {org} = this.state;
+console.log(org);
 		return (
 			<div>
 			<div>
@@ -32,20 +37,26 @@ export class ManageOrg extends React.Component {
 			<div className="container">
 
 				<ManagementTabs />
-
+				
 				<div className="tab-content org" id="">
+				
+					{org.map(post =>
 					<form className="form-org">
-						<h5 className="otitle">Organization Information</h5>
+						
+						<h5 className="otitle" >Organization Information </h5>
+						
 						<div className="row">
 							
 							<div className="col">
-								<div className="form-group">
+							
+								<div className="form-group" key={post.orgName}>
 									
 									<label for="oname"><i className="fa fa-envelope"></i>Name</label>
 
-									<input type="text" className="form-control org-name" id="oname" name="oname"/>
+									<input type="text" className="form-control org-name" id="oname" name="oname" defaultValue={post.orgName}/>
 
 								</div>
+								
 							</div>
 							
 						</div>
@@ -53,7 +64,7 @@ export class ManageOrg extends React.Component {
 							<div className="col">
 								<div className="form-group">
 									<label for="oaddress"><i className="fa fa-envelope"></i>Address</label>
-									<input type="text" className="form-control org-address" id="oaddress" name="oaddress" />
+									<input type="text" className="form-control org-address" id="oaddress" name="oaddress" defaultValue={post.streetAddress} />
 								</div>
 							</div>
 						</div>
@@ -61,29 +72,32 @@ export class ManageOrg extends React.Component {
 							<div className="col-4">
 								<div className="form-group">
 									<label for="city">City</label>
-									<input type="text" className="form-control" id="city" name="city" />
+									<input type="text" className="form-control" id="city" name="city" defaultValue={post.city}/>
 								</div>
 							</div>
 							<div className="col-2">
 								<div className="form-group">
 									<label for="state">State</label>
-									<input type="text" className="form-control" id="state" name="state" />
+									<input type="text" className="form-control" id="state" name="state" defaultValue={post.state}/>
 								</div>
 							</div>
 							<div className="col-4">
 								<div className="form-group">
 									<label for="zip">Zip Code</label>
-									<input type="text" className="form-control" id="zip" name="zip" />
+									<input type="text" className="form-control" id="zip" name="zip" defaultValue={post.zipCode}/>
 								</div>
 							</div>
 						</div>
 						<div className="row">
 							<div className="col">
 								<input type="submit" value="Submit Changes" className="btn btn-solid submit-org" />
+
+								
 							</div>
 						</div>
 
 					</form>
+					)}
 
 					<form className="form-feed">
 						<h5>Feed Information</h5>
