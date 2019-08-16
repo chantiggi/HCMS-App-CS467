@@ -13,7 +13,7 @@ var Org = function (org) {
 }
 
 
-    Org.getOrg = function (result) {
+Org.getOrg = function (result) {
     sql.query("SELECT orgName, streetAddress, city, state, zipCode FROM Organization WHERE orgID = 1",
         function (err, res) {
             if (err) {
@@ -27,22 +27,36 @@ var Org = function (org) {
         });
 };
 
-    Org.addOrg = function (result) {
-    sql.query("SELECT orgName, streetAddress, city, state, zipCode FROM Organization WHERE orgID = 1",
-        function (err, res) {
-            if (err) {
-                console.log("Error with SQL query: ", err);
-                result(null, err);
-            }
-            else {
-                console.log("Org returned is: ", res);
-                result(null, res);
-            }
-        });
+Org.createOrg = function (newOrg, result) {
+    console.log("newOrg = ", newOrg);
+    let sqlQuery = 'INSERT INTO Organization (orgName, streetAddress, city, state, zipCode) ' +
+    'VALUES (?, ?, ?, ?, ?)';
+    sql.query(sqlQuery, [newOrg.orgName, newOrg.streetAddress, newOrg.city, newOrg.state, newOrg.zipCode],
+    function (err, res) {
+        if (err) {
+            console.log("Error with SQL query: ", err);
+            result(null, err);
+        }
+        else {
+            console.log("The new org's ID is: ", res.insertId);
+            let sqlQuery2 = 'INSERT INTO User (username, fname, lname, email, isAdmin, isActive, handlerLevelID, orgID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+            sql.query(sqlQuery2, [newOrg.username, newOrg.fname, newOrg.lname, newOrg.email, newOrg.isAdmin, newOrg.isActive, newOrg.handlerLevelID, res.insertId],
+                function(err2, res2) {
+                    if (err2) {
+                        console.log("Error with SQL query: ", err2);
+                        result(null, err2);
+                    }
+                    else{
+                        console.log("Results of adding user is: ", res2.insertId);
+                    }  
+                });              
+            result(null, res);
+        }
+    });
 };
 
 
-    Org.getOrgById = function (orgID, result) {
+Org.getOrgById = function (orgID, result) {
     sql.query("SELECT orgName, streetAddress, city, state, zipCode FROM Organization WHERE orgID = ?", orgID, function (err, res) {
             if (err) {
                 console.log("Error with SQL query: ", err);
@@ -55,7 +69,7 @@ var Org = function (org) {
         });
 };
 
-    Org.updateOrgById = function (orgID, org, result) {
+Org.updateOrgById = function (orgID, org, result) {
         sql.query('UPDATE Organization SET Organization = ? WHERE orgID = ?', [org.org, orgID], function (err, res) {
             if (err) {
                 console.log("Error with SQL query: ", err);

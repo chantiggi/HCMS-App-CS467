@@ -12,10 +12,20 @@ exports.list_org = function(req, res) {
 
 //Add new org
 exports.add_org = function(req, res) {
-    Org.addOrg(function(err, org) {
-        if (err) { res.send(err); }
-        res.send(org);
-    });
+    let newOrg = req.body;
+
+    // handles null error
+    if (!newOrg.orgName || !newOrg.streetAddress || 
+        !newOrg.city || !newOrg.state || !newOrg.zipCode) {
+        res.status(400).send({error: true, message: "Please enter all required fields."});
+    }
+    else {
+        Org.createOrg(newOrg, function(err, org) {
+            if (err) { res.send(err); }
+            res.json(org);
+        });
+    }
+    
 };
 
 //Get individual org info
