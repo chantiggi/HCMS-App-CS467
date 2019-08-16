@@ -24,7 +24,7 @@ Feed.getAllPossibleFeed =  function(result) {
             result(null, err);
         }
         else {
-            console.log("All available feed types for this org are: ", res);
+            //console.log("All available feed types for this org are: ", res);
             result(null, res);
         }
     })
@@ -46,7 +46,7 @@ Feed.getHorseFeed = function(horseID, result) {
             result(null, err);
         }
         else {
-            console.log("This horse's feed is: ", res);
+            //console.log("This horse's feed is: ", res);
             result(null, res);
         }
     })

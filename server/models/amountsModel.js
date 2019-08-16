@@ -17,7 +17,7 @@ Amounts.getAllPossibleAmounts = function(result) {
             result(null, err);
         }
         else {
-            console.log("All available amounts for this org are: ", res);
+            //console.log("All available amounts for this org are: ", res);
             result(null, res);
         }
     })

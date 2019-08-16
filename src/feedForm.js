@@ -10,9 +10,51 @@ export class FeedForm extends React.Component {
         super(props);
 
         this.state = {
-            feed: []
+            feed: [],
         };
+
+        this.getAmountData = this.getAmountData.bind(this);
+        this.getUnitData = this.getUnitData.bind(this);
+        this.getFeedTypeData = this.getFeedTypeData.bind(this);
         this.getFeedData = this.getFeedData.bind(this);
+    }
+
+    getAmountData(val) {
+        let currFeed = this.state.feed;
+        console.log("currFeed = ", currFeed);
+        currFeed.amountID = Number(val);
+        this.setState({feed: currFeed});
+        //this.props.sendData(this.state.feed);
+        console.log("this.state in feedForm's getAmountData", this.state);
+    }
+    getUnitData(val) { 
+        this.setState({unitID: Number(val)}); 
+        this.props.sendData(this.state.feed.unitID);
+        console.log("this.state in feedForm's getUnitData", this.state);
+    }
+    getFeedTypeData(val) {
+        this.setState({feedID: Number(val)}); 
+        this.props.sendData(this.state.feed.feedID);
+        console.log("this.state in feedForm's getFeedTypeData", this.state);
+    }
+    handleChange = (event) => {
+        const value = event.target.value;
+        this.setState({...this.state, [event.target.name]: value});
+    }
+
+    getFeedData(val) {
+        let feedToAddTo = this.state.feed;
+        // Make a temporary horseFeedID to use as key for initial display. We will ignore 
+        // this in the query so that the database autogenerates its own horseFeedID
+        val.horseFeedID = new Date().getUTCMilliseconds();
+        val.isNew = true;
+        feedToAddTo.push(val);
+        this.setState({feed: feedToAddTo});
+        this.props.sendData(this.state.feed);
+    }
+
+    componentDidMount() {
+        this.getHorseInfo();
     }
 
     getHorseInfo() {
@@ -26,25 +68,6 @@ export class FeedForm extends React.Component {
         }
     }
 
-    getFeedData(val) {
-        let feedToAddTo = this.state.feed;
-        // Make a temporary horseFeedID to use as key for initial display. We will ignore 
-        // this in the query so that the database autogenerates its own horseFeedID
-        val.horseFeedID = new Date().getUTCMilliseconds();
-        feedToAddTo.push(val);
-        this.setState({feed: feedToAddTo});
-        this.props.sendData(this.state.feed);
-    }
-
-    handleChange = (event) => {
-        const value = event.target.value;
-        this.setState({...this.state, [event.target.name]: value});
-    }
-
-    componentDidMount() {
-        this.getHorseInfo();
-    }
-
     render() {
         const { feed } = this.state;
 
@@ -54,13 +77,13 @@ export class FeedForm extends React.Component {
                     <div className="feed-info" key={currentFeed.horseFeedID}>
                         <div className="row">
                         <div className="col-sm">
-                            <AmountsDropdown dropdownID="feed-amount" required="true" amount={currentFeed.amountID}></AmountsDropdown>
+                            <AmountsDropdown dropdownID="feed-amount" required="true" amount={currentFeed.amountID} sendData={this.getAmountData}></AmountsDropdown>
                         </div>
                         <div className="col-sm">
-                            <UnitsDropdown dropdownID="feed-unit" required="true" unit={currentFeed.unitID}></UnitsDropdown>
+                            <UnitsDropdown dropdownID="feed-unit" required="true" unit={currentFeed.unitID} sendData={this.getUnitData}></UnitsDropdown>
                         </div>
                         <div className="col-sm">
-                            <FeedDropdown dropdownID="feed-type" required="true" feed={currentFeed.feedID}></FeedDropdown>
+                            <FeedDropdown dropdownID="feed-type" required="true" feed={currentFeed.feedID} sendData={this.getFeedTypeData}></FeedDropdown>
                         </div>
                         </div>
                         <div className="form-group">

@@ -23,9 +23,9 @@ export class PMMedList extends React.Component {
 
         return (
             <ul>
-            {pmmeds.map(currentMed =>
+                {pmmeds ? (pmmeds.map(currentMed =>
                 <li key={currentMed.horseMedID}>{currentMed.amount} {currentMed.unit} {currentMed.medName} {currentMed.medNotes ? ('(Notes: ' + currentMed.medNotes + ')') : ''}</li>
-            )}
+            )) : "N/A"}
             </ul>
         )
     }

@@ -17,7 +17,7 @@ Units.getAllPossibleUnits = function(result) {
             result(null, err);
         }
         else {
-            console.log("All available units for this org are: ", res);
+            //console.log("All available units for this org are: ", res);
             result(null, res);
         }
     })

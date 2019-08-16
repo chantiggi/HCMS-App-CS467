@@ -3,9 +3,9 @@ import './stylesheets/landing_page.css';
 import { PublicMenu } from './publicMenu';
 import { NavLink } from 'react-router-dom';
 
-import HorseMeds from '../public/images/HorseMeds.jpg';
-import HorseFeed from '../public/images/HorseFeed.jpg';
-import HorseHandler from '../public/images/HorseHandler.jpg'
+import HorseMeds from '../public/js/HorseMeds.jpg';
+import HorseFeed from '../public/js/HorseFeed.jpg';
+import HorseHandler from '../public/js/HorseHandler.jpg'
 
 export class Home extends React.Component {
     render() {

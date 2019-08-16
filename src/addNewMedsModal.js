@@ -3,40 +3,30 @@ import { Modal } from 'react-bootstrap';
 import { AmountsDropdown } from './dropdownMenus/amountsDropdown';
 import { UnitsDropdown } from './dropdownMenus/unitsDropdown';
 import { MedsDropdown } from './dropdownMenus/medsDropdown';
+import { TimingDropdown } from './dropdownMenus/timingDropdown';
 
 export class AddNewMedsModal extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            timingID: '',
             amountID: '',
             unitID: '',
             medID: '',
             medNotes: null
         }
+        this.getTimingData = this.getTimingData.bind(this);
         this.getAmountData = this.getAmountData.bind(this);
         this.getUnitData = this.getUnitData.bind(this);
         this.getMedData = this.getMedData.bind(this);
     }
 
-    getAmountData(val) {
-        console.log("Amount val = ", val);
-        this.setState({amountID: Number(val)});
-    }
-
-    getUnitData(val) {
-        console.log("Unit val = ", val);
-        this.setState({unitID: Number(val)});
-    }
-
-    getMedData(val) {
-        console.log("Med val = ", val)
-        this.setState({medID: Number(val)});
-    }
-
-    handleNotesChange = (event) => {
-        this.setState({medNotes: event.target.value});
-    }
+    getTimingData(val) { this.setState({timingID: Number(val)}); }
+    getAmountData(val) { this.setState({amountID: Number(val)}); }
+    getUnitData(val) { this.setState({unitID: Number(val)}); }
+    getMedData(val) { this.setState({medID: Number(val)}); }
+    handleNotesChange = (event) => { this.setState({medNotes: event.target.value}); }
 
     handleSubmit = () => {
         let newMed = this.state;
@@ -62,6 +52,9 @@ export class AddNewMedsModal extends React.Component {
               <Modal.Body>
                 <div className="feed-info">
                     <div className="row">
+                    <div className="col-sm">
+                            <TimingDropdown required="true" sendData={this.getTimingData}></TimingDropdown>
+                        </div>
                         <div className="col-sm">
                             <AmountsDropdown dropdownID="med-amount" required="true" sendData={this.getAmountData}></AmountsDropdown>
                         </div>

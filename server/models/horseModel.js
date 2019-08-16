@@ -75,10 +75,12 @@ Horse.createHorse = function (newHorse, result) {
         if (err) {
             console.log("Error with SQL query: ", err);
             result(null, err);
+            return;
         }
         else {
             console.log("The new horse's ID is: ", res.insertId);
             if (newHorse.feedArray) {
+                console.log("feed array in horse model = ", newHorse.feedArray);
                 let sqlQuery2 = 'INSERT INTO HorseFeed (horseID, amountID, unitID, feedID, feedNotes) VALUES (?, ?, ?, ?, ?)';
                 newHorse.feedArray.forEach(element => {
                     sql.query(sqlQuery2, [res.insertId, element.amountID, element.unitID, element.feedID, element.feedNotes],
@@ -86,12 +88,29 @@ Horse.createHorse = function (newHorse, result) {
                             if (err2) {
                                 console.log("Error with SQL query: ", err2);
                                 result(null, err2);
+                                return;
                             }
                             else{
                                 console.log("Results of adding horseFeed are: ", res2);
                             }
                     })
                 });
+            }
+            if (newHorse.medArray) {
+                console.log("med array in horse model = ", newHorse.medArray);
+                let sqlQuery3 = 'INSERT INTO HorseMed (horseID, medTimingID, amountID, unitID, medID, medNotes) VALUES (?, ?, ?, ?, ?, ?)';
+                newHorse.medArray.forEach(element =>
+                    sql.query(sqlQuery3, [res.insertId, element.timingID, element.amountID, element.unitID, element.medID, element.medNotes],
+                        function(err3, res3) {
+                            if (err3) {
+                                console.log("Error with SQL query: ", err3);
+                                result(null, err3);
+                                return;
+                            }
+                            else {
+                                console.log("Results of adding horseMeds are: ", res3);
+                            }
+                        }))
             }
             result(null, res);
         }
@@ -146,6 +165,7 @@ Horse.getHorseById = function (horseID, result) {
 
 // Still needs to be updated with a real query
 Horse.updateHorseById = function (horse, result) {
+    console.log("horse in updateHorseById = ", horse);
     sql.query('UPDATE Horse SET horseName = ?, description = ?, birthYear = ?, specialNotes = ?, history = ?, isActive = ?, ' +
     'handlerLevelID = ?, dayLocationID = ?, nightLocationID = ?, orgID = ? ' +
     'WHERE horseID = ?', [horse.horseName, horse.description, horse.birthYear, horse.specialNotes, horse.history, horse.isActive, 
@@ -155,7 +175,41 @@ Horse.updateHorseById = function (horse, result) {
             result(null, err);
         }
         else {
-            console.log("Result of the update is: ", res);
+            console.log("Result of the general horse update is: ", res);
+            if (horse.feedArray) {
+                console.log("horse.feedArray = ", horse.feedArray);
+                let sqlQuery2 = 'INSERT INTO HorseFeed (horseID, amountID, unitID, feedID, feedNotes) VALUES (?, ?, ?, ?, ?)';
+                horse.feedArray.forEach(element => {
+                    console.log("current element being updated in database is = ", element);
+                    sql.query(sqlQuery2, [horse.horseID, element.amountID, element.unitID, element.feedID, element.feedNotes],
+                        function(err2, res2) {
+                            if (err2) {
+                                console.log("Error with SQL query: ", err2);
+                                result(null, err2);
+                                return;
+                            }
+                            else{
+                                console.log("Results of updating horseFeed is: ", res2);
+                            }
+                    })
+                });
+            }
+            if (horse.medArray) {
+                console.log("horse.medArray = ", horse.medArray);
+                let sqlQuery3 = 'INSERT INTO HorseMed (horseID, medTimingID, amountID, unitID, medID, medNotes) VALUES (?, ?, ?, ?, ?, ?)';
+                horse.medArray.forEach(element =>
+                    sql.query(sqlQuery3, [horse.horseID, element.timingID, element.amountID, element.unitID, element.medID, element.medNotes],
+                        function(err3, res3) {
+                            if (err3) {
+                                console.log("Error with SQL query: ", err3);
+                                result(null, err3);
+                                return;
+                            }
+                            else {
+                                console.log("Results of updating horseMeds are: ", res3);
+                            }
+                        }))
+            }
             result(null, res);
         }
     });

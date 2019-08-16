@@ -26,31 +26,16 @@ export class AddEditHorse extends React.Component {
     getPMLocData(val) { this.setState({nightLocationID: val}); }
     getFeedData(val) { this.setState({feedArray: val}); }
     getMedData(val) { this.setState({medArray: val}); }
-
-    getHorseInfo() {
-        if (this.props.horseID)
-        {
-          let currentHorseID = this.props.horseID;
-          fetch(`/restapi/horses/${currentHorseID}`, {
-              method: "GET"
-          })
-          .then(response => response.json())
-          .then(data => this.setState({horse: data}))
-          .catch(err => console.log("Error reading data: ", err))
-        }
-        else {
-            this.setState({horse: null});
-        }
-    }
-
     handleChange = (event) => {
         const value = event.target.value;
         this.setState({...this.state, [event.target.name]: value});
     }
 
     handleSubmit = (event) => {
+        console.log("this.state in add/edit horse is = ", this.state);
         event.preventDefault();
         if (this.state.horse === null) {
+            console.log("Adding the horse...");
             fetch(`restapi/horses`, {
                 method: "POST",
                 headers: {
@@ -77,6 +62,7 @@ export class AddEditHorse extends React.Component {
             .catch(err => console.log("Error reading data: ", err))
         }
         else {
+            console.log("Updating the horse...");
             fetch(`restapi/horses/${this.props.horseID}`, {
                 method: "PUT",
                 headers: {
@@ -84,16 +70,19 @@ export class AddEditHorse extends React.Component {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    horseName: this.state.horseName,
-                    description: this.state.description || null,
-                    birthYear: this.state.birthYear || null,
-                    specialNotes: this.state.specialNotes || null,
-                    history: this.state.history || null,
+                    horseID: this.state.horseID || this.state.horse[0].horseID,
+                    horseName: this.state.horseName || this.state.horse[0].horseName,
+                    description: this.state.description || this.state.horse[0].description || null,
+                    birthYear: this.state.birthYear || this.state.horse[0].birthYear || null,
+                    specialNotes: this.state.specialNotes || this.state.horse[0].specialNotes || null,
+                    history: this.state.history || this.state.horse[0].history || null,
                     isActive: 1,
-                    handlerLevelID: this.state.handlerLevelID,
-                    dayLocationID: this.state.dayLocationID,
-                    nightLocationID: this.state.nightLocationID,
-                    orgID: 1
+                    handlerLevelID: this.state.handlerLevelID || this.state.horse[0].handlerLevelID,
+                    dayLocationID: this.state.dayLocationID || this.state.horse[0].dayLocationID,
+                    nightLocationID: this.state.nightLocationID || this.state.horse[0].nightLocationID,
+                    orgID: 1,
+                    feedArray: this.state.feedArray,
+                    medArray: this.state.medArray
                 })
             })
             .then(response => response.json())
@@ -101,10 +90,27 @@ export class AddEditHorse extends React.Component {
             .catch(err => console.log("Error reading data: ", err))
         }
         this.setState({isOpen: false});
+        //this.props.reloadParent();
     }
 
     componentDidMount() {
         this.getHorseInfo();
+    }
+
+    getHorseInfo() {
+        if (this.props.horseID)
+        {
+          let currentHorseID = this.props.horseID;
+          fetch(`/restapi/horses/${currentHorseID}`, {
+              method: "GET"
+          })
+          .then(response => response.json())
+          .then(data => this.setState({horse: data}))
+          .catch(err => console.log("Error reading data: ", err))
+        }
+        else {
+            this.setState({horse: null});
+        }
     }
 
     render() {

@@ -17,7 +17,7 @@ Times.getAllPossibleTimes = function(result) {
             result(null, err);
         }
         else {
-            console.log("All available times for this org are: ", res);
+            //console.log("All available times for this org are: ", res);
             result(null, res);
         }
     })

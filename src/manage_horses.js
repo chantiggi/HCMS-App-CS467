@@ -25,10 +25,8 @@ export class ManageHorses extends React.Component {
         .catch(err => console.log("Error reading data: ", err))
   }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.horses.length !== this.state.horses.length) {
-            this.getAllHorses();
-        }
+    reloadPage = () => {
+        window.location.reload();
     }
 
     componentDidMount() {
@@ -72,7 +70,7 @@ export class ManageHorses extends React.Component {
                                     <td>{horse.nightLocationName}</td>
                                     <td>{horse.birthYear ? (new Date().getFullYear() - horse.birthYear) + " years" : "Unknown"}</td>
                                     <td>
-                                        <AddEditHorse modeTitle="Edit" horseID={horse.horseID}/>
+                                        <AddEditHorse modeTitle="Edit" horseID={horse.horseID} reloadParent={this.reloadPage}/>
                                     </td>
                                     <td>
                                         <InactivateModal targetType="Horse" targetID={horse.horseID} targetName={horse.horseName}/>
@@ -81,7 +79,7 @@ export class ManageHorses extends React.Component {
                                 )}
                             </tbody>
                         </table>
-                        <AddEditHorse modeTitle="Add Horse"/>
+                        <AddEditHorse modeTitle="Add Horse" reloadParent={this.reloadPage}/>
                     </div>
                 </div>
             </div>

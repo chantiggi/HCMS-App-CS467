@@ -12,7 +12,21 @@ export class MedsForm extends React.Component {
         this.state = {
             meds: []
         };
+        this.getTimingData = this.getTimingData.bind(this);
+        this.getAmountData = this.getAmountData.bind(this);
+        this.getUnitData = this.getUnitData.bind(this);
+        this.getMedTypeData = this.getMedTypeData.bind(this);
         this.getMedData = this.getMedData.bind(this);
+    }
+
+    getTimingData(val) { this.setState({timingID: Number(val)}); }
+    getAmountData(val) { this.setState({amountID: Number(val)}); }
+    getUnitData(val) { this.setState({unitID: Number(val)}); }
+    getMedTypeData(val) { this.setState({medID: Number(val)}); }
+    
+    handleChange = (event) => {
+        const value = event.target.value;
+        this.setState({...this.state, [event.target.name]: value});
     }
 
     getMedData(val) {
@@ -20,14 +34,10 @@ export class MedsForm extends React.Component {
         // Make a temporary horseMedID to use as key for initial display. We will ignore
         // this in the query so that the database autogenerates its own HorseMedID
         val.horseMedID = new Date().getUTCMilliseconds();
+        val.isNew = true;
         medsToAddTo.push(val);
         this.setState({meds: medsToAddTo});
         this.props.sendData(this.state.meds);
-    }
-
-    handleChange = (event) => {
-        const value = event.target.value;
-        this.setState({...this.state, [event.target.name]: value});
     }
 
     componentDidMount() {
@@ -53,13 +63,13 @@ export class MedsForm extends React.Component {
                             <TimingDropdown time={currentMed.timingID}></TimingDropdown>
                         </div>
                         <div className="col-sm">
-                            <AmountsDropdown dropdownID="med-amount" required="false" amount={currentMed.amountID}></AmountsDropdown>
+                            <AmountsDropdown dropdownID="med-amount" required="false" amount={currentMed.amountID} sendData={this.getAmountData}></AmountsDropdown>
                         </div>
                         <div className="col-sm">
-                            <UnitsDropdown dropdownID="med-unit" required="false" unit={currentMed.unitID}></UnitsDropdown>
+                            <UnitsDropdown dropdownID="med-unit" required="false" unit={currentMed.unitID} sendData={this.getUnitData}></UnitsDropdown>
                         </div>
                         <div className="col-sm">
-                            <MedsDropdown med={currentMed.medID}></MedsDropdown>
+                            <MedsDropdown med={currentMed.medID} sendData={this.getMedTypeData}></MedsDropdown>
                         </div>
                     </div>
                     <div className="form-group">
