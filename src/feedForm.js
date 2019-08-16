@@ -28,12 +28,17 @@ export class FeedForm extends React.Component {
 
     getFeedData(val) {
         let feedToAddTo = this.state.feed;
-        // Make a temporary horseFeedID to use as key for initial display. We will ignore this in the query
-        // so that the database autogenerates its own horseFeedID
+        // Make a temporary horseFeedID to use as key for initial display. We will ignore 
+        // this in the query so that the database autogenerates its own horseFeedID
         val.horseFeedID = new Date().getUTCMilliseconds();
         feedToAddTo.push(val);
         this.setState({feed: feedToAddTo});
         this.props.sendData(this.state.feed);
+    }
+
+    handleChange = (event) => {
+        const value = event.target.value;
+        this.setState({...this.state, [event.target.name]: value});
     }
 
     componentDidMount() {
@@ -45,7 +50,7 @@ export class FeedForm extends React.Component {
 
         return (
             <div>
-                {feed ? (feed.map(currentFeed =>
+                {feed.map(currentFeed =>
                     <div className="feed-info" key={currentFeed.horseFeedID}>
                         <div className="row">
                         <div className="col-sm">
@@ -60,26 +65,7 @@ export class FeedForm extends React.Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="feed-notes">Special Notes</label>
-                            <textarea className="form-control" id="feed-notes" defaultValue={currentFeed.feedNotes || ""}></textarea>
-                        </div>
-                        <hr></hr>
-                    </div>
-                )) : (
-                    <div className="feed-info">
-                        <div className="row">
-                        <div className="col-sm">
-                            <AmountsDropdown dropdownID="feed-amount" required="true"></AmountsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <UnitsDropdown dropdownID="feed-unit" required="true"></UnitsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <FeedDropdown dropdownID="feed-type" required="true"></FeedDropdown>
-                        </div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="feed-notes">Special Notes</label>
-                            <textarea className="form-control" id="feed-notes"></textarea>
+                            <textarea className="form-control" id="feed-notes" name="feedNotes" value={currentFeed.feedNotes ? currentFeed.feedNotes : ""} onChange={this.handleChange}></textarea>
                         </div>
                         <hr></hr>
                     </div>

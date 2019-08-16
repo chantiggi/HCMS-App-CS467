@@ -16,14 +16,25 @@ export class ManageHorses extends React.Component {
       };
   }
 
-  componentDidMount() {
-      fetch('/restapi/horses', {
-          method: "GET"
-      })
-          .then(response => response.json())
-          .then(data => this.setState({horses: data}))
-          .catch(err => console.log("Error reading data: ", err))
+  getAllHorses() {
+    fetch('/restapi/horses', {
+        method: "GET"
+    })
+        .then(response => response.json())
+        .then(data => this.setState({horses: data}))
+        .catch(err => console.log("Error reading data: ", err))
   }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.horses.length !== this.state.horses.length) {
+            this.getAllHorses();
+        }
+    }
+
+    componentDidMount() {
+        this.getAllHorses();
+    }
+
     render() {
         const {horses} = this.state;
 
