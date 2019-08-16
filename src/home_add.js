@@ -41,6 +41,7 @@ export class AddPost extends React.Component {
             .catch(err => console.log("Error reading data: ", err))
         }
         this.setState({isOpen: false});
+        this.props.reloadParent();
 
     }    
 
