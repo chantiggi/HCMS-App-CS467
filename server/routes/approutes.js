@@ -92,7 +92,8 @@ module.exports = function(app) {
 
     //Home Routes
     app.route('/restapi/home')
-        .get(HomeCtrl.get_blog);
+        .get(HomeCtrl.get_blog)
+        .post(HomeCtrl.add_blog);  
 
     app.route('/restapi/home/:orgNoteID')
         .get(HomeCtrl.get_a_blog)        

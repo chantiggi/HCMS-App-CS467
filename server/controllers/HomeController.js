@@ -16,3 +16,20 @@ exports.get_a_blog = function(req, res) {
         res.json(post);
     });
 };
+
+// Add new blog
+exports.add_blog = function(req, res) {
+    let newHome = req.body;
+
+    // handles null error
+    if (!newHome.orgNote) {
+        res.status(400).send({error: true, message: "Please enter all required fields."});
+    }
+    else {
+        Home.createBlog(newHome, function(err, post) {
+            if (err) { res.send(err); }
+            res.json(post);
+        });
+    }
+    
+};
