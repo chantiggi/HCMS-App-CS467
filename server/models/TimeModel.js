@@ -1,4 +1,5 @@
 'use strict';
+
 var sql = require('./db.js');
 
 //Times object constructor
