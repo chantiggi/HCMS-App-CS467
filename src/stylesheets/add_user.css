@@ -153,3 +153,9 @@ h3 {
 .handlerdropdown {
   width: 30%;
 }
+
+@media (min-width: 576px) {
+    .form-inline label.isAdmin-label  {
+        display: unset;
+    }
+}
