@@ -58,7 +58,7 @@ User.getUserById = function(userID, result) {
                 result(null, err);
             }
             else {
-                console.log("Horse data returned is: ", res);
+                console.log("User data returned is: ", res);
                 result(null, res);
             }
         });

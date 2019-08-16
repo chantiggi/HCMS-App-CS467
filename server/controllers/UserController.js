@@ -21,7 +21,7 @@ exports.add_user = function(req, res) {
         res.status(400).send({error: true, message: "Please enter all required fields."});
     }
     else {
-        User.createUser(User, function(err, horse) {
+        User.createUser(User, function(err, user) {
             if (err) { res.send(err); }
             res.json(user);
         });
