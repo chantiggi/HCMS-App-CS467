@@ -33,3 +33,11 @@ exports.add_blog = function(req, res) {
     }
     
 };
+
+// Update an individual blog
+exports.update_a_blog = function(req, res) {
+    Home.updateBlogById(req.body, function(err, post) {
+        if (err) { res.send(err); }
+        res.json(post);
+    });
+};
