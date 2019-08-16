@@ -21,6 +21,7 @@ export class AddPost extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         var date = new Date();
+        confirm("Post added")
         if (this.state.post === null) {
             fetch(`restapi/home`, {
                 method: "POST",
