@@ -16,12 +16,19 @@ export class UnitsDropdown extends React.Component {
                 value: ''
             };
         }
-
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
         this.setState({value: event.target.value});
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.value !== this.state.value) {
+            if(this.props.sendData) {
+                this.props.sendData(this.state.value);
+            }
+        }
     }
 
     componentDidMount() {

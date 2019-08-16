@@ -3,23 +3,24 @@ var sql = require('./db.js');
 
 //Horse object constructor
 var Horse = function (horse) {
-    this.horse = horse.horse;
+    //this.horse = horse.horse;
     this.horseID = horse.horseID;
     this.horseName = horse.horseName;
-    this.photo = horse.photo;
-    this.description = horse.description;
-    this.birthYear = horse.birthYear;
-    this.specialNotes = horse.specialNotes;
-    this.history = horse.history;
-    this.isActive = horse.isActive;
+    this.photo = horse.photo || null;
+    this.description = horse.description || null;
+    this.birthYear = horse.birthYear || null;
+    this.specialNotes = horse.specialNotes || null;
+    this.history = horse.history || null;
+    this.isActive = horse.isActive || 1;
     this.handlerLevelID = horse.handlerLevelID;
-    this.handlerLevelName = horse.handlerLevelName;
+    this.handlerLevelName = horse.handlerLevelName || null;
     this.dayLocationID = horse.dayLocationID;
-    this.dayLocationName = horse.dayLocationName;
+    this.dayLocationName = horse.dayLocationName || null;
     this.nightLocationID = horse.nightLocationID;
-    this.nightLocationName = horse.nightLocationName;
-    this.horseFeedArray = horse.horseFeedArray;
-    this.horseMedArray = horse.horseMedArray;
+    this.nightLocationName = horse.nightLocationName || null;
+    this.horseFeedArray = horse.horseFeedArray || null;
+    this.horseMedArray = horse.horseMedArray || null;
+    this.orgID = horse.orgID || null;
 }
 
 // Should we try to split off the feed and med queries to be separate?
@@ -66,14 +67,17 @@ Horse.getAllHorses = function (result) {
 
 // Still needs to be updated with a real query
 Horse.createHorse = function (newHorse, result) {
-    sql.query('...', newHorse, function (err, res) {
+    sql.query('INSERT INTO Horse (horseName, description, birthYear, specialNotes, history, isActive, handlerLevelID, dayLocationID, nightLocationID, orgID) ' +
+    'VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', newHorse.horseName, newHorse.description, newHorse.birthYear, newHorse.specialNotes, newHorse.history, 
+    newHorse.isActive, newHorse.handlerLevelID, newHorse.dayLocationID, newHorse.nightLocationID, newHorse.orgID, 
+    function (err, res) {
         if (err) {
             console.log("Error with SQL query: ", err);
             result(null, err);
         }
         else {
-            console.log("The new horse's ID is: ", res.insertId);
-            result(null, res.insertId);
+            console.log("The new horse's ID is: ", res);
+            result(null, res);
         }
     });
 };

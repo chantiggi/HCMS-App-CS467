@@ -44,7 +44,6 @@ export class ManageHorses extends React.Component {
                                     <th>Horse Name</th>
                                     <th>Handler Level</th>
                                     <th>Description</th>
-                                    <th>Photo</th>
                                     <th>Daytime Location</th>
                                     <th>Nighttime Location</th>
                                     <th>Estimated Age</th>
@@ -58,10 +57,9 @@ export class ManageHorses extends React.Component {
                                     <td>{horse.horseName}</td>
                                     <td>{horse.handlerLevelName}</td>
                                     <td>{horse.description || "N/A"}</td>
-                                    <td>photo</td>
                                     <td>{horse.dayLocationName}</td>
                                     <td>{horse.nightLocationName}</td>
-                                    <td>{(new Date()).getFullYear() - horse.birthYear + " years" || "Unknown"}</td>
+                                    <td>{horse.birthYear ? (new Date().getFullYear() - horse.birthYear) + " years" : "Unknown"}</td>
                                     <td>
                                         <AddEditHorse modeTitle="Edit" horseID={horse.horseID}/>
                                     </td>

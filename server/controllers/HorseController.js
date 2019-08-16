@@ -12,7 +12,10 @@ exports.list_all_horses = function(req, res) {
 
 // Add a new horse
 exports.add_horse = function(req, res) {
+    console.log("req.body = ", req.body);
     var newHorse = new Horse(req.body);
+
+    console.log("newHorse in controller = ", newHorse);
 
     // handles null error
     if (!newHorse.horseName || !newHorse.handlerLevelID || 
@@ -25,6 +28,7 @@ exports.add_horse = function(req, res) {
             res.json(horse);
         });
     }
+    
 };
 
 // Get an individual horse

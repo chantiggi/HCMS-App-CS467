@@ -24,6 +24,14 @@ export class HandlersDropdown extends React.Component {
       this.setState({value: event.target.value});
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.value !== this.state.value) {
+            if (this.props.sendData) {
+                this.props.sendData(this.state.value);
+            }
+        }
+    }
+
     componentDidMount() {
         fetch('/restapi/allhandlerlevels', {
             method: "GET",
