@@ -46,5 +46,22 @@ var Home = function (home) {
         });
 };
 
+Home.createBlog = function (newHome, result) {
+    console.log("newHome = ", newHome);
+    console.log(newHome.datetime);
+    let sqlQuery = 'INSERT INTO OrgNote (orgNote, datetime, userID, orgID) ' +
+    'VALUES (?, ?, ?, ?)';
+    sql.query(sqlQuery, [newHome.orgNote, newHome.datetime, newHome.userID, newHome.orgID],
+    function (err, res) {
+        if (err) {
+            console.log("Error with SQL query: ", err);
+            result(null, err);
+        }
+        else {
+            console.log("The new post's ID is: ", res.insertId);
+            result(null, res);
+        }
+    });
+};
 
 module.exports = Home;
