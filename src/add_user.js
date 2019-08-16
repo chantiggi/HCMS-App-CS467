@@ -10,17 +10,19 @@ export class AddUserForm extends React.Component {
         this.state = {
             user: null,
             isOpen: false,
+            fname: "",
+            lname: "",
+            email: "",
             isAdminChecked: false,
             isAdmin: 0,
         };
 
         this.getHandlerData = this.getHandlerData.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.onSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     getHandlerData(val) {
-        console.log
         this.setState({handlerLevelID: val});
     }
 
@@ -51,30 +53,31 @@ export class AddUserForm extends React.Component {
         else {
             currentValue = event.target.value;
             this.setState({[event.target.name]: currentValue});
+            console.log(this.state[event.target.name]);
         }
     }
 
     handleSubmit(event) {
         event.preventDefault();
-
-        // fetch('/restapi/users', {
-        //     method: "POST",
-        //     headers: {
-        //         'Accept' : 'application/json',
-        //         'Content-Type' : 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         fname: 'Linda',
-        //         lname: 'Schminda',
-        //         email: 'email15@email.com',
-        //         handlerLevelID: 2,
-        //         isAdmin: 0,
-        //         orgID: 1
-        //     })
-        // })
-        // .then(response => response.json())
-        // .then(data => console.log("User Data: ", data))
-        // .catch(err => console.log("Error submitting data: ", err));
+        console.log('handleSubmit: ', this.state);
+        fetch('/restapi/users', {
+            method: "POST",
+            headers: {
+                'Accept' : 'application/json',
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                fname: this.state.fname,
+                lname: this.state.lname,
+                email: this.state.email,
+                handlerLevelID: this.state.handlerLevelID,
+                isAdmin: this.state.isAdmin,
+                orgID: 1
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log("User Data: ", data))
+        .catch(err => console.log("Error submitting data: ", err));
     }
 
     render() {
@@ -100,22 +103,22 @@ export class AddUserForm extends React.Component {
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="fname">First Name</label>
-                                            <input type="text" id="fname" name="fname" placeholder="John"/>
+                                            <input type="text" id="fname" name="fname" placeholder="John" value={this.state.fname} onChange={this.handleChange}/>
                                         </div>
                                         <div className="col">
                                             <label htmlFor="lname">Last Name</label>
-                                            <input type="text" id="lname" name="lname" placeholder="Smith"/>
+                                            <input type="text" id="lname" name="lname" placeholder="Smith" value={this.state.lname} onChange={this.handleChange}/>
                                         </div>
                                     </div>
 
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="email"><i className="fa fa-envelope"></i> Email Address</label>
-                                            <input type="text" id="email" name="email" placeholder="john@example.com"/>
+                                            <input type="text" id="email" name="email" placeholder="john@example.com" value={this.state.email} onChange={this.handleChange}/>
                                         </div>
                                     </div>
 
-                                    <HandlersDropdown dropdownID="handler-level" required="true"></HandlersDropdown>
+                                    <HandlersDropdown dropdownID="handler-level" currentHandlerLevel={null} required="true" sendData={this.getHandlerData} ></HandlersDropdown>
 
                                     <div className="form-check">
                                         <input name="isAdminChecked" type="checkbox" className="form-check-input" id="exampleCheck1" checked={this.state.isAdminChecked} onChange={this.handleChange} />
