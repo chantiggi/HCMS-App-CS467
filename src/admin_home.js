@@ -2,10 +2,9 @@ import React from 'react';
 import './stylesheets/admin_home.css';
 import { NavBar } from './navbar';
 import { Footer } from './footer';
-import { EditPost } from './home_edit'
-import { AddPost } from './home_add'
 import Moment from 'react-moment';
 import { Modal } from 'react-bootstrap';
+import { AddEditPost } from './home_addedit'
 
 export class AdminHomePage extends React.Component {
   constructor(props) {
@@ -68,7 +67,7 @@ export class AdminHomePage extends React.Component {
                             <tr className="blogPost">
                                 <td className="col-sm-6">{post.orgNote}</td>
                                 <td width="10%">
-                                    <EditPost modeTitle="Edit" orgNoteID={post.orgNoteID} reloadParent={this.reloadPage} />
+                                    <AddEditPost modeTitle="Edit" orgNoteID={post.orgNoteID} reloadParent={this.reloadPage} />
                                 </td>
                             </tr> 
                                                                                
@@ -76,7 +75,7 @@ export class AdminHomePage extends React.Component {
                         )}    
                         </div>
                     </table>
-                    <AddPost modeTitle="Add New Post" reloadParent={this.reloadPage}/>
+                    <AddEditPost modeTitle="Add New Post" reloadParent={this.reloadPage}/>
                 </div>
 
 
