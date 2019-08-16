@@ -108,7 +108,8 @@ module.exports = function(app) {
         .post(HomeCtrl.add_blog);  
 
     app.route('/restapi/home/:orgNoteID')
-        .get(HomeCtrl.get_a_blog)        
+        .get(HomeCtrl.get_a_blog)  
+        .put(HomeCtrl.update_a_blog)      
 
     /* Render the page using index.pug file*/
     app.get('*', (req, res) => {
