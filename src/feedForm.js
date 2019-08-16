@@ -20,7 +20,7 @@ export class FeedForm extends React.Component {
     }
 
     getAmountData(val) {
-        let currFeed = this.state.feed;
+        let currFeed = this.state;
         console.log("currFeed = ", currFeed);
         currFeed.amountID = Number(val);
         this.setState({feed: currFeed});

@@ -77,14 +77,15 @@ export class MedPage extends React.Component {
                     </thead>
                     <tbody>
                         {horses.map(horse =>
-                        <tr className="med-horse all-horses" key={horse.horseID}>
-                            <td>{horse.horseName}</td>
-                            <td>{horse.dayLocationName}</td>
-                            <td>{horse.nightLocationName}</td>
-                            <td>{((this.state.selectedOption === "AllMeds") ? (<MedList horseID={horse.horseID}></MedList>) 
-                            : ((this.state.selectedOption === "AM") ? (<AMMedList horseID={horse.horseID}></AMMedList>) : (<PMMedList horseID={horse.horseID}></PMMedList>)))}
-                            </td>
-                        </tr>
+                            (horse.hasMeds ? 
+                            (<tr className="med-horse all-horses" key={horse.horseID}>
+                                <td>{horse.horseName}</td>
+                                <td>{horse.dayLocationName}</td>
+                                <td>{horse.nightLocationName}</td>
+                                <td>{((this.state.selectedOption === "AllMeds") ? (<MedList horseID={horse.horseID}></MedList>) 
+                                : ((this.state.selectedOption === "AM") ? (<AMMedList horseID={horse.horseID}></AMMedList>) : (<PMMedList horseID={horse.horseID}></PMMedList>)))}
+                                </td>
+                            </tr>) : '')
                         )}
                     </tbody>
                 </table>
