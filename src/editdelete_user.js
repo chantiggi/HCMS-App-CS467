@@ -185,18 +185,18 @@ export class EditUserForm extends React.Component {
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="fname">First Name</label>
-                                            <input type="text" id="fname" name="fname" placeholder="John" defaultValue={ user ? user.fname : undefined} onChange={this.handleChange}/>
+                                            <input type="text" id="fname" name="fname" placeholder="John" defaultValue={ user ? user.fname : undefined} onChange={this.handleChange} required/>
                                         </div>
                                         <div className="col">
                                             <label htmlFor="lname">Last Name</label>
-                                            <input type="text" id="lname" name="lname" placeholder="Smith" defaultValue={ user ? user.lname : undefined} onChange={this.handleChange}/>
+                                            <input type="text" id="lname" name="lname" placeholder="Smith" defaultValue={ user ? user.lname : undefined} onChange={this.handleChange} required/>
                                         </div>
                                     </div>
 
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="username">Username</label>
-                                            <input type="text" id="username" name="username" placeholder="username" defaultValue={ user ? user.username : undefined} onChange={this.handleChange}  required/>
+                                            <input type="text" id="username" name="username" placeholder="username" defaultValue={ user ? user.username : undefined} onChange={this.handleChange} required/>
                                         </div>
                                         <div className="col">
                                             <label htmlFor="email"><i className="fa fa-envelope"></i> Email Address</label>
