@@ -38,8 +38,8 @@ exports.get_org = function(req, res) {
 
 //Update individual org
 exports.update_org = function(req, res) {
-    Org.updateOrgById(req.params.orgID, new Org(req.body), function(err, org) {
+    Org.updateOrgById(req.body, function(err, org) {
         if (err) { res.send(err); }
-        res.json(Org);
+        res.json(org);
     });
 };
