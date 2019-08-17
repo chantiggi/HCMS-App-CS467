@@ -42,7 +42,7 @@ export class EditUserForm extends React.Component {
             // Change User to general user
             if (checked) {
                 this.setState({
-                    [event.target.name]: currentValue,
+                    [event.target.name]: checked,
                     isAdmin: 1
                 });
             }
@@ -120,10 +120,10 @@ export class EditUserForm extends React.Component {
                 },
                 body: JSON.stringify({
                     userID: this.state.userID || this.state.user[0].userID,
-                    fname: this.state.fname || this.state.fname[0].fname,
+                    fname: this.state.fname || this.state.user[0].fname,
                     lname: this.state.lname || this.state.user[0].lname,
                     username: this.state.username || this.state.user[0].username,
-                    email: this.state.email || this.state.user[0].email,
+                    email: this.state.email || tthis.state.user[0].email,
                     handlerLevelID: this.state.handlerLevelID || this.state.user[0].handlerLevelID,
                     isAdmin: this.state.isAdmin || this.state.user[0].isAdmin,
                     isActive: 1,
@@ -185,22 +185,22 @@ export class EditUserForm extends React.Component {
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="fname">First Name</label>
-                                            <input type="text" id="fname" name="fname" placeholder="John" defaultValue={ user ? user.fname : undefined} onChange={this.handleChange} required/>
+                                            <input type="text" id="fname" name="fname" placeholder="John" defaultValue={ user ? user.fname : ""} onChange={this.handleChange} required/>
                                         </div>
                                         <div className="col">
                                             <label htmlFor="lname">Last Name</label>
-                                            <input type="text" id="lname" name="lname" placeholder="Smith" defaultValue={ user ? user.lname : undefined} onChange={this.handleChange} required/>
+                                            <input type="text" id="lname" name="lname" placeholder="Smith" defaultValue={ user ? user.lname : ""} onChange={this.handleChange} required/>
                                         </div>
                                     </div>
 
                                     <div className="row">
                                         <div className="col">
                                             <label htmlFor="username">Username</label>
-                                            <input type="text" id="username" name="username" placeholder="username" defaultValue={ user ? user.username : undefined} onChange={this.handleChange} required/>
+                                            <input type="text" id="username" name="username" placeholder="username" defaultValue={ user ? user.username : ""} onChange={this.handleChange} required/>
                                         </div>
                                         <div className="col">
                                             <label htmlFor="email"><i className="fa fa-envelope"></i> Email Address</label>
-                                            <input type="text" id="email" name="email" placeholder="john@example.com" defaultValue={ user ? user.email : undefined} onChange={this.handleChange}  required/>
+                                            <input type="text" id="email" name="email" placeholder="john@example.com" defaultValue={ user ? user.email : ""} onChange={this.handleChange}  required/>
                                         </div>
                                     </div>
                                     <div className="row">
