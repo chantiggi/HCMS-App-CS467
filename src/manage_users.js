@@ -41,11 +41,10 @@ export class ManageUsers extends React.Component {
 
                 <ManagementTabs />
 
-                <div className="form-check">
+                {/*<div className="form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                     <label className="form-check-label" htmlFor="exampleCheck1">Show Inactive Users</label>
-                </div>
-
+                </div>*/}
                 <div className="tab-content" id="manage-users-tab">
                     <table className="table table-striped table-bordered" id="manage-users-table">
                         <thead className="table-head">
@@ -56,7 +55,7 @@ export class ManageUsers extends React.Component {
                                 <th>Email Address</th>
                                 <th>Administrator?</th>
                                 <th>&nbsp;</th>
-                                <th>&nbsp;</th>
+                                {/*<th>&nbsp;</th>*/}
                             </tr>
                         </thead>
                         <tbody>
@@ -64,19 +63,15 @@ export class ManageUsers extends React.Component {
                             <tr key={user.userID}>
                                 <td>{user.fname}</td>
                                 <td>{user.lname}</td>
-                                <td>{user.handlerLevelID}</td>
+                                <td>{user.handlerLevelName}</td>
                                 <td>{user.email}</td>
-                                <td>{user.isAdmin}</td>
+                                <td>{user.isAdmin ? "Yes" : "No"}</td>
                                 <td className="edit-del-user">
-
                                     <EditUserForm modeTitle="Edit" userID={user.userID}/>
-
                                 </td>
-                                <td>
-
+                                {/*<td>
                                     <InactivateModal targetType="User" targetID={user.userID} targetName={user.username}/>
-
-                                </td>
+                                </td>*/}
                             </tr>
                             )}
                         </tbody>

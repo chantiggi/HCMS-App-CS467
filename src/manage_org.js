@@ -99,6 +99,7 @@ console.log(org);
 					</form>
 					)}
 
+{/*
 					<form className="form-feed">
 						<h5>Feed Information</h5>
 						<div className="row">
@@ -204,6 +205,7 @@ console.log(org);
 						</div>
 
 					</form>
+*/}
 				</div>
 			</div>
 			</div>

@@ -90,7 +90,7 @@ export class AddEditHorse extends React.Component {
             .catch(err => console.log("Error reading data: ", err))
         }
         this.setState({isOpen: false});
-        //this.props.reloadParent();
+        this.props.reloadParent();
     }
 
     componentDidMount() {
@@ -141,26 +141,26 @@ export class AddEditHorse extends React.Component {
                     <div className="horse-info">
                       <div className="form-group">
                           <label htmlFor="horse-name">Horse Name<span className="required-input">*</span></label>
-                          <input type="text" className="form-control" name="horseName" id="horse-name" placeholder="Enter Name" value={horse ? horse.horseName : undefined} onChange={this.handleChange} required />
+                          <input type="text" className="form-control" name="horseName" id="horse-name" placeholder="Enter Name" defaultValue={horse ? horse.horseName : undefined} onChange={this.handleChange} required />
                       </div>
                       <HandlersDropdown dropdownID="handler-level" currentHandlerLevel={horse ? horse.handlerLevelID : null} required="true" sendData={this.getHandlerData}></HandlersDropdown>
                       <LocationsDropdown dropdownID="daytime-location" required="true" time="AM" location={horse ? horse.dayLocationID : null} sendData={this.getAMLocData}></LocationsDropdown>
                       <LocationsDropdown dropdownID="nighttime=location" required="true" time="PM" location={horse ? horse.nightLocationID : null} sendData={this.getPMLocData}></LocationsDropdown>
                       <div className="form-group">
                           <label htmlFor="birth-year">Estimated Birth Year</label>
-                          <input type="number" className="form-control" name="birthYear" id="birth-year" min="1900" max="9999" placeholder="Enter Year" value={horse ? (horse.birthYear ? horse.birthYear : undefined) : undefined} onChange={this.handleChange}></input>
+                          <input type="number" className="form-control" name="birthYear" id="birth-year" min="1900" max="9999" placeholder="Enter Year" defaultValue={horse ? (horse.birthYear ? horse.birthYear : undefined) : undefined} onChange={this.handleChange}></input>
                       </div>
                       <div className="form-group">
                           <label htmlFor="horse-name">Description</label>
-                          <textarea className="form-control" name="description" id="description" value={horse ? (horse.description ? horse.description : undefined) : undefined} onChange={this.handleChange}></textarea>
+                          <textarea className="form-control" name="description" id="description" defaultValue={horse ? (horse.description ? horse.description : undefined) : undefined} onChange={this.handleChange}></textarea>
                       </div>
                       <div className="form-group">
                           <label htmlFor="special-notes">Special Notes or Requirements</label>
-                          <textarea type="text" className="form-control" name="specialNotes" id="special-notes" value={horse ? (horse.specialNotes ? horse.specialNotes : undefined) : undefined} onChange={this.handleChange}></textarea>
+                          <textarea type="text" className="form-control" name="specialNotes" id="special-notes" defaultValue={horse ? (horse.specialNotes ? horse.specialNotes : undefined) : undefined} onChange={this.handleChange}></textarea>
                       </div>
                       <div className="form-group">
                           <label htmlFor="history">History</label>
-                          <textarea type="text" className="form-control" name="history" id="history" value={horse ? (horse.history ? horse.history : undefined) : undefined} onChange={this.handleChange}></textarea>
+                          <textarea type="text" className="form-control" name="history" id="history" defaultValue={horse ? (horse.history ? horse.history : undefined) : undefined} onChange={this.handleChange}></textarea>
                       </div>
                     </div>
                 </div>
