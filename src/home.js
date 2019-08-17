@@ -3,10 +3,6 @@ import './stylesheets/landing_page.css';
 import { PublicMenu } from './publicMenu';
 import { NavLink } from 'react-router-dom';
 
-import HorseMeds from '../public/js/HorseMeds.jpg';
-import HorseFeed from '../public/js/HorseFeed.jpg';
-import HorseHandler from '../public/js/HorseHandler.jpg'
-
 export class Home extends React.Component {
     render() {
         return (
@@ -25,19 +21,19 @@ export class Home extends React.Component {
                         <div className="col-sm-4">
                             <div className="card text-center">
                                 <h5 className="card-header">Medications</h5>
-                                <img className="card-img-top" src={HorseMeds}></img>
+                                <img className="card-img-top" src={'/images/HorseMeds.jpg'}></img>
                             </div>
                         </div>
                         <div className="col-sm-4">
                             <div className="card text-center">
                                 <h5 className="card-header">Feed</h5>
-                                <img className="card-img-top" src={HorseFeed}></img>
+                                <img className="card-img-top" src={'/images/HorseFeed.jpg'}></img>
                             </div>
                         </div>
                         <div className="col-sm-4">
                             <div className="card text-center">
                                 <h5 className="card-header">Handlers</h5>
-                                <img className="card-img-top" src={HorseHandler}></img>
+                                <img className="card-img-top" src={'/images/HorseHandler.jpg'}></img>
                             </div>
                         </div>
                     </div>
