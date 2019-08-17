@@ -23,4 +23,12 @@ Amounts.getAllPossibleAmounts = function(result) {
     })
 }
 
+Amounts.getAmountNameById = function(amountID, result) {
+    sql.query("SELECT * from Amount WHERE amountID = ?", amountID,
+    function(err, res) {
+        if(err) { result(null, err); }
+        else { result(null, res); }
+    })
+}
+
 module.exports = Amounts;

@@ -18,7 +18,10 @@ var User = function (user) {
 
     User.getAllUsers = function (result) {
     sql.query("SELECT User.userID, User.username, User.password, User.fname, User.lname, User.email, User.isAdmin, " +
-        "User.isActive, User.handlerLevelID FROM User WHERE User.orgID = 1",
+        "User.isActive, User.handlerLevelID, HandlerLevel.handlerLevelName " +
+        "FROM User " +
+        "LEFT JOIN HandlerLevel ON HandlerLevel.handlerLevelID = User.handlerLevelID " +
+        "WHERE User.orgID = 1",
         function (err, res) {
             if (err) {
                 console.log("Error with SQL query: ", err);

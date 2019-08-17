@@ -23,4 +23,12 @@ Units.getAllPossibleUnits = function(result) {
     })
 }
 
+Units.getUnitNameById = function(unitID, result) {
+    sql.query("SELECT * from Unit WHERE unitID = ?", unitID,
+    function(err, res) {
+        if(err) { result(null, err); }
+        else { result(null, res); }
+    })
+}
+
 module.exports = Units;

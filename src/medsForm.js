@@ -12,32 +12,32 @@ export class MedsForm extends React.Component {
         this.state = {
             meds: []
         };
-        this.getTimingData = this.getTimingData.bind(this);
-        this.getAmountData = this.getAmountData.bind(this);
-        this.getUnitData = this.getUnitData.bind(this);
-        this.getMedTypeData = this.getMedTypeData.bind(this);
+        //this.getTimingData = this.getTimingData.bind(this);
+        //this.getAmountData = this.getAmountData.bind(this);
+        //this.getUnitData = this.getUnitData.bind(this);
+        //this.getMedTypeData = this.getMedTypeData.bind(this);
         this.getMedData = this.getMedData.bind(this);
     }
 
-    getTimingData(val) { this.setState({timingID: Number(val)}); }
-    getAmountData(val) { this.setState({amountID: Number(val)}); }
-    getUnitData(val) { this.setState({unitID: Number(val)}); }
-    getMedTypeData(val) { this.setState({medID: Number(val)}); }
+    //getTimingData(val) { this.setState({timingID: Number(val)}); }
+    //getAmountData(val) { this.setState({amountID: Number(val)}); }
+    //getUnitData(val) { this.setState({unitID: Number(val)}); }
+    //getMedTypeData(val) { this.setState({medID: Number(val)}); }
     
-    handleChange = (event) => {
+    /*handleChange = (event) => {
         const value = event.target.value;
         this.setState({...this.state, [event.target.name]: value});
-    }
+    }*/
 
     getMedData(val) {
-        let medsToAddTo = this.state.meds;
+        //let medsToAddTo = this.state.meds;
         // Make a temporary horseMedID to use as key for initial display. We will ignore
         // this in the query so that the database autogenerates its own HorseMedID
-        val.horseMedID = new Date().getUTCMilliseconds();
-        val.isNew = true;
-        medsToAddTo.push(val);
-        this.setState({meds: medsToAddTo});
-        this.props.sendData(this.state.meds);
+        //val.horseMedID = new Date().getUTCMilliseconds();
+        //val.isNew = true;
+        //medsToAddTo.push(val);
+        //this.setState({meds: medsToAddTo});
+        //this.props.sendData(this.state.meds);
     }
 
     componentDidMount() {
@@ -56,29 +56,25 @@ export class MedsForm extends React.Component {
 
         return (
             <div>
-                {meds.map(currentMed =>                     
-                <div className="med-info" key={currentMed.horseMedID}>
-                    <div className="row">
-                        <div className="col-sm">
-                            <TimingDropdown time={currentMed.timingID}></TimingDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <AmountsDropdown dropdownID="med-amount" required="false" amount={currentMed.amountID} sendData={this.getAmountData}></AmountsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <UnitsDropdown dropdownID="med-unit" required="false" unit={currentMed.unitID} sendData={this.getUnitData}></UnitsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <MedsDropdown med={currentMed.medID} sendData={this.getMedTypeData}></MedsDropdown>
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="med-notes">Special Notes</label>
-                        <textarea className="form-control" id="med-notes" name="medNotes" value={currentMed.medNotes ? currentMed.medNotes : ""} onChange={this.handleChange}></textarea>
-                    </div>
-                    <hr></hr>
-                </div>
-                )}
+                {meds.length > 0 ?
+                (<table className="table table-striped table-bordered">
+                    <thead className="table-head">
+                        <tr>
+                            <th>Timing</th>
+                            <th>Med Info</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {meds.map(currentMed =>
+                            <tr key={currentMed.horseMedID}>
+                                <td>{currentMed.timingName}</td>
+                                <td>{currentMed.amount} {currentMed.unit} {currentMed.medName}</td>
+                                <td>{currentMed.medNotes ? currentMed.medNotes : '-'}</td>
+                            </tr>                      
+                        )}
+                    </tbody>
+                </table>) : ('')}
                 <AddNewMedsModal sendData={this.getMedData}></AddNewMedsModal>
             </div>
         )

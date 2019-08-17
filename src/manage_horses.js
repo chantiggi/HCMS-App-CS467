@@ -57,7 +57,7 @@ export class ManageHorses extends React.Component {
                                     <th>Nighttime Location</th>
                                     <th>Estimated Age</th>
                                     <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
+                                    {/*<th>&nbsp;</th>*/}
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,9 +72,9 @@ export class ManageHorses extends React.Component {
                                     <td>
                                         <AddEditHorse modeTitle="Edit" horseID={horse.horseID} reloadParent={this.reloadPage}/>
                                     </td>
-                                    <td>
+                                    {/*<td>
                                         <InactivateModal targetType="Horse" targetID={horse.horseID} targetName={horse.horseName}/>
-                                    </td>
+                                    </td>*/}
                                 </tr>
                                 )}
                             </tbody>

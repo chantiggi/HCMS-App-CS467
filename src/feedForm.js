@@ -11,15 +11,20 @@ export class FeedForm extends React.Component {
 
         this.state = {
             feed: [],
+            newFeed: '',
+            amountName: null,
+            unitName: null,
+            feedName: null,
+            specialNotes: null
         };
 
-        this.getAmountData = this.getAmountData.bind(this);
-        this.getUnitData = this.getUnitData.bind(this);
-        this.getFeedTypeData = this.getFeedTypeData.bind(this);
+        //this.getAmountData = this.getAmountData.bind(this);
+        //this.getUnitData = this.getUnitData.bind(this);
+        //this.getFeedTypeData = this.getFeedTypeData.bind(this);
         this.getFeedData = this.getFeedData.bind(this);
     }
 
-    getAmountData(val) {
+/*    getAmountData(val) {
         let currFeed = this.state;
         console.log("currFeed = ", currFeed);
         currFeed.amountID = Number(val);
@@ -41,20 +46,44 @@ export class FeedForm extends React.Component {
         const value = event.target.value;
         this.setState({...this.state, [event.target.name]: value});
     }
-
+*/
     getFeedData(val) {
-        let feedToAddTo = this.state.feed;
-        // Make a temporary horseFeedID to use as key for initial display. We will ignore 
-        // this in the query so that the database autogenerates its own horseFeedID
-        val.horseFeedID = new Date().getUTCMilliseconds();
-        val.isNew = true;
-        feedToAddTo.push(val);
-        this.setState({feed: feedToAddTo});
-        this.props.sendData(this.state.feed);
-    }
+        this.getAmountName(val.amountID);
+        this.getUnitName(val.unitID);
+        this.getFeedName(val.feedID);
 
+        this.setState({newFeed: val});
+    }
+/*
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.newFeed !== this.state.newFeed) {
+            console.log("in componentDidUpdate, this.state = ", this.state);
+        }
+    }
+*/
     componentDidMount() {
         this.getHorseInfo();
+    }
+
+    getAmountName(amountID) {
+        fetch(`/restapi/amount/${amountID}`)
+        .then(response => response.json())
+        .then(data => { this.setState({amountName: data[0].amount})})
+        .catch(err => console.log("Error fetching amount: ", err))
+    }
+
+    getUnitName(unitID) {
+        fetch(`/restapi/unit/${unitID}`)
+        .then(response => response.json())
+        .then(data => this.setState({unitName: data[0].unit}))
+        .catch(err => console.log("Error fetching unit: ", err))
+    }
+
+    getFeedName(feedID) {
+        fetch(`/restapi/feed/${feedID}`)
+        .then(response => response.json())
+        .then(data => this.setState({ feedName: data[0].feedName}))
+        .catch(err => console.log("Error fetching feed: ", err))
     }
 
     getHorseInfo() {
@@ -73,28 +102,25 @@ export class FeedForm extends React.Component {
 
         return (
             <div>
-                {feed.map(currentFeed =>
-                    <div className="feed-info" key={currentFeed.horseFeedID}>
-                        <div className="row">
-                        <div className="col-sm">
-                            <AmountsDropdown dropdownID="feed-amount" required="true" amount={currentFeed.amountID} sendData={this.getAmountData}></AmountsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <UnitsDropdown dropdownID="feed-unit" required="true" unit={currentFeed.unitID} sendData={this.getUnitData}></UnitsDropdown>
-                        </div>
-                        <div className="col-sm">
-                            <FeedDropdown dropdownID="feed-type" required="true" feed={currentFeed.feedID} sendData={this.getFeedTypeData}></FeedDropdown>
-                        </div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="feed-notes">Special Notes</label>
-                            <textarea className="form-control" id="feed-notes" name="feedNotes" value={currentFeed.feedNotes ? currentFeed.feedNotes : ""} onChange={this.handleChange}></textarea>
-                        </div>
-                        <hr></hr>
-                    </div>
-                )}
+                {feed.length > 0 ?
+                (<table className="table table-striped table-bordered">
+                    <thead className="table-head">
+                        <tr>
+                            <th>Feed Info</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {feed.map(currentFeed =>
+                        <tr key={currentFeed.horseFeedID}>
+                            <td>{currentFeed.amount} {currentFeed.unit} {currentFeed.feedName}</td>
+                            <td>{currentFeed.feedNotes ? currentFeed.feedNotes : '-'}</td>
+                        </tr>
+                    )}
+                    </tbody>
+                </table>) : ('')}
                 <AddNewFeedModal sendData={this.getFeedData}></AddNewFeedModal>
             </div>
         )
     }
-}
+} 

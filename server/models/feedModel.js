@@ -52,4 +52,12 @@ Feed.getHorseFeed = function(horseID, result) {
     })
 }
 
+Feed.getFeedNameById = function(feedID, result) {
+    sql.query("SELECT * from Feed WHERE feedID = ?", feedID,
+    function(err, res) {
+        if(err) { result(null, err); }
+        else { result(null, res); }
+    })
+}
+
 module.exports = Feed;
