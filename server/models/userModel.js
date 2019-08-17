@@ -36,7 +36,11 @@ var User = function (user) {
 
     //Add User
     User.createUser = function (newUser, result) {
-    sql.query('INSERT INTO User SET ?', newUser, function (err, res) {
+    console.log("newUser", newUser);
+    let sqlQuery = 'INSERT INTO User (fname, lname, email, username, handlerLevelID, isAdmin, isActive, orgID) ' +
+    'VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    sql.query(sqlQuery, [newUser.fname, newUser.lname, newUser.email, newUser.username, newUser.handlerLevelID, newUser.isAdmin, newUser.orgID],
+    function (err, res) {
         if (err) {
             console.log("Error with SQL query: ", err);
             result(null, err);
@@ -61,7 +65,7 @@ User.getUserById = function(userID, result) {
                 result(null, err);
             }
             else {
-                console.log("Horse data returned is: ", res);
+                console.log("User data returned is: ", res);
                 result(null, res);
             }
         });
@@ -69,13 +73,15 @@ User.getUserById = function(userID, result) {
 
 
 // This is based on horseModel.js's updateHorseById: Still needs to be updated with a real query
-User.updateUserById = function (userID, user, result) {
-    sql.query('UPDATE User SET User = ? WHERE userID = ?', [user.user, userID], function (err, res) {
+User.updateUserById = function (user, result) {
+    sql.query('UPDATE User SET fname = ?, lname = ?, username = ?, email = ?, handlerLevelID = ?,  isAdmin = ?, isActive = ?, orgID = ?' +
+    ' WHERE userID = ?', [user.fname, user.lname, user.username, user.email, user.handlerLevelID, user.isAdmin, user.isActive, user.orgID, user.userID], function (err, res) {
         if (err) {
             console.log("Error with SQL query: ", err);
             result(null, err);
         }
         else {
+            console.log("Result of the user update is: ", res);
             result(null, res);
         }
     });
