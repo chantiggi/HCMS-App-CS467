@@ -69,16 +69,18 @@ Org.getOrgById = function (orgID, result) {
         });
 };
 
-Org.updateOrgById = function (orgID, org, result) {
-        sql.query('UPDATE Organization SET Organization = ? WHERE orgID = ?', [org.org, orgID], function (err, res) {
-            if (err) {
-                console.log("Error with SQL query: ", err);
-                result(null, err);
-            }
-            else {
-                result(null, res);
-            }
-        });
-    };
+Org.updateOrgById = function (org, result) {
+    sql.query('UPDATE Organization SET orgName = ?, streetAddress = ?, city = ?, state = ?, zipCode = ? WHERE orgID = ?', [org.orgName, org.streetAddress, 
+        org.city, org.state, org.zipCode, org.orgID], function (err, res) {
+        if (err) {
+            console.log("Error with SQL query: ", err);
+            result(null, err);
+        }
+        else {
+            console.log("Result of the update is: ", res);
+            result(null, res);
+        }
+    });
+};
 
 module.exports = Org;

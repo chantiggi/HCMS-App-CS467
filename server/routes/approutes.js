@@ -97,7 +97,7 @@ module.exports = function(app) {
 
     app.route('/restapi/home/:orgNoteID')
         .get(HomeCtrl.get_a_blog)  
-        .put(HomeCtrl.update_a_blog)      
+        .put(HomeCtrl.update_a_blog);      
 
     /* Render the page using index.pug file*/
     app.get('*', (req, res) => {
