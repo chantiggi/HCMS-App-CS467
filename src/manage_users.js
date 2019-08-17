@@ -80,7 +80,7 @@ export class ManageUsers extends React.Component {
                             )}
                         </tbody>
                     </table>
-
+                    {/* Add User Form */}
                     <AddUserForm modeTitle="Add User" reloadParent={this.reloadPage} />
 
                 </div>

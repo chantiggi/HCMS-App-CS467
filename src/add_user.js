@@ -48,7 +48,7 @@ export class AddUserForm extends React.Component {
 
         else {
             currentValue = event.target.value;
-            this.setState({...this.state, [event.target.name]: currentValue});
+            this.setState({[event.target.name]: currentValue});
             console.log(this.state[event.target.name]);
         }
     }
@@ -57,27 +57,26 @@ export class AddUserForm extends React.Component {
         event.preventDefault();
         console.log('handleSubmit: ', this.state);
 
-
-        fetch('restapi/users', {
-            method: "POST",
-            headers: {
-                'Accept' : 'application/json',
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({
-                fname: this.state.fname,
-                lname: this.state.lname,
-                username: this.state.username,
-                email: this.state.email,
-                handlerLevelID: this.state.handlerLevelID,
-                isAdmin: this.state.isAdmin,
-                isActive: 1,
-                orgID: 1
+            fetch('restapi/users', {
+                method: "POST",
+                headers: {
+                    'Accept' : 'application/json',
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    fname: this.state.fname,
+                    lname: this.state.lname,
+                    username: this.state.username,
+                    email: this.state.email,
+                    handlerLevelID: this.state.handlerLevelID,
+                    isAdmin: this.state.isAdmin,
+                    isActive: 1,
+                    orgID: 1
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => console.log("User Data: ", data))
-        .catch(err => console.log("Error submitting data: ", err));
+            .then(response => response.json())
+            .then(data => console.log("User Data: ", data))
+            .catch(err => console.log("Error submitting data: ", err));
 
         this.setState({isOpen: false});
         this.props.reloadParent();
@@ -87,10 +86,7 @@ export class AddUserForm extends React.Component {
     render() {
         let closeModal = () => this.setState({ isOpen: false })
         let openModal = () => this.setState({ isOpen: true })
-        let {user} = this.state;
-        if (user) {
-            user = user[0];
-        }
+
 
         return (
             <div className="edit-container">
