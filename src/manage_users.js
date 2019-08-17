@@ -20,7 +20,6 @@ export class ManageUsers extends React.Component {
         };
     }
 
- 
     componentDidMount() {
         const {match: {params}} = this.props;
         fetch('/restapi/users', {
@@ -79,8 +78,8 @@ export class ManageUsers extends React.Component {
                             )}
                         </tbody>
                     </table>
-
-                    <AddUserForm modeTitle="Add User" />
+                    {/* Add User Form */}
+                    <AddUserForm modeTitle="Add User" reloadParent={this.reloadPage} />
 
                 </div>
             </div>

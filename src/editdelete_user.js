@@ -60,10 +60,14 @@ export class EditUserForm extends React.Component {
     }
 
     handleSubmit = (event) => {
+
         event.preventDefault();
         console.log('handleSubmit: ', this);
         console.log('this.state');
-        if (this.state.user === null) {
+        console.log("This is first name on state: ", this.state.fname);
+        console.log("This is first name on state user fname: ", this.state.user[0].fname);
+        console.log("Adding User...");
+        if (this.props.user === null) {
             fetch('restapi/users', {
                 method: "POST",
                 headers: {
@@ -135,6 +139,7 @@ export class EditUserForm extends React.Component {
             .catch(err => console.log("Error submitting data: ", err));
         }
         this.setState({isOpen: false});
+        this.props.reloadParent();
     }
 
     componentDidMount() {

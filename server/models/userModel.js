@@ -39,7 +39,7 @@ var User = function (user) {
     console.log("newUser", newUser);
     let sqlQuery = 'INSERT INTO User (fname, lname, email, username, handlerLevelID, isAdmin, isActive, orgID) ' +
     'VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    sql.query(sqlQuery, [newUser.fname, newUser.lname, newUser.email, newUser.username, newUser.handlerLevelID, newUser.isAdmin, newUser.orgID],
+    sql.query(sqlQuery, [newUser.fname, newUser.lname, newUser.email, newUser.username, newUser.handlerLevelID, newUser.isAdmin, newUser.isActive, newUser.orgID],
     function (err, res) {
         if (err) {
             console.log("Error with SQL query: ", err);
