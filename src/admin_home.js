@@ -15,9 +15,6 @@ export class AdminHomePage extends React.Component {
       };
   }
 
-  reloadPage = () => {
-        window.location.reload();
-  }
 
   componentDidMount() {
       fetch('/restapi/home', {
@@ -75,7 +72,7 @@ export class AdminHomePage extends React.Component {
                         )}    
                         </div>
                     </table>
-                    <AddEditPost modeTitle="Add New Post" reloadParent={this.reloadPage}/>
+                    <AddEditPost modeTitle="Add New Post" />
                 </div>
 
 
