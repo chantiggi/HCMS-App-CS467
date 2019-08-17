@@ -57,29 +57,30 @@ export class AddUserForm extends React.Component {
         event.preventDefault();
         console.log('handleSubmit: ', this.state);
 
-        if (this.state.user === null) {
-            fetch('restapi/users', {
-                method: "POST",
-                headers: {
-                    'Accept' : 'application/json',
-                    'Content-Type' : 'application/json'
-                },
-                body: JSON.stringify({
-                    fname: this.state.fname,
-                    lname: this.state.lname,
-                    username: this.state.username,
-                    email: this.state.email,
-                    handlerLevelID: this.state.handlerLevelID,
-                    isAdmin: this.state.isAdmin,
-                    isActive: 1,
-                    orgID: 1
-                })
+
+        fetch('restapi/users', {
+            method: "POST",
+            headers: {
+                'Accept' : 'application/json',
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                fname: this.state.fname,
+                lname: this.state.lname,
+                username: this.state.username,
+                email: this.state.email,
+                handlerLevelID: this.state.handlerLevelID,
+                isAdmin: this.state.isAdmin,
+                isActive: 1,
+                orgID: 1
             })
-            .then(response => response.json())
-            .then(data => console.log("User Data: ", data))
-            .catch(err => console.log("Error submitting data: ", err));
-        }
-        this.setState({isOpen: false})
+        })
+        .then(response => response.json())
+        .then(data => console.log("User Data: ", data))
+        .catch(err => console.log("Error submitting data: ", err));
+
+        this.setState({isOpen: false});
+        this.props.reloadParent();
     }
 
 
