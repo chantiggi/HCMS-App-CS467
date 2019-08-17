@@ -123,7 +123,7 @@ export class EditUserForm extends React.Component {
                     fname: this.state.fname || this.state.user[0].fname,
                     lname: this.state.lname || this.state.user[0].lname,
                     username: this.state.username || this.state.user[0].username,
-                    email: this.state.email || tthis.state.user[0].email,
+                    email: this.state.email || this.state.user[0].email,
                     handlerLevelID: this.state.handlerLevelID || this.state.user[0].handlerLevelID,
                     isAdmin: this.state.isAdmin || this.state.user[0].isAdmin,
                     isActive: 1,
