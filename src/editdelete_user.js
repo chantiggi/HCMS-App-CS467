@@ -90,25 +90,25 @@ export class EditUserForm extends React.Component {
             console.log("This is first name on state user fname: ", this.state.user[0].fname);
             console.log("Updating User...");
 
-            if (this.state.userID === undefined) {
+            if (this.state.userID === undefined || this.state.userID === null) {
                 this.setState({userID: this.state.user[0].userID});
             }
-            if (this.state.fname === undefined) {
+            if (this.state.fname === undefined || this.state.fname === null) {
                 this.setState({userID: this.state.user[0].fname});
             }
-            if (this.state.lname === undefined) {
+            if (this.state.lname == undefined || this.state.lname === null) {
                 this.setState({userID: this.state.user[0].lname});
             }
-            if (this.state.username === undefined) {
+            if (this.state.username == undefined || this.state.username === null) {
                 this.setState({userID: this.state.user[0].username});
             }
-            if (this.state.email === undefined) {
+            if (this.state.email == undefined || this.state.email === null) {
                 this.setState({userID: this.state.user[0].email});
             }
-            if (this.state.handlerLevelID === undefined) {
+            if (this.state.handlerLevelID == undefined || this.state.handlerLevelID === null) {
                 this.setState({userID: this.state.user[0].handlerLevelID});
             }
-            if (this.state.isAdmin === undefined) {
+            if (this.state.isAdmin == undefined || this.state.isAdminChecked === null) {
                 this.setState({userID: this.state.user[0].isAdmin});
             }
 
