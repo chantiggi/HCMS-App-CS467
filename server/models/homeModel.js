@@ -64,4 +64,18 @@ Home.createBlog = function (newHome, result) {
     });
 };
 
+
+Home.updateBlogById = function (post, result) {
+    sql.query('UPDATE OrgNote SET orgNote = ? WHERE orgNoteID = ?', [post.orgNote, post.orgNoteID], function (err, res) {
+        console.log(post.orgNoteID);
+        if (err) {
+            console.log("Error with SQL query: ", err);
+            result(null, err);
+        }
+        else {
+            console.log("Result of the update is: ", res);
+            result(null, res);
+        }
+    });
+};
 module.exports = Home;
