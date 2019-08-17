@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
     // Controllers
-    var ValidationCtrl = require('../controllers/ValidationController');
+    var LogInCtrl = require('../controllers/LogInController');
     var HorseCtrl = require('../controllers/HorseController');
     var HandlerCtrl = require('../controllers/HandlerController');
     var LocationsCtrl = require('../controllers/LocationsController');
@@ -12,14 +12,12 @@ module.exports = function(app) {
     var MedsCtrl = require('../controllers/MedsController');
     var UserCtrl = require('../controllers/UserController');
     var OrgCtrl = require('../controllers/OrgController');
-
     var HomeCtrl = require('../controllers/HomeController');
-
     var TimeCtrl = require('../controllers/TimeController');
 
     // LogIn Validation Routes
     app.route('/restapi/validateLogIn/:username/:password')
-        .get(ValidationCtrl.validate_login);
+        .get(LogInCtrl.validate_login);
 
     // Horse Routes
     app.route('/restapi/horses')
@@ -35,10 +33,6 @@ module.exports = function(app) {
         .get(FeedCtrl.get_all_feed);
     app.route('/restapi/feed/:horseID')
         .get(FeedCtrl.get_horse_feed);
-
-
-    app.route('/restapi/meds/:horseID')
-        .get(MedsCtrl.get_horse_meds);
     
     // Handler Routes
     app.route('/restapi/allhandlerlevels')
@@ -47,19 +41,29 @@ module.exports = function(app) {
     // Location Routes    
     app.route('/restapi/alllocations')
         .get(LocationsCtrl.get_all_locations);
+
+    // Timing Routes
+    app.route('/restapi/alltimes')
+        .get(TimeCtrl.get_all_times);
     
+    // Amount Routes
     app.route('/restapi/allamounts')
         .get(AmtsCtrl.get_all_amounts); 
     
+    // Unit Routes    
     app.route('/restapi/allunits')
         .get(UnitsCtrl.get_all_units);      
 
+    // Med routes for all horses    
     app.route('/restapi/allmeds')
         .get(MedsCtrl.get_all_meds);
     app.route('/restapi/am-meds')
         .get(MedsCtrl.list_all_horses_am_meds);
     app.route('/restapi/pm-meds')
         .get(MedsCtrl.list_all_horses_pm_meds);
+    // Med routes for specific horse    
+    app.route('/restapi/meds/:horseID')
+        .get(MedsCtrl.get_horse_meds);
     app.route('/restapi/am-meds/:horseID')
         .get(MedsCtrl.get_horse_am_meds);
     app.route('/restapi/pm-meds/:horseID')
@@ -68,22 +72,6 @@ module.exports = function(app) {
     // Handler Routes
     app.route('/restapi/allhandlerlevels')
         .get(HandlerCtrl.get_all_handler_lvls);
-
-    // Location Routes
-    app.route('/restapi/alllocations')
-        .get(LocationsCtrl.get_all_locations);
-
-    // Amount Routes
-    app.route('/restapi/allamounts')
-        .get(AmtsCtrl.get_all_amounts); 
-    
-    // Unit Routes    
-    app.route('/restapi/allunits')
-        .get(UnitsCtrl.get_all_units);
-
-    // Timing Routes
-    app.route('/restapi/alltimes')
-        .get(TimeCtrl.get_all_times);
 
     //User Routes
     app.route('/restapi/users')
@@ -109,12 +97,11 @@ module.exports = function(app) {
 
     app.route('/restapi/home/:orgNoteID')
         .get(HomeCtrl.get_a_blog)  
-        .put(HomeCtrl.update_a_blog)      
+        .put(HomeCtrl.update_a_blog);      
 
     /* Render the page using index.pug file*/
     app.get('*', (req, res) => {
         var sess = req.session;
-        // use session variables here
         res.render('index');
     });
 
