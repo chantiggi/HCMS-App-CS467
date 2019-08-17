@@ -34,8 +34,8 @@ var User = function (user) {
     //Add User
     User.createUser = function (newUser, result) {
     console.log("newUser", newUser);
-    let sqlQuery = 'INSERT INTO User (fname, lname, email, username, handlerLevelID, isAdmin, orgID) ' +
-    'VALUES (?, ?, ?, ?, ?, ?, ?)';
+    let sqlQuery = 'INSERT INTO User (fname, lname, email, username, handlerLevelID, isAdmin, isActive, orgID) ' +
+    'VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
     sql.query(sqlQuery, [newUser.fname, newUser.lname, newUser.email, newUser.username, newUser.handlerLevelID, newUser.isAdmin, newUser.orgID],
     function (err, res) {
         if (err) {
