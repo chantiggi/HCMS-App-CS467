@@ -135,6 +135,7 @@ export class EditUserForm extends React.Component {
             .catch(err => console.log("Error submitting data: ", err));
         }
         this.setState({isOpen: false});
+        this.props.reloadParent();
     }
 
     componentDidMount() {
