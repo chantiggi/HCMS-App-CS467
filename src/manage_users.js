@@ -20,6 +20,10 @@ export class ManageUsers extends React.Component {
         };
     }
 
+    reloadPage = () => {
+        window.location.reload();
+    }
+
     componentDidMount() {
         const {match: {params}} = this.props;
         fetch('/restapi/users', {
@@ -67,7 +71,7 @@ export class ManageUsers extends React.Component {
                                 <td>{user.email}</td>
                                 <td>{user.isAdmin ? "Yes" : "No"}</td>
                                 <td className="edit-del-user">
-                                    <EditUserForm modeTitle="Edit" userID={user.userID}/>
+                                    <EditUserForm modeTitle="Edit" userID={user.userID} reloadParent={this.reloadPage}/>
                                 </td>
                                 {/*<td>
                                     <InactivateModal targetType="User" targetID={user.userID} targetName={user.username}/>
@@ -77,7 +81,7 @@ export class ManageUsers extends React.Component {
                         </tbody>
                     </table>
 
-                    <AddUserForm modeTitle="Add User" />
+                    <AddUserForm modeTitle="Add User" reloadParent={this.reloadPage} />
 
                 </div>
             </div>
