@@ -1,4 +1,5 @@
 'use strict';
+
 var sql = require('./db.js');
 
 //Times object constructor
@@ -16,7 +17,7 @@ Times.getAllPossibleTimes = function(result) {
             result(null, err);
         }
         else {
-            console.log("All available times for this org are: ", res);
+            //console.log("All available times for this org are: ", res);
             result(null, res);
         }
     })

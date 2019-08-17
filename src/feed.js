@@ -47,10 +47,10 @@ export class FeedPage extends React.Component {
                                 <td>{horse.horseName}</td>
                                 <td>{horse.dayLocationName}</td>
                                 <td>{horse.nightLocationName}</td>
-                                <td><FeedList horseID={horse.horseID}></FeedList></td>
+                                <td>{horse.hasFeed ? (<FeedList horseID={horse.horseID}></FeedList>) : ("N/A")}</td>
                                 <td>
-                                    {horse.horseMedArray ? (<HorseMedsModal horseID={horse.horseID} horseName={horse.horseName}></HorseMedsModal>)
-                                    : ( '-' )}
+                                    {horse.hasMeds ? (<HorseMedsModal horseID={horse.horseID} horseName={horse.horseName}></HorseMedsModal>)
+                                    : ('')}
                                 </td>
                             </tr>
                         )}

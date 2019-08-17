@@ -9,3 +9,10 @@ exports.get_all_amounts = function(req, res) {
         res.send(amounts);
     })
 }
+
+exports.get_amt_by_id = function(req, res) {
+    Amounts.getAmountNameById(req.params.amountID, function(err, amount) {
+        if(err) {res.send(err);}
+        res.json(amount);
+    })
+}

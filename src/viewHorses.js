@@ -36,17 +36,17 @@ export class ViewHorsesPage extends React.Component {
             <NavBar />
 
             <div className="container">
-                <div className="input-group">
+                {/*<div className="input-group">
                     <input type="text" placeholder="Search horses..." />
                     <div className="input-group-append">
                         <button type="submit"><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
-                </div>
+                </div>*/}
                 <div className="all-horses">
                     <div className="row">
                         {horses.map(horse =>
-                            <div className="col-sm-4">
-                                <div className="card horseCard" key={horse.horseID}>
+                            <div className="col-sm-4" key={horse.horseID}>
+                                <div className="card horseCard">
                                     <Link to={`/viewindivhorse/${horse.horseID}`} style={{textDecoration: 'none', color: 'black'}} className="horse-link">
                                         <img className="card-img-top horse-image" src="https://images.unsplash.com/photo-1553284965-5dd8352ff1bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
                                         <div className="card-body profile-preview">

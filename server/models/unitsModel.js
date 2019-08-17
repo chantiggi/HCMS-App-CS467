@@ -17,9 +17,17 @@ Units.getAllPossibleUnits = function(result) {
             result(null, err);
         }
         else {
-            console.log("All available units for this org are: ", res);
+            //console.log("All available units for this org are: ", res);
             result(null, res);
         }
+    })
+}
+
+Units.getUnitNameById = function(unitID, result) {
+    sql.query("SELECT * from Unit WHERE unitID = ?", unitID,
+    function(err, res) {
+        if(err) { result(null, err); }
+        else { result(null, res); }
     })
 }
 

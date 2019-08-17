@@ -18,7 +18,6 @@ var Meds = function(meds) {
     this.timingName = meds.timingName;
 }
 
-//Need to update with org info
 Meds.getAllPossibleMeds = function(result) {
     sql.query("SELECT Med.medID, Med.medName FROM Med WHERE Med.orgID = 1",
     function(err, res) {
@@ -27,7 +26,7 @@ Meds.getAllPossibleMeds = function(result) {
             result(null, err);
         }
         else {
-            console.log("All available meds for this org are: ", res);
+            //console.log("All available meds for this org are: ", res);
             result(null, res);
         }
     })
@@ -49,13 +48,12 @@ Meds.getHorseMeds = function (horseID, result) {
                 result(null, err);
             }
             else {
-                console.log("The horse's full list of meds are: ", res);
+                //console.log("The horse's full list of meds are: ", res);
                 result(null, res);
             }
         })
 }
 
-// Not currently being used
 Meds.getAllHorsesAmMeds = function (result) {
     sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
@@ -70,13 +68,12 @@ Meds.getAllHorsesAmMeds = function (result) {
                 result(null, err);
             }
             else {
-                console.log("All horses AM meds are: ", res);
+                //console.log("All horses AM meds are: ", res);
                 result(null, res);
             }
         })
 }
 
-// Not currently being used
 Meds.getAllHorsesPmMeds = function (result) {
     sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
@@ -91,13 +88,12 @@ Meds.getAllHorsesPmMeds = function (result) {
                 result(null, err);
             }
             else {
-                console.log("All horses PM meds are: ", res);
+                //console.log("All horses PM meds are: ", res);
                 result(null, res);
             }
         })
 }
 
-// Not currently being used
 Meds.getHorseAmMeds = function (horseID, result) {
     sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
@@ -112,13 +108,12 @@ Meds.getHorseAmMeds = function (horseID, result) {
                 result(null, err);
             }
             else {
-                console.log("The horse's AM meds are: ", res);
+                //console.log("The horse's AM meds are: ", res);
                 result(null, res);
             }
         })
 }
 
-// Not currently being used
 Meds.getHorsePmMeds = function (horseID, result) {
     sql.query("SELECT Horse.horseID, Horse.horseName, Amount.amount, Unit.unit, Med.medName, HorseMed.medNotes, HorseMed.horseMedID, Timing.timingName " +
     "FROM HorseMed " +
@@ -133,7 +128,7 @@ Meds.getHorsePmMeds = function (horseID, result) {
                 result(null, err);
             }
             else {
-                console.log("The horse's PM meds are: ", res);
+                //console.log("The horse's PM meds are: ", res);
                 result(null, res);
             }
         })

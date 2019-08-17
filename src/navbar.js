@@ -18,8 +18,8 @@ export class NavBar extends React.Component {
                                 Manage Preferences
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link to={'/manageusers'} className="dropdown-item">Manage Users</Link>
                                 <Link to={'/managehorses'} className="dropdown-item">Manage Horses</Link>
+                                <Link to={'/manageusers'} className="dropdown-item">Manage Users</Link>
                                 <Link to={'/manageorg'} className="dropdown-item">Manage Organization</Link>
                             </div>
                         </li>

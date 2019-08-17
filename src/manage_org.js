@@ -132,6 +132,7 @@ export class ManageOrg extends React.Component {
 
 					</form>
 
+{/*
 					<form className="form-feed">
 						<h5>Feed Information</h5>
 						<div className="row">
@@ -238,6 +239,7 @@ export class ManageOrg extends React.Component {
 						</div>
 
 					</form>
+*/}
 				</div>
 			</div>
 			</div>

@@ -12,7 +12,7 @@ exports.list_all_horses = function(req, res) {
 
 // Add a new horse
 exports.add_horse = function(req, res) {
-    var newHorse = new Horse(req.body);
+    let newHorse = req.body;
 
     // handles null error
     if (!newHorse.horseName || !newHorse.handlerLevelID || 
@@ -25,6 +25,7 @@ exports.add_horse = function(req, res) {
             res.json(horse);
         });
     }
+    
 };
 
 // Get an individual horse
@@ -37,7 +38,7 @@ exports.get_a_horse = function(req, res) {
 
 // Update an individual horse
 exports.update_a_horse = function(req, res) {
-    Horse.updateHorseById(req.params.horseID, new Horse(req.body), function(err, horse) {
+    Horse.updateHorseById(req.body, function(err, horse) {
         if (err) { res.send(err); }
         res.json(horse);
     });

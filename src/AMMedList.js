@@ -23,9 +23,10 @@ export class AMMedList extends React.Component {
 
         return (
             <ul>
-            {meds.map(currentMed =>
-                <li key={currentMed.horseMedID}>{currentMed.amount} {currentMed.unit} {currentMed.medName} {currentMed.medNotes ? ('(Notes: ' + currentMed.medNotes + ')') : ''}</li>
-            )}
+                {meds ? 
+                (meds.map(currentMed =>
+                    <li key={currentMed.horseMedID}>{currentMed.amount} {currentMed.unit} {currentMed.medName} {currentMed.medNotes ? ('(Notes: ' + currentMed.medNotes + ')') : ''}</li>
+                )) : "N/A"}
             </ul>
         )
     }

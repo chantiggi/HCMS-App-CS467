@@ -12,7 +12,7 @@ export class AmountsDropdown extends React.Component {
         }
         else {
             this.state = {
-                locations: [],
+                amounts: [],
                 value: ''
             };
         }
@@ -21,6 +21,14 @@ export class AmountsDropdown extends React.Component {
 
     handleChange(event) {
         this.setState({value: event.target.value});
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.value !== this.state.value) {
+            if(this.props.sendData) {
+                this.props.sendData(this.state.value);
+            }
+        }
     }
 
     componentDidMount() {

@@ -33,6 +33,8 @@ module.exports = function(app) {
         .get(FeedCtrl.get_all_feed);
     app.route('/restapi/feed/:horseID')
         .get(FeedCtrl.get_horse_feed);
+    app.route('/restapi/feed/:feedID')
+        .get(FeedCtrl.get_feed_by_id);
     
     // Handler Routes
     app.route('/restapi/allhandlerlevels')
@@ -49,10 +51,14 @@ module.exports = function(app) {
     // Amount Routes
     app.route('/restapi/allamounts')
         .get(AmtsCtrl.get_all_amounts); 
+    app.route('/restapi/amount/:amountID')
+        .get(AmtsCtrl.get_amt_by_id);
     
     // Unit Routes    
     app.route('/restapi/allunits')
-        .get(UnitsCtrl.get_all_units);      
+        .get(UnitsCtrl.get_all_units);
+    app.route('/restapi/unit/:unitID')
+        .get(UnitsCtrl.get_unit_by_id);  
 
     // Med routes for all horses    
     app.route('/restapi/allmeds')

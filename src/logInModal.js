@@ -84,7 +84,7 @@ export class LogInModal extends React.Component {
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
-                        <button type="button" className="btn btn-secondary">Forgot Password?</button>
+                        {/*<button type="button" className="btn btn-secondary">Forgot Password?</button>*/}
                         <button type="button" className="btn btn-secondary" onClick={this.validateLogIn}>Log In</button>
                     </Modal.Footer>
                 </Modal>

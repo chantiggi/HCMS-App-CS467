@@ -16,14 +16,23 @@ export class ManageHorses extends React.Component {
       };
   }
 
-  componentDidMount() {
-      fetch('/restapi/horses', {
-          method: "GET"
-      })
-          .then(response => response.json())
-          .then(data => this.setState({horses: data}))
-          .catch(err => console.log("Error reading data: ", err))
+  getAllHorses() {
+    fetch('/restapi/horses', {
+        method: "GET"
+    })
+        .then(response => response.json())
+        .then(data => this.setState({horses: data}))
+        .catch(err => console.log("Error reading data: ", err))
   }
+
+    reloadPage = () => {
+        window.location.reload();
+    }
+
+    componentDidMount() {
+        this.getAllHorses();
+    }
+
     render() {
         const {horses} = this.state;
 
@@ -44,12 +53,11 @@ export class ManageHorses extends React.Component {
                                     <th>Horse Name</th>
                                     <th>Handler Level</th>
                                     <th>Description</th>
-                                    <th>Photo</th>
                                     <th>Daytime Location</th>
                                     <th>Nighttime Location</th>
                                     <th>Estimated Age</th>
                                     <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
+                                    {/*<th>&nbsp;</th>*/}
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,21 +66,20 @@ export class ManageHorses extends React.Component {
                                     <td>{horse.horseName}</td>
                                     <td>{horse.handlerLevelName}</td>
                                     <td>{horse.description || "N/A"}</td>
-                                    <td>photo</td>
                                     <td>{horse.dayLocationName}</td>
                                     <td>{horse.nightLocationName}</td>
-                                    <td>{(new Date()).getFullYear() - horse.birthYear + " years" || "Unknown"}</td>
+                                    <td>{horse.birthYear ? (new Date().getFullYear() - horse.birthYear) + " years" : "Unknown"}</td>
                                     <td>
-                                        <AddEditHorse modeTitle="Edit" horseID={horse.horseID}/>
+                                        <AddEditHorse modeTitle="Edit" horseID={horse.horseID} reloadParent={this.reloadPage}/>
                                     </td>
-                                    <td>
+                                    {/*<td>
                                         <InactivateModal targetType="Horse" targetID={horse.horseID} targetName={horse.horseName}/>
-                                    </td>
+                                    </td>*/}
                                 </tr>
                                 )}
                             </tbody>
                         </table>
-                        <AddEditHorse modeTitle="Add Horse"/>
+                        <AddEditHorse modeTitle="Add Horse" reloadParent={this.reloadPage}/>
                     </div>
                 </div>
             </div>

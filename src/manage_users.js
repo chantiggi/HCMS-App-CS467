@@ -68,7 +68,9 @@ export class ManageUsers extends React.Component {
                                 <td>{user.email}</td>
                                 <td>{user.isAdmin ? "Yes" : "No"}</td>
                                 <td className="edit-del-user">
-                                    <EditUserForm modeTitle="Edit" userID={user.userID} />
+
+                                    <EditUserForm modeTitle="Edit" userID={user.userID}/>
+
                                 </td>
                                 {/*<td>
                                     <InactivateModal targetType="User" targetID={user.userID} targetName={user.username}/>

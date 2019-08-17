@@ -13,11 +13,16 @@ dotenv.config({
 });
 
 // Express app setup
-const app = express();
+const app = express(); 
+
+// Cookie parser
+app.use(cookieParser());
 
 // Sessions
-app.use(session(
-    { 'secret': 'fkdk84jf4io384jfkejf' }
+app.use(session({
+    'secret': 'fkdk84jf4io384jfkejf',
+    resave: false,
+    saveUninitialized: true },
 ))
 
 // View engine
@@ -35,9 +40,6 @@ app.use(logger('combined'));
 // Body parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
-// Cookie parser
-app.use(cookieParser());
 
 // Serve static files from 'public'
 app.use(express.static(path.join(__dirname, './public')));

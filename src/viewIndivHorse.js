@@ -48,8 +48,8 @@ export class ViewIndivHorsePage extends React.Component {
                         <h5>History: {currentHorse.history || "N/A"} </h5>
                         <h5>Daytime Location: {currentHorse.dayLocationName} </h5>
                         <h5>Nighttime Location: {currentHorse.nightLocationName} </h5>
-                        <h5>Feed: <FeedList horseID={currentHorse.horseID}></FeedList> </h5>
-                        <h5>Meds: {currentHorse.horseMedArray ? (<MedList horseID={currentHorse.horseID}></MedList>) : ("None")} </h5>
+                        <h5>Feed: {currentHorse.hasFeed ? (<FeedList horseID={currentHorse.horseID}></FeedList>) : ("None")} </h5>
+                        <h5>Meds: {currentHorse.hasMeds ? (<MedList horseID={currentHorse.horseID}></MedList>) : ("None")} </h5>
                     </div>
                 )}
             </div>
