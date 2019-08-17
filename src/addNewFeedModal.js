@@ -19,7 +19,7 @@ export class AddNewFeedModal extends React.Component {
         this.getFeedData = this.getFeedData.bind(this);
     }
 
-    getAmountData(val) { this.setState({amountID: Number(val)}); }
+    getAmountData(val) { this.setState({amountID: val}); }
     getUnitData(val) { this.setState({unitID: Number(val)}); }
     getFeedData(val) { this.setState({feedID: Number(val)}); }
     handleNotesChange = (event) => { this.setState({feedNotes: event.target.value}); }

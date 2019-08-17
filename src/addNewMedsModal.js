@@ -53,16 +53,16 @@ export class AddNewMedsModal extends React.Component {
                 <div className="feed-info">
                     <div className="row">
                     <div className="col-sm">
-                            <TimingDropdown required="true" sendData={this.getTimingData}></TimingDropdown>
+                            <TimingDropdown sendData={this.getTimingData}></TimingDropdown>
                         </div>
                         <div className="col-sm">
-                            <AmountsDropdown dropdownID="med-amount" required="true" sendData={this.getAmountData}></AmountsDropdown>
+                            <AmountsDropdown dropdownID="med-amount" sendData={this.getAmountData}></AmountsDropdown>
                         </div>
                         <div className="col-sm">
-                            <UnitsDropdown dropdownID="med-unit" required="true" sendData={this.getUnitData}></UnitsDropdown>
+                            <UnitsDropdown dropdownID="med-unit" sendData={this.getUnitData}></UnitsDropdown>
                         </div>
                         <div className="col-sm">
-                            <MedsDropdown dropdownID="med-type" required="true" sendData={this.getMedData}></MedsDropdown>
+                            <MedsDropdown dropdownID="med-type" sendData={this.getMedData}></MedsDropdown>
                         </div>
                         </div>
                         <div className="form-group">

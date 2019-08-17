@@ -17,3 +17,10 @@ exports.get_horse_feed = function(req, res) {
         res.json(feed);
     })
 }
+
+exports.get_feed_by_id = function(req, res) {
+    Feed.getFeedNameById(req.params.feedID, function(err, feed) {
+        if(err) {res.send(err);}
+        res.json(feed);
+    })
+}
