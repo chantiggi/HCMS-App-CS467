@@ -3,20 +3,52 @@ import './stylesheets/manage_org.css';
 import { ManagementTabs } from './managementtabs';
 import { NavBar } from './navbar';
 import { Footer } from './footer';
-
+import { EditOrg } from './org_edit'
 
 
 export class ManageOrg extends React.Component {
-	    constructor(props) {
+    constructor(props) {
         super(props);
 
         this.state = {
-            org: [],
+            org: []
         };
     }
 
+  reloadPage = () => {
+        window.location.reload();
+  }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        confirm("Changes made")
+        fetch(`restapi/org/${this.props.orgID}`, {
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              orgID: 1,
+              orgName: this.state.orgName || this.state.org[0].orgName,
+              streetAddress: this.state.streetAddress || this.state.org[0].streetAddress,
+              city: this.state.city || this.state.org[0].city,
+              state: this.state.state || this.state.org[0].state,
+              zipCode: this.state.zipCode || this.state.org[0].zipCode
+            })
+        })
+        .then(response => response.json())
+        .then(data => console.log("Data = ", data))
+        .catch(err => console.log("Error reading data: ", err))
+        //this.props.reloadParent();
+    }    
+
+    handleChange = (event) => {
+        const value = event.target.value;
+        this.setState({...this.state, [event.target.name]: value});
+    }
+
     componentDidMount() {
-        const {match: {params}} = this.props;
         fetch('/restapi/org', {
             method: "GET"
         })
@@ -26,10 +58,12 @@ export class ManageOrg extends React.Component {
 
     }
 
-
 	render() {
-		const {org} = this.state;
-console.log(org);
+		let {org} = this.state;
+		if (org) {
+			org = org[0];
+		}
+		console.log(org);
 		return (
 			<div>
 			<div>
@@ -40,7 +74,7 @@ console.log(org);
 				
 				<div className="tab-content org" id="">
 				
-					{org.map(post =>
+
 					<form className="form-org">
 						
 						<h5 className="otitle" >Organization Information </h5>
@@ -49,11 +83,11 @@ console.log(org);
 							
 							<div className="col">
 							
-								<div className="form-group" key={post.orgName}>
+								<div className="form-group">
 									
 									<label for="oname"><i className="fa fa-envelope"></i>Name</label>
 
-									<input type="text" className="form-control org-name" id="oname" name="oname" defaultValue={post.orgName}/>
+									<input type="text" className="form-control org-name" id="oname" name="orgName" value={org ? org.orgName : undefined} onChange={this.handleChange} readonly/>
 
 								</div>
 								
@@ -64,7 +98,7 @@ console.log(org);
 							<div className="col">
 								<div className="form-group">
 									<label for="oaddress"><i className="fa fa-envelope"></i>Address</label>
-									<input type="text" className="form-control org-address" id="oaddress" name="oaddress" defaultValue={post.streetAddress} />
+									<input type="text" className="form-control org-address" id="oaddress" name="streetAddress" readonly value={org ? org.streetAddress : undefined} onChange={this.handleChange} />
 								</div>
 							</div>
 						</div>
@@ -72,32 +106,31 @@ console.log(org);
 							<div className="col-4">
 								<div className="form-group">
 									<label for="city">City</label>
-									<input type="text" className="form-control" id="city" name="city" defaultValue={post.city}/>
+									<input type="text" className="form-control" id="city" name="city" value={org ? org.city : undefined} onChange={this.handleChange} readonly/>
 								</div>
 							</div>
 							<div className="col-2">
 								<div className="form-group">
 									<label for="state">State</label>
-									<input type="text" className="form-control" id="state" name="state" defaultValue={post.state}/>
+									<input type="text" className="form-control" id="state" name="state" value={org ? org.state : undefined} onChange={this.handleChange} readonly/>
 								</div>
 							</div>
 							<div className="col-4">
 								<div className="form-group">
 									<label for="zip">Zip Code</label>
-									<input type="text" className="form-control" id="zip" name="zip" defaultValue={post.zipCode}/>
+									<input type="text" className="form-control" id="zip" name="zipCode" value={org ? org.zipCode : undefined} onChange={this.handleChange} readonly/>
 								</div>
 							</div>
 						</div>
 						<div className="row">
 							<div className="col">
-								<input type="submit" value="Submit Changes" className="btn btn-solid submit-org" />
+								<EditOrg modeTitle="Edit Organization" orgID="1" reloadParent={this.reloadPage}/>
 
 								
 							</div>
 						</div>
 
 					</form>
-					)}
 
 					<form className="form-feed">
 						<h5>Feed Information</h5>
@@ -198,6 +231,7 @@ console.log(org);
 												<option>Type 2</option>
 												<option>Type 3</option>
 										</select>
+
 										<button type="submit" className="btn btn-solid add-new-btn">Add New Type</button>
 									</div>
 								</div>
